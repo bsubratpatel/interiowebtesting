@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { Phone, MessageCircle } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
 
 const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -22,24 +21,33 @@ const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 export default function FloatingCTAGroup() {
   const [visible, setVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [showOnMobile, setShowOnMobile] = useState(false);
+  const lastScrollY = React.useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
       // Auto-hide when scrolling down past 80px, show when scrolling up
-      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
         setVisible(false);
       } else {
         setVisible(true);
       }
-      setLastScrollY(currentScrollY);
+      lastScrollY.current = currentScrollY;
+
+      // Show on mobile only after scrolling past the hero (260px)
+      if (currentScrollY > 260) {
+        setShowOnMobile(true);
+      } else {
+        setShowOnMobile(false);
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   const handleCall = () => {
     window.location.href = "tel:+919776991699";
@@ -53,15 +61,13 @@ export default function FloatingCTAGroup() {
     window.open("https://www.instagram.com/interiocore/", "_blank");
   };
 
-  return (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: -100, opacity: 0 }}
-          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed left-6 bottom-[calc(24px+env(safe-area-inset-bottom))] z-40 flex flex-col gap-4"
+  return visible ? (
+        <div
+          className={`fixed left-6 bottom-[calc(32px+env(safe-area-inset-bottom))] z-40 flex flex-col gap-4 transition-all duration-300 ${
+            showOnMobile
+              ? "opacity-100 translate-x-0 pointer-events-auto"
+              : "opacity-0 -translate-x-12 pointer-events-none md:opacity-100 md:translate-x-0 md:pointer-events-auto"
+          }`}
         >
           {/* Call Button */}
           <button
@@ -104,8 +110,6 @@ export default function FloatingCTAGroup() {
               </span>
             </div>
           </button>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
+        </div>
+  ) : null;
 }

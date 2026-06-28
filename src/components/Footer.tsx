@@ -69,23 +69,33 @@ export default function Footer() {
           <h4 className="text-foreground text-xs font-bold uppercase tracking-widest mb-6">Our Services</h4>
           <ul className="space-y-3 text-sm font-light">
             <li>
-              <a href="#services" onClick={(e) => handleAnchorClick(e, "services")} className="hover:text-brand-accent transition-colors">
+              <a href="#services-kitchen" onClick={(e) => handleAnchorClick(e, "services-kitchen")} className="hover:text-brand-accent transition-colors">
                 Modular Kitchen Designs
               </a>
             </li>
             <li>
-              <a href="#services" onClick={(e) => handleAnchorClick(e, "services")} className="hover:text-brand-accent transition-colors">
+              <a href="#services-wardrobe" onClick={(e) => handleAnchorClick(e, "services-wardrobe")} className="hover:text-brand-accent transition-colors">
                 Luxury Wardrobe Designs
               </a>
             </li>
             <li>
-              <a href="#services" onClick={(e) => handleAnchorClick(e, "services")} className="hover:text-brand-accent transition-colors">
+              <a href="#services-tv" onClick={(e) => handleAnchorClick(e, "services-tv")} className="hover:text-brand-accent transition-colors">
                 Premium TV Units
               </a>
             </li>
             <li>
-              <a href="#services" onClick={(e) => handleAnchorClick(e, "services")} className="hover:text-brand-accent transition-colors">
-                Bespoke Vanity Designs
+              <a href="#services-bedroom" onClick={(e) => handleAnchorClick(e, "services-bedroom")} className="hover:text-brand-accent transition-colors">
+                Bedroom Interiors
+              </a>
+            </li>
+            <li>
+              <a href="#services-living" onClick={(e) => handleAnchorClick(e, "services-living")} className="hover:text-brand-accent transition-colors">
+                Living Room Interiors
+              </a>
+            </li>
+            <li>
+              <a href="#services-full-home" onClick={(e) => handleAnchorClick(e, "services-full-home")} className="hover:text-brand-accent transition-colors">
+                Full Home Interiors
               </a>
             </li>
           </ul>
@@ -96,8 +106,18 @@ export default function Footer() {
           <h4 className="text-foreground text-xs font-bold uppercase tracking-widest mb-6">Explore</h4>
           <ul className="space-y-3 text-sm font-light">
             <li>
-              <a href="#about" onClick={(e) => handleAnchorClick(e, "about")} className="hover:text-brand-accent transition-colors">
+              <a href="#about-story" onClick={(e) => handleAnchorClick(e, "about-story")} className="hover:text-brand-accent transition-colors">
                 About Our Story
+              </a>
+            </li>
+            <li>
+              <a href="#about-mission" onClick={(e) => handleAnchorClick(e, "about-mission")} className="hover:text-brand-accent transition-colors">
+                Mission & Vision
+              </a>
+            </li>
+            <li>
+              <a href="#about-why" onClick={(e) => handleAnchorClick(e, "about-why")} className="hover:text-brand-accent transition-colors">
+                Why Choose Us
               </a>
             </li>
             <li>
@@ -111,7 +131,7 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="#gallery" onClick={(e) => handleAnchorClick(e, "gallery")} className="hover:text-brand-accent transition-colors">
+              <a href="#gallery-kitchens" onClick={(e) => handleAnchorClick(e, "gallery-kitchens")} className="hover:text-brand-accent transition-colors">
                 Visual Gallery
               </a>
             </li>
@@ -130,8 +150,7 @@ export default function Footer() {
             <li className="flex items-start gap-3">
               <MapPin className="h-5 w-5 text-brand-accent shrink-0 mt-0.5" />
               <span className="leading-relaxed">
-                Luxury Design Studio, Phase II,<br />
-                MG Road, New Delhi, India
+                Jharsuguda, Odisha, India
               </span>
             </li>
             <li className="flex items-center gap-3">

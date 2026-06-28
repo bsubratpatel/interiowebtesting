@@ -4,39 +4,40 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, ChevronDown, Phone, MessageCircle } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
-import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+
 
 const navItems = [
   { name: "Home", path: "#home" },
   {
     name: "About Us",
-    path: "#about",
+    path: "#about-story",
     submenu: [
-      { name: "Our Story", path: "#about" },
-      { name: "Mission & Vision", path: "#about" },
-      { name: "Why Choose Us", path: "#about" },
-      { name: "Our Team", path: "#about" },
+      { name: "Our Story", path: "#about-story" },
+      { name: "Mission & Vision", path: "#about-mission" },
+      { name: "Why Choose Us", path: "#about-why" },
     ],
   },
   {
     name: "Services",
-    path: "#services",
+    path: "#services-kitchen",
     submenu: [
-      { name: "Modular Kitchen Designs", path: "#services" },
-      { name: "Wardrobe Designs", path: "#services" },
-      { name: "TV Unit Designs", path: "#services" },
-      { name: "Vanity Designs", path: "#services" },
+      { name: "Modular Kitchen", path: "#services-kitchen" },
+      { name: "TV Unit Design", path: "#services-tv" },
+      { name: "Wardrobe Design", path: "#services-wardrobe" },
+      { name: "Bedroom Interiors", path: "#services-bedroom" },
+      { name: "Living Room", path: "#services-living" },
+      { name: "Full Home Interiors", path: "#services-full-home" },
     ],
   },
   {
     name: "Design Gallery",
-    path: "#gallery",
+    path: "#gallery-kitchens",
     submenu: [
-      { name: "Modular Kitchen", path: "#gallery?tab=kitchen" },
-      { name: "Wardrobe", path: "#gallery?tab=wardrobe" },
-      { name: "TV Unit", path: "#gallery?tab=tv-unit" },
-      { name: "Vanity", path: "#gallery?tab=vanity" },
+      { name: "Kitchens", path: "#gallery-kitchens" },
+      { name: "TV Units", path: "#gallery-tv" },
+      { name: "Wardrobes", path: "#gallery-wardrobes" },
+      { name: "Bedrooms", path: "#gallery-bedrooms" },
+      { name: "Living Rooms", path: "#gallery-living" },
     ],
   },
   { name: "Our Process", path: "#process" },
@@ -50,12 +51,15 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [expandedMenus, setExpandedMenus] = useState<Record<string, boolean>>({});
   const [activeSection, setActiveSection] = useState("home");
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const isScrolled = window.scrollY > 20;
+      setScrolled(prev => prev !== isScrolled ? isScrolled : prev);
     };
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -73,7 +77,21 @@ export default function Navbar() {
 
   // Scrollspy with Intersection Observer
   useEffect(() => {
-    const sections = ["home", "about", "services", "gallery", "process", "materials", "testimonials", "contact"];
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setActiveDropdown(null);
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    const sections = [
+      "home", 
+      "about-story", "about-mission", "about-why",
+      "services-kitchen", "services-tv", "services-wardrobe", "services-bedroom", "services-living", "services-full-home",
+      "gallery-kitchens", "gallery-tv", "gallery-wardrobes", "gallery-bedrooms", "gallery-living",
+      "process", "materials", "testimonials", "contact"
+    ];
     
     const observerOptions = {
       root: null,
@@ -96,7 +114,10 @@ export default function Navbar() {
       if (el) observer.observe(el);
     });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
 
   const toggleSubmenu = (name: string) => {
@@ -138,16 +159,13 @@ export default function Navbar() {
       }
     }
     setIsOpen(false);
+    setActiveDropdown(null);
   };
 
   return (
     <>
       <header
-        className={`sticky top-0 z-40 w-full transition-all duration-300 ${
-          scrolled
-            ? "bg-white/90 backdrop-blur-md border-b border-zinc-200/60 shadow-sm"
-            : "bg-transparent border-b border-transparent"
-        }`}
+        className="fixed top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-zinc-200/60 shadow-sm"
       >
         <div className={`max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-12 w-full flex items-center justify-between transition-all duration-300 ${
           scrolled ? "h-24" : "h-28"
@@ -158,94 +176,102 @@ export default function Navbar() {
               src="/images/logo/logo.svg"
               unoptimized
               alt="Interiocore Logo"
-              width={340}
-              height={100}
+              width={380}
+              height={120}
               className={`w-auto object-contain transition-all duration-300 ${
-                scrolled ? "h-[72px]" : "h-[90px]"
+                scrolled ? "h-[84px]" : "h-[100px]"
               }`}
               priority
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center gap-1.5">
-            {navItems.map((item) => (
-              <div key={item.name} className="relative">
-                {item.submenu ? (
-                  <NavigationMenu.Root delayDuration={100}>
-                    <NavigationMenu.List className="list-none m-0 p-0 flex items-center">
-                      <NavigationMenu.Item>
-                        <NavigationMenu.Trigger
-                          onClick={(e) => handleNavClick(e, item.path)}
-                          className={`group/trigger flex items-center gap-1.5 px-5 py-3 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors cursor-pointer select-none outline-none rounded-full data-[state=open]:text-brand-accent ${
-                            activeSection === item.path.replace("#", "")
-                              ? "text-brand-accent font-bold"
-                              : "text-muted-foreground hover:text-foreground"
-                          }`}
-                        >
-                          {item.name}
-                          <ChevronDown className="h-3.5 w-3.5 opacity-60 transition-transform duration-200 group-data-[state=open]:rotate-180" />
-                        </NavigationMenu.Trigger>
+          <nav className="hidden xl:flex items-center gap-8">
+            {navItems.map((item) => {
+              const cleanedPath = item.path.split("-")[0].replace("#", "");
+              const isHighlight = cleanedPath === "home" 
+                ? activeSection === "home" 
+                : activeSection.startsWith(cleanedPath);
 
-                        <NavigationMenu.Content className="absolute top-0 left-0 w-full focus:outline-none">
-                          <ul className="flex flex-col gap-1.5 list-none m-0 p-3 w-72 bg-white rounded-2xl shadow-xl border border-zinc-200/60">
+              return (
+                <div 
+                  key={item.name} 
+                  className="relative py-2 group"
+                  onMouseEnter={() => setActiveDropdown(item.name)}
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  {item.submenu ? (
+                    <>
+                      <button
+                        onClick={(e) => handleNavClick(e, item.path)}
+                        aria-haspopup="true"
+                        aria-expanded={activeDropdown === item.name}
+                        className={`flex items-center gap-1.5 text-xs font-bold tracking-[0.12em] uppercase transition-colors cursor-pointer select-none outline-none py-3.5 focus-visible:ring-2 focus-visible:ring-brand-accent/50 rounded-sm ${
+                          isHighlight
+                            ? "text-brand-accent"
+                            : "text-foreground hover:text-brand-accent"
+                        }`}
+                      >
+                        {item.name}
+                        <ChevronDown className="h-3.5 w-3.5 opacity-60 transition-transform duration-200 group-hover:rotate-180" />
+                      </button>
+
+                      {/* Dropdown Menu */}
+                      {activeDropdown === item.name && (
+                        <div className="absolute top-full left-0 pt-2 z-50">
+                          <ul 
+                            className="flex flex-col gap-1 list-none m-0 p-4 w-64 bg-white rounded-none shadow-xl border border-zinc-200/50"
+                            onKeyDown={(e) => {
+                              if (e.key === "Escape") setActiveDropdown(null);
+                            }}
+                          >
                             {item.submenu.map((sub) => (
                               <li key={sub.name}>
-                                <NavigationMenu.Link asChild>
-                                  <a
-                                    href={sub.path}
-                                    onClick={(e) => handleNavClick(e, sub.path)}
-                                    className="block px-4 py-2.5 text-xs font-semibold text-muted-foreground hover:text-brand-accent hover:bg-zinc-50 rounded-xl transition-all"
-                                  >
-                                    {sub.name}
-                                  </a>
-                                </NavigationMenu.Link>
+                                <a
+                                  href={sub.path}
+                                  onClick={(e) => handleNavClick(e, sub.path)}
+                                  onBlur={(e) => {
+                                    const nextFocused = e.relatedTarget as HTMLElement;
+                                    if (!nextFocused || !nextFocused.closest(".group")) {
+                                      setActiveDropdown(null);
+                                    }
+                                  }}
+                                  className="block px-4 py-2.5 text-xs font-bold tracking-[0.1em] uppercase text-foreground hover:text-brand-accent transition-colors hover:bg-zinc-50 outline-none focus-visible:bg-zinc-50 focus-visible:text-brand-accent"
+                                >
+                                  {sub.name}
+                                </a>
                               </li>
                             ))}
                           </ul>
-                        </NavigationMenu.Content>
-                      </NavigationMenu.Item>
-                    </NavigationMenu.List>
-
-                    {/* Viewport centered under trigger */}
-                    <div className="absolute left-1/2 -translate-x-1/2 top-full flex justify-center z-50">
-                      <NavigationMenu.Viewport className="origin-top relative mt-2 h-[var(--radix-navigation-menu-viewport-height)] w-[288px] overflow-hidden rounded-2xl border border-zinc-200/60 bg-white text-foreground shadow-xl transition-all duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 z-50" />
-                    </div>
-                  </NavigationMenu.Root>
-                ) : (
-                  <a
-                    href={item.path}
-                    onClick={(e) => handleNavClick(e, item.path)}
-                    className={`block px-5 py-3 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors rounded-full ${
-                      activeSection === item.path.replace("#", "")
-                        ? "text-brand-accent font-bold"
-                        : "text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    {item.name}
-                  </a>
-                )}
-              </div>
-            ))}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <a
+                      href={item.path}
+                      onClick={(e) => handleNavClick(e, item.path)}
+                      className={`block text-xs font-bold tracking-[0.12em] uppercase transition-colors py-3.5 outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 rounded-sm ${
+                        isHighlight
+                          ? "text-brand-accent"
+                          : "text-foreground hover:text-brand-accent"
+                      }`}
+                    >
+                      {item.name}
+                    </a>
+                  )}
+                </div>
+              );
+            })}
           </nav>
 
           {/* Action CTAs */}
-          <div className="hidden xl:flex items-center gap-4.5">
-            <a
-              href="https://wa.me/919776991699"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-emerald-500 p-2 transition-all flex items-center justify-center hover:scale-110 active:scale-95 duration-200"
-              title="Chat on WhatsApp"
-            >
-              <MessageCircle className="h-5 w-5" />
-            </a>
+          <div className="hidden xl:flex items-center gap-6">
             <a
               href="tel:+919776991699"
-              className="bg-brand-accent text-white hover:bg-brand-accent-hover transition-all rounded-full px-6 text-xs font-bold tracking-wider uppercase h-10 flex items-center justify-center gap-2 cursor-pointer active:scale-95 shadow-sm hover:scale-[1.02] duration-200 focus:outline-none focus:ring-2 focus:ring-brand-accent/50 focus:ring-offset-2"
+              className="transition-all rounded-none px-6 text-[10px] font-bold tracking-[0.2em] uppercase h-11 flex items-center justify-center gap-2 cursor-pointer shadow-sm duration-200 bg-brand-accent text-white hover:bg-brand-accent-hover active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 focus-visible:ring-offset-2"
             >
               <Phone className="h-3.5 w-3.5" />
-              Call Now
+              Inquire Now
             </a>
           </div>
 
@@ -253,33 +279,28 @@ export default function Navbar() {
           <div className="xl:hidden flex items-center gap-3">
             <a
               href="tel:+919776991699"
-              className="bg-brand-accent hover:bg-brand-accent-hover text-white transition-all rounded-full px-4 text-[11px] font-bold tracking-wider uppercase h-9.5 flex items-center justify-center gap-1.5 shadow-sm active:scale-95 cursor-pointer hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-brand-accent/50 duration-200"
+              className="bg-brand-accent hover:bg-brand-accent-hover text-white transition-all rounded-full px-4 text-[11px] font-bold tracking-wider uppercase h-9.5 flex items-center justify-center gap-1.5 shadow-sm active:scale-95 cursor-pointer hover:scale-[1.02] outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 focus-visible:ring-offset-2 duration-200"
             >
               <Phone className="h-3.5 w-3.5" />
-              Call Now
+              Call
             </a>
             <button
-              onClick={() => setIsOpen(true)}
-              className="p-2 rounded-xl text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-              aria-label="Open navigation menu"
-            >
-              <Menu className="h-6.5 w-6.5" />
-            </button>
+               onClick={() => setIsOpen(true)}
+               className="p-3 rounded-xl transition-colors cursor-pointer text-zinc-900 hover:text-brand-accent outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 focus-visible:ring-offset-2"
+               aria-label="Open navigation menu"
+             >
+               <Menu className="h-6.5 w-6.5 drop-shadow-md" />
+             </button>
           </div>
         </div>
 
         {/* Mobile Navigation Drawer */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2, ease: "easeInOut" }}
-              className="xl:hidden fixed inset-0 z-50 bg-white/98 backdrop-blur-xl flex flex-col h-screen w-screen overflow-hidden"
-            >
+        {isOpen && (
+             <div
+               className="xl:hidden fixed inset-0 z-50 bg-white flex flex-col h-[100dvh] w-screen overflow-hidden pt-[env(safe-area-inset-top,0px)] pb-[env(safe-area-inset-bottom,0px)]"
+             >
               {/* Drawer Header */}
-              <div className="flex items-center justify-between px-4 sm:px-6 h-28 border-b border-zinc-150 shrink-0">
+              <div className="flex items-center justify-between px-4 sm:px-6 h-24 border-b border-zinc-200 shrink-0 bg-white">
                 <Link href="#home" onClick={(e) => handleNavClick(e, "#home")} className="flex items-center">
                   <Image
                     src="/images/logo/logo.svg"
@@ -287,52 +308,53 @@ export default function Navbar() {
                     alt="Interiocore Logo"
                     width={320}
                     height={90}
-                    className="h-[84px] w-auto object-contain"
+                    className="h-[72px] w-auto object-contain"
                     priority
                   />
                 </Link>
 
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-xl text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-                  aria-label="Close navigation menu"
-                >
-                  <X className="h-6.5 w-6.5" />
-                </button>
+                 <button
+                   onClick={() => setIsOpen(false)}
+                   className="p-3 rounded-xl text-zinc-900 hover:text-brand-accent transition-colors cursor-pointer"
+                   aria-label="Close navigation menu"
+                 >
+                   <X className="h-6.5 w-6.5" />
+                 </button>
               </div>
 
               {/* Drawer Navigation List */}
-              <div className="flex-1 overflow-y-auto px-6 pt-8 pb-32 flex flex-col space-y-6">
+              <div className="flex-1 overflow-y-auto px-6 pt-8 pb-8 flex flex-col space-y-6 bg-white">
                 {navItems.map((item) => {
                   const hasSubmenu = !!item.submenu;
                   const isExpanded = !!expandedMenus[item.name];
                   
+                  const cleanedPath = item.path.split("-")[0].replace("#", "");
+                  const isHighlight = cleanedPath === "home" 
+                    ? activeSection === "home" 
+                    : activeSection.startsWith(cleanedPath);
+                  
                   return (
-                    <div key={item.name} className="flex flex-col animate-[fadeIn_0.3s_ease-in-out]">
+                    <div key={item.name} className="flex flex-col">
                       {hasSubmenu ? (
                         <>
                           <button
                             onClick={() => toggleSubmenu(item.name)}
-                            className="flex items-center justify-between w-full py-2.5 text-left text-lg font-bold tracking-wide text-foreground uppercase border-b border-zinc-100 cursor-pointer"
+                            className="flex items-center justify-between w-full py-2.5 text-left text-lg font-bold tracking-wide text-zinc-900 uppercase border-b border-zinc-200 cursor-pointer"
                           >
-                            <span className={activeSection === item.path.replace("#", "") ? "text-brand-accent font-bold" : ""}>
+                            <span className={isHighlight ? "text-brand-accent font-bold" : ""}>
                               {item.name}
                             </span>
                             <ChevronDown
-                              className={`h-5 w-5 text-muted-foreground transition-transform duration-300 ${
+                              className={`h-5 w-5 text-zinc-500 transition-transform duration-300 ${
                                 isExpanded ? "rotate-180 text-brand-accent" : ""
                               }`}
                             />
                           </button>
                           
-                          <AnimatePresence initial={false}>
+                          
                             {isExpanded && (
-                              <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: "auto", opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.25, ease: [0.25, 1, 0.5, 1] }}
-                                className="overflow-hidden bg-zinc-50/50 rounded-xl px-4 mt-2 border-l-2 border-brand-accent/30"
+                              <div
+                                className="overflow-hidden bg-zinc-50 rounded-xl px-4 mt-2 border-l-2 border-brand-accent/30"
                               >
                                 <div className="py-3 flex flex-col space-y-3">
                                   {item.submenu.map((sub) => (
@@ -340,24 +362,23 @@ export default function Navbar() {
                                       key={sub.name}
                                       href={sub.path}
                                       onClick={(e) => handleNavClick(e, sub.path)}
-                                      className="block text-sm font-semibold tracking-wide py-1.5 text-muted-foreground hover:text-brand-accent transition-colors"
+                                      className="block text-base font-semibold tracking-wide py-1.5 text-foreground hover:text-brand-accent transition-colors"
                                     >
                                       {sub.name}
                                     </a>
                                   ))}
                                 </div>
-                              </motion.div>
+                              </div>
                             )}
-                          </AnimatePresence>
                         </>
                       ) : (
                         <a
                           href={item.path}
                           onClick={(e) => handleNavClick(e, item.path)}
-                          className={`py-2.5 text-lg font-bold tracking-wide border-b border-zinc-100 uppercase transition-colors ${
-                            activeSection === item.path.replace("#", "")
+                          className={`py-2.5 text-lg font-bold tracking-wide border-b border-zinc-200 uppercase transition-colors ${
+                            isHighlight
                               ? "text-brand-accent font-bold"
-                              : "text-foreground hover:text-brand-accent"
+                              : "text-zinc-900 hover:text-brand-accent"
                           }`}
                         >
                           {item.name}
@@ -368,10 +389,8 @@ export default function Navbar() {
                 })}
               </div>
 
-              <div className="shrink-0 h-4" />
-            </motion.div>
+            </div>
           )}
-        </AnimatePresence>
       </header>
     </>
   );

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "TV Units",
     "Bespoke Vanities",
     "Modern Living Room Designs",
-    "Interior Studio Bhubaneswar",
+    "Interior Studio Jharsuguda",
     "Odisha Luxury Design",
     "High-end Home Renovations"
   ],
@@ -91,9 +91,9 @@ export default function RootLayout({
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Studio Lounge",
-          "addressLocality": "Bhubaneswar",
+          "addressLocality": "Jharsuguda",
           "addressRegion": "Odisha",
-          "postalCode": "751024",
+          "postalCode": "768201",
           "addressCountry": "IN"
         },
         "geo": {

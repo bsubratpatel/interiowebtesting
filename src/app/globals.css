@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "tw-animate-css";
+
 @import "shadcn/tailwind.css";
 
 
@@ -10,11 +10,11 @@
   --font-heading: var(--font-poppins);
   
   /* Primary Brand colors */
-  --color-brand-accent: #F57C14;       /* Vibrant Orange */
-  --color-brand-accent-hover: #D96200; /* Hover state for CTAs */
-  --color-brand-secondary: #17315F;    /* Deep Navy Blue */
+  --color-brand-accent: #FF7A00;       /* Vibrant Orange */
+  --color-brand-accent-hover: #E06A00; /* Hover state for CTAs */
+  --color-brand-secondary: #081B3A;    /* Deep Navy Blue */
   --color-inverse: #6B7280;            /* Soft Gray */
-  --color-raised: rgba(245, 124, 20, 0.08); /* Accent highlight background */
+  --color-raised: rgba(255, 122, 0, 0.08); /* Accent highlight background */
   
   /* Redefining grey/zinc shades for global consistency with design system */
   --color-zinc-300: #D1D5DB;
@@ -22,9 +22,9 @@
   --color-zinc-500: #6B7280;           /* Soft Gray - secondary text */
   --color-zinc-600: #2B2B2B;           /* Dark Charcoal - body text */
   --color-zinc-700: #1F2937;
-  --color-zinc-800: #17315F;           /* Re-map dark zinc to Navy Blue for headings */
+  --color-zinc-800: #081B3A;           /* Re-map dark zinc to Navy Blue for headings */
   --color-zinc-900: #0F172A;
-  --color-zinc-950: #17315F;           /* Re-map dark elements to brand Navy */
+  --color-zinc-950: #081B3A;           /* Re-map dark elements to brand Navy */
   
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -72,33 +72,33 @@
 }
 
 :root {
-  --background: #F8F6F2;               /* Warm Off-White */
-  --foreground: #17315F;               /* Deep Navy Blue for Headings/Important text */
+  --background: #F8F7F4;               /* Off-White */
+  --foreground: #081B3A;               /* Deep Navy Blue for Headings/Important text */
   --card: #FFFFFF;                     /* White cards */
   --card-foreground: #2B2B2B;          /* Dark Charcoal body text */
   --popover: #FFFFFF;
   --popover-foreground: #2B2B2B;
-  --primary: #17315F;                  /* Primary Brand Color */
+  --primary: #081B3A;                  /* Primary Brand Color */
   --primary-foreground: #FFFFFF;
   --secondary: #F0EDE6;                /* Darker Off-White for muted backgrounds */
   --secondary-foreground: #2B2B2B;
   --muted: #F0EDE6;
   --muted-foreground: #6B7280;         /* Soft Gray for secondary text */
   --accent: #F0EDE6;
-  --accent-foreground: #17315F;
+  --accent-foreground: #081B3A;
   --destructive: #EF4444;
   --border: #E5E2DA;                   /* Subtle warm borders */
   --input: #E5E2DA;
-  --ring: #17315F;
+  --ring: #081B3A;
   --radius: 0.5rem;
-  --sidebar: #F8F6F2;
+  --sidebar: #F8F7F4;
   --sidebar-foreground: #2B2B2B;
-  --sidebar-primary: #17315F;
+  --sidebar-primary: #081B3A;
   --sidebar-primary-foreground: #FFFFFF;
   --sidebar-accent: #F0EDE6;
   --sidebar-accent-foreground: #2B2B2B;
   --sidebar-border: #E5E2DA;
-  --sidebar-ring: #17315F;
+  --sidebar-ring: #081B3A;
   --body-text: #2B2B2B;                /* Dark Charcoal for generic paragraphs */
 }
 

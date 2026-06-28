@@ -3,163 +3,140 @@
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Phone, Shield, Clock, Settings, UserCheck } from "lucide-react";
-import AnimationWrapper from "@/components/AnimationWrapper";
+import { ArrowRight, Shield, Award, Cpu, Sparkles } from "lucide-react";
 
 export default function AboutSection() {
-  const handleCall = () => {
-    window.location.href = "tel:+919776991699";
-  };
-
-  const team = [
-    {
-      name: "Rohan Malhotra",
-      role: "Founder & Chief Architect",
-      desc: "Visionary designer with 15+ years crafting luxury modular systems across Europe and India.",
-    },
-    {
-      name: "Ananya Sen",
-      role: "Lead Interior Architect",
-      desc: "Specialist in ergonomics and space optimization with a passion for minimal luxury.",
-    },
-    {
-      name: "Vikram Rathore",
-      role: "Head of Project Delivery",
-      desc: "Operations expert overseeing manufacturing precision and flawless site installation.",
-    },
-  ];
-
   return (
-    <section id="about" className="py-24 bg-background border-b border-zinc-200/80 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 space-y-24">
-        
-        {/* Our Story Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <AnimationWrapper className="space-y-6">
-            <span className="text-xs font-bold text-brand-accent uppercase tracking-widest">01. Our Story</span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-foreground leading-tight">
-              The Origin of Flawless Design
-            </h2>
-            <p className="text-zinc-600 text-base font-light leading-relaxed">
-              Interiocore was born out of a desire to eliminate the typical hassles of custom home interior setups. Inspired by German factory precision and Italian design minimalism, we built a modular pipeline that connects professional architectural design directly with robotic factory manufacturing.
-            </p>
-            <p className="text-zinc-600/80 text-base font-light leading-relaxed">
-              Today, we operate a state-of-the-art facility using computerized numerical control (CNC) cutting tools to guarantee margins under 0.5mm. We believe that your home should be an oasis of calm—crafted with luxurious finishes, clean lines, and absolute space optimization.
-            </p>
-            <div className="pt-2">
-              <Button
-                onClick={handleCall}
-                className="bg-brand-accent text-white hover:bg-brand-accent-hover transition-all rounded-full px-8 h-12 text-xs font-bold tracking-wider uppercase flex items-center gap-2.5 active:scale-95 duration-200 shadow-sm"
-              >
-                <Phone className="h-4 w-4" />
-                Call Our Expert
-              </Button>
+    <div className="bg-background">
+      {/* 1. Our Story Subsection */}
+      <section id="about-story" className="py-24 sm:py-32 border-b border-zinc-200/50">
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            
+            {/* Visual Column */}
+            <div className="relative h-[400px] sm:h-[600px] w-full lg:h-[700px]">
+              <div className="absolute top-0 left-0 w-3/4 h-3/4 rounded-none overflow-hidden shadow-xl z-10 bg-zinc-100">
+                <Image
+                  src="/images/kitchen renders/kitchen (3).webp"
+                  alt="Luxury Minimal Kitchen Design"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 75vw, 40vw"
+                />
+              </div>
+              <div className="absolute bottom-0 right-0 w-2/3 h-2/3 rounded-none overflow-hidden shadow-xl z-20 bg-zinc-100">
+                <Image
+                  src="/images/kitchen renders/kitchen (4).webp"
+                  alt="Minimal Detail Kitchen Finish"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 66vw, 35vw"
+                />
+              </div>
             </div>
-          </AnimationWrapper>
 
-          <AnimationWrapper delay={0.15} className="relative h-[480px] rounded-3xl overflow-hidden border border-zinc-200 shadow-lg">
-            <Image
-              src="/images/living room/living_room (1).webp"
-              alt="Luxury Living Render"
-              fill
-              className="object-cover brightness-[0.9] hover:scale-103 transition-transform duration-700"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-          </AnimationWrapper>
-        </div>
+            {/* Text Column */}
+            <div className="space-y-8">
+              <div>
+                <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-4 block">01. Studio Story</span>
+                <h2 className="text-4xl sm:text-6xl font-extrabold uppercase tracking-tighter text-foreground leading-[1.1]">
+                  Precision &<br /> Proportion
+                </h2>
+              </div>
+              
+              <div>
+                <div className="w-12 h-1 bg-brand-accent"></div>
+              </div>
 
-        {/* Mission & Vision Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
-          <AnimationWrapper className="bg-white border border-zinc-200/60 p-8 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 space-y-4">
-            <h3 className="text-2xl font-bold text-brand-accent uppercase tracking-tight">Our Mission</h3>
-            <p className="text-zinc-600 text-base font-light leading-relaxed">
-              To simplify and elevate interior design projects by offering modular solutions engineered to last a lifetime. We focus on transparency, delivery commitments, and geometric perfection.
-            </p>
-          </AnimationWrapper>
+              <div className="space-y-6 text-zinc-600 font-light text-lg">
+                <p>
+                  Founded with a vision to merge German factory precision with Italian design minimalism, Interiocore crafts modular systems that balance rigorous geometry with effortless luxury.
+                </p>
+                <p>
+                  Every edge, finish, and joint is calculated to absolute perfection using robotic CNC technology. We create an oasis of calm that transcends passing trends.
+                </p>
+              </div>
 
-          <AnimationWrapper delay={0.1} className="bg-white border border-zinc-200/60 p-8 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 space-y-4">
-            <h3 className="text-2xl font-bold text-brand-accent uppercase tracking-tight">Our Vision</h3>
-            <p className="text-zinc-600 text-base font-light leading-relaxed">
-              To be India&apos;s leading design-manufacture brand for modern luxury modular setups. We strive to set benchmarks in eco-safe materials, robotic assembly, and absolute customer delight.
-            </p>
-          </AnimationWrapper>
-        </div>
-
-        {/* Why Choose Us */}
-        <div className="space-y-16 pt-6">
-          <AnimationWrapper className="flex flex-col items-center space-y-4 text-center max-w-2xl mx-auto">
-            <span className="text-xs font-bold text-brand-accent uppercase tracking-widest">Why Interiocore</span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-foreground">Built to Excel</h2>
-            <p className="text-zinc-500 text-base font-light">
-              Our unique advantages ensure an effortless and premium interior design journey.
-            </p>
-          </AnimationWrapper>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: Shield,
-                title: "Quality Certifications",
-                desc: "100% boiling water resistant (BWR) action plywood and German hardware integration.",
-              },
-              {
-                icon: Clock,
-                title: "Flawless Delivery",
-                desc: "We enforce strict penalty-backed clauses to guarantee installation completion in 45 days.",
-              },
-              {
-                icon: Settings,
-                title: "Robotic Precision",
-                desc: "Engineered inside fully computerized automated factories ensuring micro-millimeter tolerance.",
-              },
-              {
-                icon: UserCheck,
-                title: "Expert Architects",
-                desc: "Every design draft is reviewed by dedicated modular architects for optimal layouts.",
-              },
-            ].map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <AnimationWrapper key={item.title} delay={idx * 0.08} className="bg-white border border-zinc-200/60 p-8 rounded-3xl text-center space-y-4 hover:border-brand-accent/40 hover:shadow-md transition-all duration-300">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-2xl bg-[#F5F4F0] text-brand-accent mx-auto">
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground tracking-tight">{item.title}</h3>
-                  <p className="text-zinc-500 text-sm font-light leading-relaxed">{item.desc}</p>
-                </AnimationWrapper>
-              );
-            })}
+              <div>
+                <Button
+                  variant="ghost"
+                  className="hover:bg-brand-secondary hover:text-white transition-all rounded-none px-0 text-brand-secondary font-bold tracking-[0.1em] uppercase flex items-center gap-2 active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 focus-visible:ring-offset-2"
+                  onClick={() => document.getElementById('about-mission')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  View Our Mission
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* Team Grid */}
-        <div className="space-y-16 pt-6">
-          <AnimationWrapper className="flex flex-col items-center space-y-4 text-center max-w-2xl mx-auto">
-            <span className="text-xs font-bold text-brand-accent uppercase tracking-widest">Our Team</span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-foreground">Visionary Architects</h2>
-            <p className="text-zinc-500 text-base font-light">
-              Crafting premium luxury modular systems that balance form and utility.
-            </p>
-          </AnimationWrapper>
+      {/* 2. Mission & Vision Subsection */}
+      <section id="about-mission" className="py-24 sm:py-32 bg-white border-b border-zinc-200/50">
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-12 text-center space-y-10">
+          <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] block">02. Purpose</span>
+          <h2 className="text-4xl sm:text-6xl font-extrabold uppercase tracking-tighter text-foreground leading-[1.1]">
+            Our Mission & Vision
+          </h2>
+          <div className="w-16 h-1 bg-brand-accent mx-auto"></div>
+          <p className="text-2xl sm:text-3xl font-light text-zinc-700 leading-relaxed max-w-4xl mx-auto">
+            "To define the contemporary standards of Indian home spaces, making world-class architectural precision accessible through advanced manufacturing."
+          </p>
+          <p className="text-base sm:text-lg text-zinc-500 font-light max-w-2xl mx-auto leading-relaxed">
+            We envision a future where every home functions as a sanctuary of design excellence, using only zero-emission materials, modular engineering, and timeless aesthetics.
+          </p>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((t, idx) => (
-              <AnimationWrapper key={t.name} delay={idx * 0.1} className="bg-white border border-zinc-200/60 rounded-3xl p-8 shadow-sm hover:shadow-md hover:border-brand-accent/30 transition-all duration-300">
-                <div className="aspect-[4/3] bg-[#F5F4F0] rounded-2xl mb-6 relative overflow-hidden flex items-center justify-center border border-zinc-200/40 hover:bg-brand-accent/5 transition-colors">
-                  <div className="text-center space-y-1">
-                    <span className="text-xs font-bold text-brand-accent tracking-widest block uppercase">INTERIOCORE</span>
-                    <span className="text-zinc-400 text-[10px] block">STUDIO DRAFT</span>
-                  </div>
-                </div>
-                <h3 className="text-2xl font-bold text-foreground tracking-tight">{t.name}</h3>
-                <span className="text-brand-accent text-xs font-semibold uppercase tracking-wider block mt-1.5 mb-4">{t.role}</span>
-                <p className="text-zinc-500 text-base font-light leading-relaxed">{t.desc}</p>
-              </AnimationWrapper>
-            ))}
+      {/* 3. Why Choose Us Subsection */}
+      <section id="about-why" className="py-24 sm:py-32 border-b border-zinc-200/50">
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+          <div className="mb-16 text-center sm:text-left">
+            <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-4 block">03. Standards</span>
+            <h2 className="text-4xl sm:text-6xl font-extrabold uppercase tracking-tighter text-foreground leading-[1.1]">
+              Why Choose Interiocore
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+            {/* Standard 1 */}
+            <div className="space-y-4 border border-zinc-200/60 p-8 bg-white shadow-sm">
+              <Cpu className="w-8 h-8 text-brand-accent" />
+              <h3 className="text-xl font-bold uppercase tracking-tight text-foreground">German Precision</h3>
+              <p className="text-zinc-500 text-sm font-light leading-relaxed">
+                Utilizing state-of-the-art European CNC machinery for perfect zero-error millimeter cuts on every cabinet panel.
+              </p>
+            </div>
+            {/* Standard 2 */}
+            <div className="space-y-4 border border-zinc-200/60 p-8 bg-white shadow-sm">
+              <Shield className="w-8 h-8 text-brand-accent" />
+              <h3 className="text-xl font-bold uppercase tracking-tight text-foreground">10-Year Warranty</h3>
+              <p className="text-zinc-500 text-sm font-light leading-relaxed">
+                Complete structural warranty on marine-grade BWR Plywood that ensures long-term water and moisture resistance.
+              </p>
+            </div>
+            {/* Standard 3 */}
+            <div className="space-y-4 border border-zinc-200/60 p-8 bg-white shadow-sm">
+              <Sparkles className="w-8 h-8 text-brand-accent" />
+              <h3 className="text-xl font-bold uppercase tracking-tight text-foreground">Italian Styling</h3>
+              <p className="text-zinc-500 text-sm font-light leading-relaxed">
+                Minimalist handleless configurations, profile glass doors, and hidden joints that give home spaces a premium look.
+              </p>
+            </div>
+            {/* Standard 4 */}
+            <div className="space-y-4 border border-zinc-200/60 p-8 bg-white shadow-sm">
+              <Award className="w-8 h-8 text-brand-accent" />
+              <h3 className="text-xl font-bold uppercase tracking-tight text-foreground">Factory Delivery</h3>
+              <p className="text-zinc-500 text-sm font-light leading-relaxed">
+                Guaranteed modular delivery and flawless, dust-free installation in just 45 days with structural quality checks.
+              </p>
+            </div>
           </div>
         </div>
+      </section>
 
-      </div>
-    </section>
+
+    </div>
   );
 }
