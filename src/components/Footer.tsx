@@ -28,7 +28,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-background border-t border-zinc-200 text-zinc-500 pt-24 pb-16 px-6 sm:px-10 lg:px-12">
+    <footer className="bg-background border-t border-zinc-200 text-zinc-500 pt-24 pb-16 px-6 sm:px-10 lg:px-12 min-h-[880px] md:min-h-[500px] lg:min-h-[420px]">
       <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
         
          {/* Brand Information */}
@@ -40,7 +40,7 @@ export default function Footer() {
               alt="Interiocore Logo"
               width={340}
               height={100}
-              className="h-[96px] w-auto object-contain"
+              className="h-[80px] w-[272px] sm:h-[96px] sm:w-[326.4px] object-contain aspect-[340/100] max-w-full bg-transparent"
             />
           </a>
           <p className="text-zinc-500 text-sm leading-relaxed font-light">
