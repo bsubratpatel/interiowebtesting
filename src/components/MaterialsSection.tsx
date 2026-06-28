@@ -35,6 +35,7 @@ const BACKUP_MATERIALS: Record<string, { id: string; src: string; title: string 
 export default function MaterialsSection() {
   const [materialsData, setMaterialsData] = useState<Record<string, { id: string; src: string; title: string }[]>>(BACKUP_MATERIALS);
   const [lightboxImg, setLightboxImg] = useState<{ src: string; title: string } | null>(null);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     async function loadMaterials() {
@@ -111,9 +112,11 @@ export default function MaterialsSection() {
       };
     });
   });
+  const hasMore = allItems.length > 6;
+  const visibleItems = showAll ? allItems : allItems.slice(0, 6);
 
   return (
-    <section id="materials" className="py-24 sm:py-32 bg-background border-b border-zinc-200/50">
+    <section id="materials" className="py-16 sm:py-24 lg:py-32 bg-zinc-50/60 border-b border-zinc-200/50">
       <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <div className="mb-20">
@@ -124,40 +127,57 @@ export default function MaterialsSection() {
         </div>
 
         {/* Pinterest/Masonry Style Responsive Grid */}
-        {allItems.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {allItems.map((item) => (
-              <div
-                key={item.id}
-                onClick={() => setLightboxImg({ src: item.src, title: item.formattedTitle })}
-                className="group cursor-pointer bg-white border border-zinc-200/60 rounded-[12px] p-5 shadow-sm hover:shadow-md hover:scale-[1.01] transition-all duration-[0.6s] ease-[cubic-bezier(0.25,1,0.5,1)] flex flex-col justify-between"
-              >
-                <div>
-                  {/* Portrait Orientation Image Frame */}
-                  <div className="relative aspect-[3/4] w-full overflow-hidden mb-5 bg-zinc-50 rounded-[8px] border border-zinc-100">
-                    <Image
-                      src={item.src}
-                      alt={item.formattedTitle}
-                      fill
-                      loading="lazy"
-                      className="object-cover group-hover:scale-[1.03] transition-transform duration-[1.2s] ease-[cubic-bezier(0.25,1,0.5,1)]"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
+        {visibleItems.length > 0 ? (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {visibleItems.map((item) => (
+                <div
+                  key={item.id}
+                  onClick={() => setLightboxImg({ src: item.src, title: item.formattedTitle })}
+                  className="group cursor-pointer bg-white border border-zinc-200/60 rounded-[12px] p-5 shadow-sm hover:shadow-md hover:scale-[1.01] transition-all duration-[0.6s] ease-[cubic-bezier(0.25,1,0.5,1)] flex flex-col justify-between"
+                >
+                  <div>
+                    {/* Portrait Orientation Image Frame */}
+                    <div className="relative aspect-[3/4] w-full overflow-hidden mb-5 bg-zinc-50 rounded-[8px] border border-zinc-100">
+                      <Image
+                        src={item.src}
+                        alt={item.formattedTitle}
+                        fill
+                        loading="lazy"
+                        className="object-cover group-hover:scale-[1.03] transition-transform duration-[1.2s] ease-[cubic-bezier(0.25,1,0.5,1)]"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                    </div>
+                    
+                    {/* Details Block */}
+                    <div className="space-y-2">
+                      <h4 className="text-base font-bold text-foreground tracking-tight uppercase leading-snug">
+                        {item.formattedTitle}
+                      </h4>
+                      <p className="text-zinc-500 text-xs sm:text-sm font-light leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
                   </div>
-                  
-                  {/* Details Block */}
-                  <div className="space-y-2">
-                    <h4 className="text-base font-bold text-foreground tracking-tight uppercase leading-snug">
-                      {item.formattedTitle}
-                    </h4>
-                    <p className="text-zinc-500 text-xs sm:text-sm font-light leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
+                  <span className="text-[10px] font-bold text-brand-accent uppercase tracking-wider block mt-4 group-hover:text-brand-secondary transition-colors">
+                    Enquire Now →
+                  </span>
                 </div>
+              ))}
+            </div>
+
+            {/* Pagination Controls */}
+            {hasMore && (
+              <div className="mt-12 flex justify-center">
+                <Button
+                  onClick={() => setShowAll(!showAll)}
+                  className="bg-brand-secondary text-white hover:bg-brand-secondary/90 transition-all active:scale-[0.98] rounded-none h-12 px-8 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-2 cursor-pointer shadow-sm outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 focus-visible:ring-offset-2 duration-200"
+                >
+                  {showAll ? "Show Less" : "View More"}
+                </Button>
               </div>
-            ))}
-          </div>
+            )}
+          </>
         ) : (
           <div className="py-20 text-center text-zinc-400 text-sm font-light uppercase tracking-wider">
             No material images found in directory.

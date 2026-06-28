@@ -28,10 +28,10 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-background border-t border-zinc-200 text-zinc-500 py-16 px-6 sm:px-10 lg:px-12">
+    <footer className="bg-background border-t border-zinc-200 text-zinc-500 pt-24 pb-16 px-6 sm:px-10 lg:px-12">
       <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
         
-        {/* Brand Information */}
+         {/* Brand Information */}
         <div className="space-y-6">
           <a href="#home" onClick={(e) => handleAnchorClick(e, "home")}>
             <Image
@@ -49,14 +49,14 @@ export default function Footer() {
           <div className="flex items-center gap-3">
             <a
               href="tel:+919776991699"
-              className="bg-brand-accent hover:bg-brand-accent-hover text-white text-xs font-bold tracking-wider uppercase px-5 h-9.5 rounded-full flex items-center justify-center gap-1.5 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-accent/50"
+              className="bg-brand-accent hover:bg-brand-accent-hover text-white text-xs font-bold tracking-wider uppercase px-5 h-11 rounded-full flex items-center justify-center gap-1.5 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-accent/50"
             >
               <Phone className="h-3.5 w-3.5" />
               Call Now
             </a>
             <button
               onClick={handleWhatsApp}
-              className="bg-white border border-zinc-950 text-zinc-950 hover:bg-zinc-50 text-xs font-bold tracking-wider uppercase px-5 h-9.5 rounded-full flex items-center justify-center gap-1.5 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer focus:outline-none focus:ring-2 focus:ring-zinc-950/50"
+              className="bg-white border border-zinc-950 text-zinc-950 hover:bg-zinc-50 text-xs font-bold tracking-wider uppercase px-5 h-11 rounded-full flex items-center justify-center gap-1.5 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer focus:outline-none focus:ring-2 focus:ring-zinc-950/50"
             >
               <MessageSquare className="h-3.5 w-3.5" />
               WhatsApp

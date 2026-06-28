@@ -133,7 +133,7 @@ export default function GallerySection() {
   };
 
   return (
-    <div className="bg-background">
+    <div className="bg-zinc-50/60">
       {/* Global Section Header */}
       <section className="pt-24 max-w-[1600px] mx-auto px-6 lg:px-12">
         <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-4 block">03. Showcase</span>
@@ -155,7 +155,7 @@ export default function GallerySection() {
           <section 
             id={category.id} 
             key={category.id} 
-            className="py-24 sm:py-32 border-b border-zinc-200/50 max-w-[1600px] mx-auto px-6 lg:px-12"
+            className="py-16 sm:py-24 lg:py-32 border-b border-zinc-200/50 max-w-[1600px] mx-auto px-6 lg:px-12"
           >
             {/* Header block for each category */}
             <div className="mb-12">

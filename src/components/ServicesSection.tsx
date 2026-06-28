@@ -52,7 +52,7 @@ export default function ServicesSection() {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-background">
       {/* Main Header */}
       <section className="pt-24 max-w-[1600px] mx-auto px-6 lg:px-12">
         <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-4 block">02. Expertise</span>
@@ -66,7 +66,7 @@ export default function ServicesSection() {
         <section 
           id={service.id} 
           key={service.id} 
-          className="py-24 sm:py-32 border-b border-zinc-150 last:border-b-0 max-w-[1600px] mx-auto px-6 lg:px-12"
+          className="py-16 sm:py-24 lg:py-32 border-b border-zinc-150 last:border-b-0 max-w-[1600px] mx-auto px-6 lg:px-12"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             {/* Image Block */}
