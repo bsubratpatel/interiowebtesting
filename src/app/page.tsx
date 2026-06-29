@@ -59,21 +59,25 @@ export default function Home() {
           </div>
 
           <div>
-            <p className="text-xs sm:text-base md:text-lg font-light tracking-wide max-w-2xl mx-auto text-white/90 mb-8 sm:mb-16 leading-relaxed">
+            <p className="text-xs sm:text-base md:text-lg font-light tracking-wide max-w-2xl mx-auto text-white/90 leading-relaxed">
               Curating elegant, minimal, and premium home spaces designed to define contemporary living.
             </p>
+          </div>
+
+          <div className="text-[12px] sm:text-[13px] font-light tracking-wide text-white/60 text-center mt-2 mb-4">
+            45+ luxury projects delivered across Odisha
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto">
             <Button
               onClick={handleWhatsApp}
-              className="bg-[#25D366] text-white hover:bg-[#20ba5a] border border-[#25D366] hover:border-[#20ba5a] transition-all hover:scale-[1.02] shadow-md rounded-none h-[60px] px-10 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-3 w-full sm:w-auto active:scale-95 duration-200"
+              className="bg-[#25D366] text-white hover:bg-[#20ba5a] border border-[#25D366] hover:border-[#20ba5a] transition-all hover:scale-[1.02] shadow-md rounded-none h-14 px-8 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-3 w-full sm:w-auto active:scale-95 duration-200"
             >
               <MessageCircle className="h-4 w-4" /> WhatsApp
             </Button>
             <Button
               onClick={handleCall}
-              className="bg-transparent text-[#E8621A] hover:bg-[#E8621A]/10 border-[1.5px] border-[#E8621A] transition-colors rounded-none h-14 px-8 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-3 w-full sm:w-auto"
+              className="bg-transparent text-[#E8621A] hover:bg-[#E8621A]/10 border-2 border-[#E8621A] transition-colors rounded-none h-14 px-8 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-3 w-full sm:w-auto"
             >
               <Phone className="h-4 w-4" /> Call Now
             </Button>
