@@ -3,10 +3,8 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import dynamic from "next/dynamic";
-
-const FloatingCTAGroup = dynamic(() => import("@/components/FloatingCTAGroup"), { ssr: false });
-const BackToTopButton = dynamic(() => import("@/components/BackToTopButton"), { ssr: false });
+import FloatingCTAGroup from "@/components/FloatingCTAGroup";
+import BackToTopButton from "@/components/BackToTopButton";
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700", "800"],
