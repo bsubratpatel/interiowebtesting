@@ -2,7 +2,6 @@
 
 import React from "react";
 import { ArrowRight, Phone, MessageCircle, MapPin, Compass } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 export default function ContactSection() {
   return (
@@ -26,36 +25,37 @@ export default function ContactSection() {
                 Jharsuguda, Odisha, India
               </p>
               <div className="mt-4 flex gap-4">
-                <Button
-                  variant="link"
-                  onClick={() => window.open("https://maps.google.com", "_blank")}
-                  className="px-0 text-brand-secondary font-bold tracking-[0.1em] uppercase flex items-center gap-2 hover:no-underline hover:text-brand-accent transition-all active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50"
+                <a
+                  href="https://maps.google.com/?q=Jharsuguda,Odisha,India"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-0 text-brand-secondary font-bold tracking-[0.1em] uppercase flex items-center gap-2 hover:no-underline hover:text-brand-accent transition-all active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 text-sm h-auto bg-transparent py-0 border-none cursor-pointer"
                 >
                   <MapPin className="w-4 h-4" />
                   Get Directions
-                </Button>
+                </a>
               </div>
             </div>
 
-            <div >
+            <div>
               <h3 className="text-sm font-bold text-zinc-400 uppercase tracking-[0.2em] mb-6 block">Direct Inquiry</h3>
-              <div className="space-y-4">
-                <Button
-                  variant="outline"
-                  onClick={() => window.location.href = "tel:+919776991699"}
-                  className="w-full sm:w-auto rounded-none border-zinc-300 bg-white text-zinc-900 hover:bg-brand-secondary hover:text-white transition-all active:scale-[0.98] px-10 h-14 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-between sm:justify-start gap-8 outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 focus-visible:ring-offset-2"
+              <div className="space-y-4 flex flex-col">
+                <a
+                  href="tel:+919776991699"
+                  className="w-full sm:w-auto rounded-none border border-zinc-300 bg-white text-zinc-900 hover:bg-brand-secondary hover:text-white transition-all active:scale-[0.98] px-10 h-14 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-between sm:justify-start gap-8 outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 focus-visible:ring-offset-2"
                 >
                   <span className="flex items-center gap-3"><Phone className="w-4 h-4" /> Call For Free Design</span>
                   <ArrowRight className="w-4 h-4" />
-                </Button>
-                <Button
-                  variant="outline"
-                  onClick={() => window.open("https://wa.me/919776991699", "_blank")}
-                  className="w-full sm:w-auto rounded-none border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white hover:border-emerald-600 transition-all active:scale-[0.98] px-10 h-14 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-between sm:justify-start gap-8 outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2"
+                </a>
+                <a
+                  href="https://wa.me/919776991699?text=Hi%2C%20I%27d%20like%20a%20free%20design%20consultation%20for%20my%20home."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto rounded-none border border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white hover:border-emerald-600 transition-all active:scale-[0.98] px-10 h-14 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-between sm:justify-start gap-8 outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2"
                 >
                   <span className="flex items-center gap-3"><MessageCircle className="w-4 h-4" /> WhatsApp Chat</span>
                   <ArrowRight className="w-4 h-4" />
-                </Button>
+                </a>
               </div>
             </div>
           </div>
