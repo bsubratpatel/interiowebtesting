@@ -63,7 +63,7 @@ export default function FloatingCTAGroup() {
 
   return visible ? (
     <div
-      className={`fixed left-6 bottom-[calc(32px+env(safe-area-inset-bottom))] z-40 flex flex-row md:flex-col gap-4 transition-all duration-300 ${
+      className={`fixed left-6 bottom-[calc(32px+env(safe-area-inset-bottom))] z-40 flex flex-col gap-4 transition-all duration-300 ${
         showOnMobile
           ? "opacity-100 translate-x-0 pointer-events-auto"
           : "opacity-0 -translate-x-12 pointer-events-none md:opacity-100 md:translate-x-0 md:pointer-events-auto"
