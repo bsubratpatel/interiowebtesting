@@ -2,16 +2,15 @@
 
 import React from "react";
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 export default function ProcessSection() {
   const steps = [
-    { num: "01", title: "Consultation", desc: "Design brief, layout discussion, and budget benchmarks." },
-    { num: "02", title: "Measurement", desc: "Precision laser readings of site dimensions." },
-    { num: "03", title: "3D Layout", desc: "Bespoke realistic 3D designs for virtual sign-off." },
-    { num: "04", title: "Manufacturing", desc: "Computerized factory production for absolute precision." },
-    { num: "05", title: "Installation", desc: "Certified assembly and final calibration on site." },
-    { num: "06", title: "Handover", desc: "Multi-point checks and structural warranty issuance." },
+    { num: "01", title: "Consultation", desc: "Design brief, layout discussion, and budget benchmarks.", timeline: "~1–2 days" },
+    { num: "02", title: "Measurement", desc: "Precision laser readings of site dimensions.", timeline: "~1 day" },
+    { num: "03", title: "3D Layout", desc: "Bespoke realistic 3D designs for virtual sign-off.", timeline: "~5–7 days" },
+    { num: "04", title: "Manufacturing", desc: "Computerized factory production for absolute precision.", timeline: "~20–25 days" },
+    { num: "05", title: "Installation", desc: "Certified assembly and final calibration on site.", timeline: "~3–5 days" },
+    { num: "06", title: "Handover", desc: "Multi-point checks and structural warranty issuance.", timeline: "~1 day" },
   ];
 
   return (
@@ -26,36 +25,66 @@ export default function ProcessSection() {
           </h2>
         </div>
 
-        {/* Process Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24 mb-32">
-          {steps.map((step, idx) => (
-            <div key={step.num}  className="flex flex-col space-y-6">
-              <span className="text-7xl sm:text-8xl font-extrabold text-zinc-100 tracking-tighter leading-none block">
-                {step.num}
-              </span>
-              <div className="-mt-12 space-y-4 relative z-10">
-                <h3 className="text-2xl font-bold uppercase tracking-tight text-foreground">{step.title}</h3>
-                <div className="w-8 h-1 bg-brand-accent"></div>
-                <p className="text-zinc-500 font-light text-base leading-relaxed">
-                  {step.desc}
-                </p>
+        {/* Process Grid / Stack */}
+        <div className="relative mb-12">
+          {/* Mobile Vertical Connector Line */}
+          <div className="absolute left-[14px] top-[14px] bottom-[14px] w-[1px] border-l border-[#E8621A]/25 md:hidden" />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16 md:gap-y-24">
+            {steps.map((step) => (
+              <div key={step.num} className="flex gap-6 md:flex-col md:space-y-6 md:gap-0 relative">
+                {/* Step Number Badge */}
+                <div className="flex-shrink-0 z-10 flex items-center justify-center w-7 h-7 rounded-full bg-[#E8621A]/12 border border-[#E8621A]/35 text-[#E8621A] text-xs font-bold font-sans">
+                  {step.num}
+                </div>
+
+                {/* Step Content */}
+                <div className="space-y-3 relative z-10 flex-1 md:-mt-2">
+                  <h3 className="text-2xl font-bold uppercase tracking-tight text-foreground">{step.title}</h3>
+                  <div className="w-8 h-1 bg-brand-accent"></div>
+                  <p className="text-zinc-500 font-light text-base leading-relaxed">
+                    {step.desc}
+                  </p>
+                  
+                  {/* Step Timeline */}
+                  <div className="text-[11px] sm:text-[12px] text-[#E8621A]/80 font-light">
+                    {step.timeline}
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        {/* Timeline Callout */}
+        <div className="flex justify-center mb-12">
+          <div className="inline-flex items-center justify-center bg-[#E8621A]/10 border border-[#E8621A]/30 py-1.5 px-4 rounded-[20px] text-foreground text-[13px] sm:text-[14px] font-medium text-center">
+            Total project completion: 35–45 days
+          </div>
         </div>
 
         {/* Action Block */}
-        <div className="border-t border-zinc-200/50 pt-16 flex flex-col sm:flex-row items-center justify-between gap-8">
-          <h3 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tighter text-foreground text-center sm:text-left">
-            Ready to Begin?
-          </h3>
-          <Button
-            onClick={() => window.location.href = "tel:+919776991699"}
-            className="bg-brand-accent text-white hover:bg-brand-accent-hover transition-colors rounded-none px-12 h-14 text-xs font-bold tracking-[0.15em] uppercase flex items-center gap-3 w-full sm:w-auto"
+        <div className="border-t border-zinc-200/50 pt-12 flex flex-col items-center justify-center">
+          {/* Trust Line */}
+          <div className="text-[12px] sm:text-[13px] font-light text-black/45 text-center mb-3">
+            Trusted by 45+ homeowners across Odisha
+          </div>
+
+          {/* CTA Button */}
+          <a
+            href="https://wa.me/919776991699?text=Hi%2C%20I%27d%20like%20to%20start%20my%20interior%20project%20with%20Interiocore."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#E8621A] hover:bg-[#d65212] text-white transition-colors rounded-none h-14 px-12 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-3 w-full max-w-[340px] sm:max-w-xs text-center cursor-pointer shadow-sm"
           >
-            Start Your Project
+            START YOUR PROJECT
             <ArrowRight className="w-4 h-4" />
-          </Button>
+          </a>
+
+          {/* Subtext below button */}
+          <div className="text-[12px] sm:text-[13px] font-light text-black/45 text-center mt-2">
+            Free consultation. No commitment.
+          </div>
         </div>
 
       </div>
