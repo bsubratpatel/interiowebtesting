@@ -1,9 +1,18 @@
 import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingCTAGroup from "@/components/FloatingCTAGroup";
 import BackToTopButton from "@/components/BackToTopButton";
+
+const poppins = Poppins({
+  weight: ["300", "400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  display: "swap",
+  preload: true,
+});
 
 export const metadata: Metadata = {
   title: "Interiocore | Premium Modular Kitchens & Luxury Interiors",
@@ -115,20 +124,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="h-full antialiased"
+      className={`${poppins.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body 
-        className="min-h-full flex flex-col bg-background text-foreground font-sans"
+        className={`${poppins.className} min-h-full flex flex-col bg-background text-foreground font-sans`}
         suppressHydrationWarning
       >
         <Navbar />
