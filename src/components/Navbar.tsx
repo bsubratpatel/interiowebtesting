@@ -100,13 +100,20 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   useEffect(() => {
+    let frameId: number;
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 60;
-      setScrolled(prev => prev !== isScrolled ? isScrolled : prev);
+      cancelAnimationFrame(frameId);
+      frameId = requestAnimationFrame(() => {
+        const isScrolled = window.scrollY > 60;
+        setScrolled(prev => prev !== isScrolled ? isScrolled : prev);
+      });
     };
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   // Lock scroll when drawer is open

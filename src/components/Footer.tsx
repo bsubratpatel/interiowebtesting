@@ -1,39 +1,15 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
 import { Phone, Mail, MapPin, MessageSquare } from "lucide-react";
 
 export default function Footer() {
-
-  const handleWhatsApp = () => {
-    window.open("https://wa.me/919776991699?text=Hi%20Interiocore!%20I'd%20like%20to%20learn%20more%20about%20your%20services.", "_blank");
-  };
-
-  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-  };
-
   return (
     <footer className="bg-background border-t border-zinc-200 text-zinc-500 pt-24 pb-16 px-6 sm:px-10 lg:px-12">
       <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
         
          {/* Brand Information */}
         <div className="space-y-6">
-          <a href="#home" onClick={(e) => handleAnchorClick(e, "home")}>
+          <a href="#home">
             <Image
               src="/images/logo/logo.svg"
               unoptimized
@@ -54,13 +30,15 @@ export default function Footer() {
               <Phone className="h-3.5 w-3.5" />
               Call Now
             </a>
-            <button
-              onClick={handleWhatsApp}
+            <a
+              href="https://wa.me/919776991699?text=Hi%20Interiocore!%20I'd%20like%20to%20learn%20more%20about%20your%20services."
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-white border border-zinc-950 text-zinc-950 hover:bg-zinc-50 text-xs font-bold tracking-wider uppercase px-5 h-11 rounded-full flex items-center justify-center gap-1.5 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer focus:outline-none focus:ring-2 focus:ring-zinc-950/50"
             >
               <MessageSquare className="h-3.5 w-3.5" />
               WhatsApp
-            </button>
+            </a>
           </div>
         </div>
 
@@ -69,32 +47,32 @@ export default function Footer() {
           <h3 className="text-foreground text-xs font-bold uppercase tracking-widest mb-6">Our Services</h3>
           <ul className="space-y-3 text-sm font-light">
             <li>
-              <a href="#services-kitchen" onClick={(e) => handleAnchorClick(e, "services-kitchen")} className="hover:text-brand-accent transition-colors">
+              <a href="#services-kitchen" className="hover:text-brand-accent transition-colors">
                 Modular Kitchen Designs
               </a>
             </li>
             <li>
-              <a href="#services-wardrobe" onClick={(e) => handleAnchorClick(e, "services-wardrobe")} className="hover:text-brand-accent transition-colors">
+              <a href="#services-wardrobe" className="hover:text-brand-accent transition-colors">
                 Luxury Wardrobe Designs
               </a>
             </li>
             <li>
-              <a href="#services-tv" onClick={(e) => handleAnchorClick(e, "services-tv")} className="hover:text-brand-accent transition-colors">
+              <a href="#services-tv" className="hover:text-brand-accent transition-colors">
                 Premium TV Units
               </a>
             </li>
             <li>
-              <a href="#services-bedroom" onClick={(e) => handleAnchorClick(e, "services-bedroom")} className="hover:text-brand-accent transition-colors">
+              <a href="#services-bedroom" className="hover:text-brand-accent transition-colors">
                 Bedroom Interiors
               </a>
             </li>
             <li>
-              <a href="#services-living" onClick={(e) => handleAnchorClick(e, "services-living")} className="hover:text-brand-accent transition-colors">
+              <a href="#services-living" className="hover:text-brand-accent transition-colors">
                 Living Room Interiors
               </a>
             </li>
             <li>
-              <a href="#services-full-home" onClick={(e) => handleAnchorClick(e, "services-full-home")} className="hover:text-brand-accent transition-colors">
+              <a href="#services-full-home" className="hover:text-brand-accent transition-colors">
                 Full Home Interiors
               </a>
             </li>
@@ -106,37 +84,37 @@ export default function Footer() {
           <h3 className="text-foreground text-xs font-bold uppercase tracking-widest mb-6">Explore</h3>
           <ul className="space-y-3 text-sm font-light">
             <li>
-              <a href="#about-story" onClick={(e) => handleAnchorClick(e, "about-story")} className="hover:text-brand-accent transition-colors">
+              <a href="#about-story" className="hover:text-brand-accent transition-colors">
                 About Our Story
               </a>
             </li>
             <li>
-              <a href="#about-mission" onClick={(e) => handleAnchorClick(e, "about-mission")} className="hover:text-brand-accent transition-colors">
+              <a href="#about-mission" className="hover:text-brand-accent transition-colors">
                 Mission & Vision
               </a>
             </li>
             <li>
-              <a href="#about-why" onClick={(e) => handleAnchorClick(e, "about-why")} className="hover:text-brand-accent transition-colors">
+              <a href="#about-why" className="hover:text-brand-accent transition-colors">
                 Why Choose Us
               </a>
             </li>
             <li>
-              <a href="#process" onClick={(e) => handleAnchorClick(e, "process")} className="hover:text-brand-accent transition-colors">
+              <a href="#process" className="hover:text-brand-accent transition-colors">
                 Our Design Process
               </a>
             </li>
             <li>
-              <a href="#materials" onClick={(e) => handleAnchorClick(e, "materials")} className="hover:text-brand-accent transition-colors">
+              <a href="#materials" className="hover:text-brand-accent transition-colors">
                 Materials & Finishes
               </a>
             </li>
             <li>
-              <a href="#gallery-kitchens" onClick={(e) => handleAnchorClick(e, "gallery-kitchens")} className="hover:text-brand-accent transition-colors">
+              <a href="#gallery-kitchens" className="hover:text-brand-accent transition-colors">
                 Visual Gallery
               </a>
             </li>
             <li>
-              <a href="#testimonials" onClick={(e) => handleAnchorClick(e, "testimonials")} className="hover:text-brand-accent transition-colors">
+              <a href="#testimonials" className="hover:text-brand-accent transition-colors">
                 Testimonials
               </a>
             </li>

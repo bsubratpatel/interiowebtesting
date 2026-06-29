@@ -9,26 +9,33 @@ export default function BackToTopButton() {
   const lastScrollY = React.useRef(0);
 
   useEffect(() => {
+    let frameId: number;
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      // Only show after scrolling down 450px
-      if (currentScrollY > 450) {
-        // Show when scrolling up, hide when scrolling down (cleaner viewport)
-        if (currentScrollY < lastScrollY.current) {
-          setVisible(true);
+      cancelAnimationFrame(frameId);
+      frameId = requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        
+        // Only show after scrolling down 450px
+        if (currentScrollY > 450) {
+          // Show when scrolling up, hide when scrolling down (cleaner viewport)
+          if (currentScrollY < lastScrollY.current) {
+            setVisible(true);
+          } else {
+            setVisible(false);
+          }
         } else {
           setVisible(false);
         }
-      } else {
-        setVisible(false);
-      }
-      
-      lastScrollY.current = currentScrollY;
+        
+        lastScrollY.current = currentScrollY;
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const scrollToTop = () => {

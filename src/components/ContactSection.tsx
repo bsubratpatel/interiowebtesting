@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { ArrowRight, Phone, MessageCircle, MapPin, Compass } from "lucide-react";
 
@@ -61,7 +59,12 @@ export default function ContactSection() {
           </div>
 
           {/* Large Interactive Visual / Follow */}
-          <div  className="relative h-[50dvh] sm:h-[70dvh] w-full bg-zinc-100 flex flex-col items-center justify-center p-8 group cursor-pointer" onClick={() => window.open("https://www.instagram.com/interiocore/", "_blank")}>
+          <a
+            href="https://www.instagram.com/interiocore/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative h-[50dvh] sm:h-[70dvh] w-full bg-zinc-100 flex flex-col items-center justify-center p-8 group cursor-pointer text-current hover:no-underline"
+          >
             <Compass className="w-16 h-16 text-zinc-300 group-hover:text-brand-accent transition-colors duration-500 mb-8" />
             <h3 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-foreground text-center group-hover:scale-105 transition-transform duration-500">
               Follow Our<br/> Journey
@@ -70,7 +73,7 @@ export default function ContactSection() {
               @interiocore
             </span>
             <div className="absolute inset-0 border border-zinc-200/50 scale-[0.95] group-hover:scale-[0.97] transition-transform duration-500"></div>
-          </div>
+          </a>
         </div>
 
       </div>

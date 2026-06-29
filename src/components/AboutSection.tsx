@@ -1,8 +1,5 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Award, Cpu, Sparkles } from "lucide-react";
 
 export default function AboutSection() {
@@ -61,16 +58,13 @@ export default function AboutSection() {
                 </p>
               </div>
 
-              <div>
-                <Button
-                  variant="ghost"
-                  className="hover:bg-brand-secondary hover:text-white transition-all rounded-none px-0 text-brand-secondary font-bold tracking-[0.1em] uppercase flex items-center gap-2 active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 focus-visible:ring-offset-2"
-                  onClick={() => document.getElementById('about-mission')?.scrollIntoView({ behavior: 'smooth' })}
+                <a
+                  href="#about-mission"
+                  className="hover:bg-brand-secondary hover:text-white transition-all rounded-none px-4 py-2.5 text-brand-secondary font-bold tracking-[0.1em] uppercase flex items-center gap-2 active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 focus-visible:ring-offset-2 w-fit border border-brand-secondary/20 bg-transparent hover:border-transparent cursor-pointer"
                 >
                   View Our Mission
                   <ArrowRight className="w-4 h-4" />
-                </Button>
-              </div>
+                </a>
             </div>
           </div>
         </div>

@@ -25,28 +25,35 @@ export default function FloatingCTAGroup() {
   const lastScrollY = React.useRef(0);
 
   useEffect(() => {
+    let frameId: number;
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      // Auto-hide when scrolling down past 80px, show when scrolling up
-      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
-        setVisible(false);
-      } else {
-        setVisible(true);
-      }
-      lastScrollY.current = currentScrollY;
+      cancelAnimationFrame(frameId);
+      frameId = requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        
+        // Auto-hide when scrolling down past 80px, show when scrolling up
+        if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+          setVisible(false);
+        } else {
+          setVisible(true);
+        }
+        lastScrollY.current = currentScrollY;
 
-      // Show on mobile only after scrolling past the hero (260px)
-      if (currentScrollY > 260) {
-        setShowOnMobile(true);
-      } else {
-        setShowOnMobile(false);
-      }
+        // Show on mobile only after scrolling past the hero (260px)
+        if (currentScrollY > 260) {
+          setShowOnMobile(true);
+        } else {
+          setShowOnMobile(false);
+        }
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const handleCall = () => {
