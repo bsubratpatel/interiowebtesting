@@ -259,8 +259,8 @@ export default function Navbar() {
                         aria-expanded={activeDropdown === item.name}
                         className={`flex items-center gap-1.5 text-xs font-bold tracking-[0.12em] uppercase transition-colors duration-200 ease cursor-pointer select-none outline-none py-3.5 focus-visible:ring-2 focus-visible:ring-brand-accent/50 rounded-sm border-b-2 ${
                           isHighlight
-                            ? "text-[#E8621A] border-[#E8621A]"
-                            : "text-foreground border-transparent hover:text-[#E8621A]"
+                            ? "text-[#C4511A] border-[#C4511A]"
+                            : "text-foreground border-transparent hover:text-[#C4511A]"
                         }`}
                       >
                         {item.name}
@@ -289,8 +289,8 @@ export default function Navbar() {
                                   }}
                                   className={`block px-4 py-2.5 text-xs font-bold tracking-[0.1em] uppercase transition-colors hover:bg-zinc-50 outline-none focus-visible:bg-zinc-50 ${
                                     sub.path === `#${activeSection}`
-                                      ? "text-[#E8621A]"
-                                      : "text-foreground hover:text-[#E8621A]"
+                                      ? "text-[#C4511A]"
+                                      : "text-foreground hover:text-[#C4511A]"
                                   }`}
                                 >
                                   {sub.name}
@@ -307,8 +307,8 @@ export default function Navbar() {
                       onClick={(e) => handleNavClick(e, item.path)}
                       className={`block text-xs font-bold tracking-[0.12em] uppercase transition-colors duration-200 ease py-3.5 outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 rounded-sm border-b-2 ${
                         isHighlight
-                          ? "text-[#E8621A] border-[#E8621A]"
-                          : "text-foreground border-transparent hover:text-[#E8621A]"
+                          ? "text-[#C4511A] border-[#C4511A]"
+                          : "text-foreground border-transparent hover:text-[#C4511A]"
                       }`}
                     >
                       {item.name}
@@ -396,7 +396,7 @@ export default function Navbar() {
                             onClick={() => toggleSubmenu(item.name)}
                             className={`flex items-center justify-between w-full py-2.5 text-left text-lg font-bold tracking-wide uppercase transition-[color,border-color] duration-200 ease cursor-pointer ${
                               isHighlight
-                                ? "text-[#E8621A] border-b-2 border-[#E8621A]"
+                                ? "text-[#C4511A] border-b-2 border-[#C4511A]"
                                 : "text-zinc-900 border-b border-zinc-200"
                             }`}
                           >
@@ -423,8 +423,8 @@ export default function Navbar() {
                                       onClick={(e) => handleNavClick(e, sub.path)}
                                       className={`block text-base font-semibold tracking-wide py-1.5 transition-colors ${
                                         sub.path === `#${activeSection}`
-                                          ? "text-[#E8621A]"
-                                          : "text-foreground hover:text-[#E8621A]"
+                                          ? "text-[#C4511A]"
+                                          : "text-foreground hover:text-[#C4511A]"
                                       }`}
                                     >
                                       {sub.name}
@@ -440,7 +440,7 @@ export default function Navbar() {
                           onClick={(e) => handleNavClick(e, item.path)}
                           className={`py-2.5 text-lg font-bold tracking-wide uppercase transition-[color,border-color] duration-200 ease ${
                             isHighlight
-                              ? "text-[#E8621A] border-b-2 border-[#E8621A]"
+                              ? "text-[#C4511A] border-b-2 border-[#C4511A]"
                               : "text-zinc-900 border-b border-zinc-200"
                           }`}
                         >

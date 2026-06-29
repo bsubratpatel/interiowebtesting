@@ -30,7 +30,7 @@ export default function TestimonialsSection() {
         
         {/* Header Block */}
         <div className="mb-24">
-          <span className="text-xs font-bold text-brand-secondary uppercase tracking-[0.2em] mb-4 block">06. Stories</span>
+          <span className="text-xs font-bold text-[#E8621A] uppercase tracking-[0.2em] mb-4 block">06. Stories</span>
           <h2 className="text-4xl sm:text-6xl font-extrabold uppercase tracking-tighter text-white leading-[1]">
             Client Experiences
           </h2>
@@ -50,7 +50,7 @@ export default function TestimonialsSection() {
               
               <div className="space-y-1">
                 <span className="text-lg font-bold text-white tracking-tight uppercase block">{rev.name}</span>
-                <span className="text-xs text-brand-secondary font-bold uppercase tracking-[0.1em] block">
+                <span className="text-xs text-[#E8621A] font-bold uppercase tracking-[0.1em] block">
                   {rev.project} — {rev.location}
                 </span>
               </div>

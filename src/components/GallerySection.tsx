@@ -291,8 +291,8 @@ export default function GallerySection() {
                 onClick={() => handleTabClick(category.id)}
                 className={`py-3 text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-150 ease border-b-2 cursor-pointer ${
                   isActive
-                    ? "text-[#E8621A] border-[#E8621A]"
-                    : "text-zinc-400 border-transparent hover:text-[#E8621A]"
+                    ? "text-[#C4511A] border-[#C4511A]"
+                    : "text-zinc-400 border-transparent hover:text-[#C4511A]"
                 }`}
               >
                 {category.tabLabel}

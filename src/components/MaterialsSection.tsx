@@ -144,6 +144,7 @@ export default function MaterialsSection() {
                         alt={item.formattedTitle}
                         fill
                         loading="lazy"
+                        decoding="async"
                         className="object-cover group-hover:scale-[1.03] transition-transform duration-[1.2s] ease-[cubic-bezier(0.25,1,0.5,1)]"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
@@ -151,10 +152,10 @@ export default function MaterialsSection() {
                     
                     {/* Details Block */}
                     <div className="space-y-2">
-                      <h4 className="text-base font-bold text-foreground tracking-tight uppercase leading-snug">
+                      <h3 className="text-base font-bold text-foreground tracking-tight uppercase leading-snug">
                         {item.formattedTitle}
-                      </h4>
-                      <p className="text-zinc-500 text-xs sm:text-sm font-light leading-relaxed">
+                      </h3>
+                      <p className="text-zinc-600 text-xs sm:text-sm font-light leading-relaxed">
                         {item.desc}
                       </p>
                     </div>

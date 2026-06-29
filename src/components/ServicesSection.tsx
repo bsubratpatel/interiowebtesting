@@ -90,6 +90,8 @@ export default function ServicesSection() {
                 src={service.image}
                 alt={service.title}
                 fill
+                loading="lazy"
+                decoding="async"
                 className="object-cover hover:scale-[1.02] transition-transform duration-700"
                 sizes="(max-width: 1024px) 100vw, 60vw"
               />

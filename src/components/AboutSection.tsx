@@ -20,6 +20,8 @@ export default function AboutSection() {
                   src="/images/kitchen renders/kitchen (3).webp"
                   alt="Luxury Minimal Kitchen Design"
                   fill
+                  loading="lazy"
+                  decoding="async"
                   className="object-cover"
                   sizes="(max-width: 1024px) 75vw, 40vw"
                 />
@@ -29,6 +31,8 @@ export default function AboutSection() {
                   src="/images/kitchen renders/kitchen (4).webp"
                   alt="Minimal Detail Kitchen Finish"
                   fill
+                  loading="lazy"
+                  decoding="async"
                   className="object-cover"
                   sizes="(max-width: 1024px) 66vw, 35vw"
                 />

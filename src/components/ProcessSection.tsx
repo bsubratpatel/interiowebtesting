@@ -28,13 +28,13 @@ export default function ProcessSection() {
         {/* Process Grid / Stack */}
         <div className="relative mb-12">
           {/* Mobile Vertical Connector Line */}
-          <div className="absolute left-[14px] top-[14px] bottom-[14px] w-[1px] border-l border-[#E8621A]/25 md:hidden" />
+          <div className="absolute left-[14px] top-[14px] bottom-[14px] w-[1px] border-l border-[#C4511A]/25 md:hidden" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16 md:gap-y-24">
             {steps.map((step) => (
               <div key={step.num} className="flex gap-6 md:flex-col md:space-y-6 md:gap-0 relative">
                 {/* Step Number Badge */}
-                <div className="flex-shrink-0 z-10 flex items-center justify-center w-7 h-7 rounded-full bg-[#E8621A]/12 border border-[#E8621A]/35 text-[#E8621A] text-xs font-bold font-sans">
+                <div className="flex-shrink-0 z-10 flex items-center justify-center w-7 h-7 rounded-full bg-[#C4511A]/12 border border-[#C4511A]/35 text-[#C4511A] text-xs font-bold font-sans">
                   {step.num}
                 </div>
 
@@ -47,7 +47,7 @@ export default function ProcessSection() {
                   </p>
                   
                   {/* Step Timeline */}
-                  <div className="text-[11px] sm:text-[12px] text-[#E8621A]/80 font-light">
+                  <div className="text-[11px] sm:text-[12px] text-[#C4511A]/90 font-light">
                     {step.timeline}
                   </div>
                 </div>
@@ -58,7 +58,7 @@ export default function ProcessSection() {
 
         {/* Timeline Callout */}
         <div className="flex justify-center mb-12">
-          <div className="inline-flex items-center justify-center bg-[#E8621A]/10 border border-[#E8621A]/30 py-1.5 px-4 rounded-[20px] text-foreground text-[13px] sm:text-[14px] font-medium text-center">
+          <div className="inline-flex items-center justify-center bg-[#C4511A]/10 border border-[#C4511A]/30 py-1.5 px-4 rounded-[20px] text-foreground text-[13px] sm:text-[14px] font-medium text-center">
             Total project completion: 35–45 days
           </div>
         </div>

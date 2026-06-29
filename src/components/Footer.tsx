@@ -66,7 +66,7 @@ export default function Footer() {
 
         {/* Quick Links / Sitemap */}
         <div>
-          <h4 className="text-foreground text-xs font-bold uppercase tracking-widest mb-6">Our Services</h4>
+          <h3 className="text-foreground text-xs font-bold uppercase tracking-widest mb-6">Our Services</h3>
           <ul className="space-y-3 text-sm font-light">
             <li>
               <a href="#services-kitchen" onClick={(e) => handleAnchorClick(e, "services-kitchen")} className="hover:text-brand-accent transition-colors">
@@ -103,7 +103,7 @@ export default function Footer() {
 
         {/* More Links */}
         <div>
-          <h4 className="text-foreground text-xs font-bold uppercase tracking-widest mb-6">Explore</h4>
+          <h3 className="text-foreground text-xs font-bold uppercase tracking-widest mb-6">Explore</h3>
           <ul className="space-y-3 text-sm font-light">
             <li>
               <a href="#about-story" onClick={(e) => handleAnchorClick(e, "about-story")} className="hover:text-brand-accent transition-colors">
@@ -145,7 +145,7 @@ export default function Footer() {
 
         {/* Contact Information */}
         <div>
-          <h4 className="text-foreground text-xs font-bold uppercase tracking-widest mb-6">Get in Touch</h4>
+          <h3 className="text-foreground text-xs font-bold uppercase tracking-widest mb-6">Get in Touch</h3>
           <ul className="space-y-4 text-sm font-light">
             <li className="flex items-start gap-3">
               <MapPin className="h-5 w-5 text-brand-accent shrink-0 mt-0.5" />

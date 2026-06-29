@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Phone, MessageCircle, Star, Shield, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,6 +15,35 @@ const ProcessSection = dynamic(() => import("@/components/ProcessSection"), { ss
 const MaterialsSection = dynamic(() => import("@/components/MaterialsSection"), { ssr: true });
 const TestimonialsSection = dynamic(() => import("@/components/TestimonialsSection"), { ssr: true });
 const ContactSection = dynamic(() => import("@/components/ContactSection"), { ssr: true });
+
+function LazySection({ children, id, className, placeholderHeight = "400px" }: { children: React.ReactNode; id?: string; className?: string; placeholderHeight?: string }) {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsIntersecting(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px" }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref} id={id} className={className} style={!isIntersecting ? { minHeight: placeholderHeight } : undefined}>
+      {isIntersecting ? children : null}
+    </div>
+  );
+}
 
 export default function Home() {
   const handleCall = () => {
@@ -42,6 +71,7 @@ export default function Home() {
             sizes="100vw"
             priority
             fetchPriority="high"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-brand-secondary/70 via-brand-secondary/30 to-background/90" />
         </div>
@@ -67,7 +97,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="text-[12px] sm:text-[13px] font-light tracking-wide text-white/60 text-center mt-2 mb-4">
+          <div className="text-[12px] sm:text-[13px] font-light tracking-wide text-white/80 text-center mt-2 mb-4">
             45+ luxury projects delivered across Odisha
           </div>
 
@@ -101,25 +131,39 @@ export default function Home() {
       </section>
 
       {/* 3. About Section */}
-      <AboutSection />
+      <LazySection id="about-story" placeholderHeight="600px">
+        <AboutSection />
+      </LazySection>
 
       {/* 4. Services Section */}
-      <ServicesSection />
+      <LazySection id="services-kitchen" placeholderHeight="600px">
+        <ServicesSection />
+      </LazySection>
 
       {/* 5. Design Gallery Section */}
-      <GallerySection />
+      <LazySection id="gallery-kitchens" placeholderHeight="800px">
+        <GallerySection />
+      </LazySection>
 
       {/* 6. Process Section */}
-      <ProcessSection />
+      <LazySection id="process" placeholderHeight="600px">
+        <ProcessSection />
+      </LazySection>
 
       {/* 7. Materials Section */}
-      <MaterialsSection />
+      <LazySection id="materials" placeholderHeight="600px">
+        <MaterialsSection />
+      </LazySection>
 
       {/* 8. Testimonials Section */}
-      <TestimonialsSection />
+      <LazySection id="testimonials" placeholderHeight="300px">
+        <TestimonialsSection />
+      </LazySection>
 
       {/* 9. Contact & Map Section */}
-      <ContactSection />
+      <LazySection id="contact" placeholderHeight="600px">
+        <ContactSection />
+      </LazySection>
     </div>
   );
 }
