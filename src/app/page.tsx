@@ -5,14 +5,16 @@ import Image from "next/image";
 import { Phone, MessageCircle, Star, Shield, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-// Import Section Components
-import AboutSection from "@/components/AboutSection";
-import ServicesSection from "@/components/ServicesSection";
-import GallerySection from "@/components/GallerySection";
-import ProcessSection from "@/components/ProcessSection";
-import MaterialsSection from "@/components/MaterialsSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import ContactSection from "@/components/ContactSection";
+import dynamic from "next/dynamic";
+
+// Dynamically import heavy below-the-fold components to reduce initial JS payload
+const AboutSection = dynamic(() => import("@/components/AboutSection"), { ssr: true });
+const ServicesSection = dynamic(() => import("@/components/ServicesSection"), { ssr: true });
+const GallerySection = dynamic(() => import("@/components/GallerySection"), { ssr: true });
+const ProcessSection = dynamic(() => import("@/components/ProcessSection"), { ssr: true });
+const MaterialsSection = dynamic(() => import("@/components/MaterialsSection"), { ssr: true });
+const TestimonialsSection = dynamic(() => import("@/components/TestimonialsSection"), { ssr: true });
+const ContactSection = dynamic(() => import("@/components/ContactSection"), { ssr: true });
 
 export default function Home() {
   const handleCall = () => {
@@ -39,6 +41,7 @@ export default function Home() {
             className="object-cover scale-105"
             sizes="100vw"
             priority
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-brand-secondary/70 via-brand-secondary/30 to-background/90" />
         </div>
