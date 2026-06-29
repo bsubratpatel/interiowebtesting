@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { X, Phone, MessageCircle, ChevronDown, ChevronUp } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { X, ChevronDown, ChevronUp } from "lucide-react";
 
 const BACKUP_GALLERY: Record<string, { id: string; src: string; title: string }[]> = {
   "gallery-kitchens": [
@@ -57,30 +56,35 @@ const galleryCategories = [
   {
     id: "gallery-kitchens",
     title: "Luxury Kitchens",
+    tabLabel: "Kitchens",
     subtitle: "Precision Culinary Hubs",
     desc: "German engineered handleless designs, quartz islands, and high-performance layouts built for clean minimalism.",
   },
   {
     id: "gallery-tv",
     title: "TV Units",
+    tabLabel: "TV Units",
     subtitle: "Aesthetic Entertainment Walls",
     desc: "Seamless floating panels featuring wood veneers, charcoal slates, and integrated cable routing.",
   },
   {
     id: "gallery-wardrobes",
     title: "Premium Wardrobes",
+    tabLabel: "Wardrobes",
     subtitle: "Bespoke Storage Architectures",
     desc: "Lacquered sliding glass configurations and matte finishes designed for high-efficiency dressing layout.",
   },
   {
     id: "gallery-bedrooms",
     title: "Luxury Bedrooms",
+    tabLabel: "Bedrooms",
     subtitle: "Intimate Resting Suites",
     desc: "Integrated dressers, walk-in closets, and minimal acoustic partitions providing absolute luxury.",
   },
   {
     id: "gallery-living",
     title: "Sleek Living Rooms",
+    tabLabel: "Living Rooms",
     subtitle: "Social Statement Areas",
     desc: "Open plan layouts, custom divider units, and contemporary panel details creating visual flow.",
   },
@@ -95,7 +99,23 @@ export default function GallerySection() {
     "gallery-bedrooms": 6,
     "gallery-living": 6,
   });
-  const [lightboxImg, setLightboxImg] = useState<{ src: string; title: string } | null>(null);
+
+  const [activeTab, setActiveTab] = useState("gallery-kitchens");
+  const [loadingCategories, setLoadingCategories] = useState<Record<string, boolean>>({});
+  const [lightboxState, setLightboxState] = useState<{ categoryId: string; index: number } | null>(null);
+
+  // Sync hash to active tab on mount and updates
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash && galleryCategories.some(cat => cat.id === hash)) {
+        setActiveTab(hash);
+      }
+    };
+    window.addEventListener("hashchange", handleHashChange);
+    handleHashChange(); // check on mount
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
 
   useEffect(() => {
     async function loadImages() {
@@ -103,7 +123,6 @@ export default function GallerySection() {
         const res = await fetch("/api/gallery");
         if (res.ok) {
           const data = await res.json();
-          // Merge API data to replace our backup mapping if valid
           setGalleryData(prev => ({ ...prev, ...data }));
         }
       } catch (err) {
@@ -113,166 +132,351 @@ export default function GallerySection() {
     loadImages();
   }, []);
 
-  const handleCall = () => {
-    window.location.href = "tel:+919776991699";
-  };
-
-  const handleWhatsApp = (itemTitle?: string) => {
-    const text = itemTitle
-      ? `Hi Interiocore! I'm interested in the "${itemTitle}" design from your gallery.`
-      : "Hi Interiocore! I'd like to learn more about your designs.";
-    window.open(`https://wa.me/919776991699?text=${encodeURIComponent(text)}`, "_blank");
-  };
-
   const toggleViewCount = (categoryId: string, totalCount: number) => {
     const isShowingAll = (visibleCounts[categoryId] || 6) >= totalCount;
-    setVisibleCounts(prev => ({
-      ...prev,
-      [categoryId]: isShowingAll ? 6 : totalCount,
-    }));
+    if (isShowingAll) {
+      setVisibleCounts(prev => ({
+        ...prev,
+        [categoryId]: 6,
+      }));
+    } else {
+      setLoadingCategories(prev => ({ ...prev, [categoryId]: true }));
+      setTimeout(() => {
+        setVisibleCounts(prev => ({
+          ...prev,
+          [categoryId]: totalCount,
+        }));
+        setLoadingCategories(prev => ({ ...prev, [categoryId]: false }));
+      }, 800);
+    }
+  };
+
+  const handleTabClick = (tabId: string) => {
+    setActiveTab(tabId);
+    window.history.pushState(null, "", `#${tabId}`);
+  };
+
+  const getCategoryName = (id: string) => {
+    switch (id) {
+      case "gallery-kitchens": return "kitchens";
+      case "gallery-tv": return "tv-units";
+      case "gallery-wardrobes": return "wardrobes";
+      case "gallery-bedrooms": return "bedrooms";
+      case "gallery-living": return "living-rooms";
+      default: return id;
+    }
+  };
+
+  const handleNext = () => {
+    setLightboxState((prev) => {
+      if (!prev) return null;
+      const { categoryId, index } = prev;
+      const items = galleryData[categoryId] || [];
+      if (items.length === 0) return prev;
+      return {
+        categoryId,
+        index: (index + 1) % items.length,
+      };
+    });
+  };
+
+  const handlePrev = () => {
+    setLightboxState((prev) => {
+      if (!prev) return null;
+      const { categoryId, index } = prev;
+      const items = galleryData[categoryId] || [];
+      if (items.length === 0) return prev;
+      return {
+        categoryId,
+        index: (index - 1 + items.length) % items.length,
+      };
+    });
+  };
+
+  // Keyboard navigation inside lightbox
+  useEffect(() => {
+    if (!lightboxState) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setLightboxState(null);
+      } else if (e.key === "ArrowRight") {
+        handleNext();
+      } else if (e.key === "ArrowLeft") {
+        handlePrev();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxState]);
+
+  // Touch Swipe navigation
+  const touchStartX = React.useRef<number | null>(null);
+  const touchEndX = React.useRef<number | null>(null);
+  const touchStartY = React.useRef<number | null>(null);
+  const touchEndY = React.useRef<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+    touchStartY.current = e.targetTouches[0].clientY;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+    touchEndY.current = e.targetTouches[0].clientY;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current !== null && touchEndX.current !== null && touchStartY.current !== null && touchEndY.current !== null) {
+      const diffX = touchStartX.current - touchEndX.current;
+      const diffY = touchStartY.current - touchEndY.current;
+
+      if (Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX > 50) {
+          handleNext();
+        } else if (diffX < -50) {
+          handlePrev();
+        }
+      } else {
+        if (diffY < -50) {
+          setLightboxState(null);
+        }
+      }
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+    touchStartY.current = null;
+    touchEndY.current = null;
   };
 
   return (
     <div className="bg-zinc-50/60">
+      <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 0.5; }
+          50% { opacity: 1; }
+        }
+        @keyframes fadeInReal {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        .animate-fade-in {
+          animation: fadeIn 200ms ease forwards;
+        }
+        .animate-pulse-custom {
+          animation: pulse 1.2s ease-in-out infinite;
+        }
+        .animate-fade-in-150 {
+          animation: fadeInReal 150ms ease forwards;
+        }
+      `}</style>
+
       {/* Global Section Header */}
       <section className="pt-24 max-w-[1600px] mx-auto px-6 lg:px-12">
         <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-4 block">03. Showcase</span>
-        <h2 className="text-5xl sm:text-7xl font-extrabold uppercase tracking-tighter text-foreground leading-[1]">
+        <h2 className="text-5xl sm:text-7xl font-extrabold uppercase tracking-tighter text-foreground leading-[1] mb-8">
           Curated Spaces
         </h2>
+
+        {/* Category Tabs */}
+        <div className="flex flex-wrap gap-4 md:gap-8 border-b border-zinc-200">
+          {galleryCategories.map((category) => {
+            const isActive = activeTab === category.id;
+            return (
+              <button
+                key={category.id}
+                onClick={() => handleTabClick(category.id)}
+                className={`py-3 text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-150 ease border-b-2 cursor-pointer ${
+                  isActive
+                    ? "text-[#E8621A] border-[#E8621A]"
+                    : "text-zinc-400 border-transparent hover:text-[#E8621A]"
+                }`}
+              >
+                {category.tabLabel}
+              </button>
+            );
+          })}
+        </div>
       </section>
 
       {/* Stack of Gallery Sections */}
-      {galleryCategories.map((category, idx) => {
-        const items = galleryData[category.id] || [];
-        const totalCount = items.length;
-        const visibleCount = visibleCounts[category.id] || 6;
-        const visibleItems = items.slice(0, visibleCount);
-        const hasMore = totalCount > 6;
-        const isShowingAll = visibleCount >= totalCount;
+      {galleryCategories
+        .filter((cat) => cat.id === activeTab)
+        .map((category) => {
+          const items = galleryData[category.id] || [];
+          const totalCount = items.length;
+          const visibleCount = visibleCounts[category.id] || 6;
+          const visibleItems = items.slice(0, visibleCount);
+          const hasMore = totalCount > 6;
+          const isShowingAll = visibleCount >= totalCount;
 
-        return (
-          <section 
-            id={category.id} 
-            key={category.id} 
-            className="py-16 sm:py-24 lg:py-32 border-b border-zinc-200/50 max-w-[1600px] mx-auto px-6 lg:px-12"
-          >
-            {/* Header block for each category */}
-            <div className="mb-12">
-              <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-3 block">
-                03.{idx + 1} Gallery Category
-              </span>
-              <h3 className="text-4xl sm:text-5xl font-extrabold uppercase tracking-tighter text-foreground leading-[1] mb-4">
-                {category.title}
-              </h3>
-              <p className="text-zinc-500 font-light text-base max-w-2xl leading-relaxed">
-                {category.desc}
-              </p>
-            </div>
-
-            {/* Grid of Images (Responsive layout: 2 cols on mobile/tablet, 3-4 on desktop) */}
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-              {visibleItems.map((item) => (
-                <div
-                  key={item.id}
-                  className="group relative aspect-[3/4] overflow-hidden bg-zinc-100 cursor-pointer shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-[0.6s] ease-[cubic-bezier(0.25,1,0.5,1)]"
-                  onClick={() => setLightboxImg({ src: item.src, title: item.title })}
-                >
-                  <Image
-                    src={item.src}
-                    alt={item.title}
-                    fill
-                    loading="lazy"
-                    className="object-cover group-hover:scale-[1.04] transition-transform duration-[1.2s] ease-[cubic-bezier(0.25,1,0.5,1)]"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
-                  />
-                  
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-secondary/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col justify-end p-4 sm:p-6">
-                    <h4 className="text-sm sm:text-lg font-bold text-white tracking-tight leading-tight">
-                      {item.title}
-                    </h4>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* View More / Show Less Pagination Button */}
-            {hasMore && (
-              <div className="mt-12 flex justify-center">
-                <Button
-                  onClick={() => toggleViewCount(category.id, totalCount)}
-                  variant="outline"
-                  className="rounded-none border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white transition-colors duration-300 px-8 h-12 text-xs font-bold uppercase tracking-[0.15em] flex items-center gap-2 cursor-pointer"
-                >
-                  {isShowingAll ? (
-                    <>
-                      Show Less
-                      <ChevronUp className="w-4 h-4" />
-                    </>
-                  ) : (
-                    <>
-                      View More
-                      <ChevronDown className="w-4 h-4" />
-                    </>
-                  )}
-                </Button>
+          return (
+            <section 
+              id={category.id} 
+              key={category.id} 
+              className="py-16 sm:py-24 lg:py-32 border-b border-zinc-200/50 max-w-[1600px] mx-auto px-6 lg:px-12"
+            >
+              {/* Header block for each category */}
+              <div className="mb-12">
+                <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-3 block">
+                  03.{galleryCategories.findIndex(cat => cat.id === category.id) + 1} Gallery Category
+                </span>
+                <h3 className="text-4xl sm:text-5xl font-extrabold uppercase tracking-tighter text-foreground leading-[1] mb-4">
+                  {category.title}
+                </h3>
+                <p className="text-zinc-500 font-light text-base max-w-2xl leading-relaxed">
+                  {category.desc}
+                </p>
               </div>
-            )}
-          </section>
-        );
-      })}
+
+              {/* Grid of Images */}
+              <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+                {visibleItems.map((item, index) => {
+                  const isNew = index >= 6;
+                  return (
+                    <div
+                      key={item.id}
+                      data-gallery={getCategoryName(category.id)}
+                      className={`group relative aspect-[3/4] overflow-hidden bg-zinc-100 cursor-pointer shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-[0.6s] ease-[cubic-bezier(0.25,1,0.5,1)] ${
+                        isNew ? "animate-fade-in-150" : ""
+                      }`}
+                      onClick={() => setLightboxState({ categoryId: category.id, index })}
+                    >
+                      <Image
+                        src={item.src}
+                        alt={item.title}
+                        fill
+                        loading="lazy"
+                        decoding="async"
+                        className="object-cover group-hover:scale-[1.04] transition-transform duration-[1.2s] ease-[cubic-bezier(0.25,1,0.5,1)]"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+                      
+                      <div className="absolute inset-0 bg-gradient-to-t from-brand-secondary/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col justify-end p-4 sm:p-6">
+                        <h4 className="text-sm sm:text-lg font-bold text-white tracking-tight leading-tight">
+                          {item.title}
+                        </h4>
+                      </div>
+                    </div>
+                  );
+                })}
+
+                {/* Skeleton Placeholders */}
+                {loadingCategories[category.id] && (
+                  <>
+                    <div className="bg-[#E8E8E8] animate-pulse-custom aspect-[3/4] w-full rounded-none" />
+                    <div className="bg-[#E8E8E8] animate-pulse-custom aspect-[3/4] w-full rounded-none" />
+                    <div className="bg-[#E8E8E8] animate-pulse-custom aspect-[3/4] w-full rounded-none" />
+                  </>
+                )}
+              </div>
+
+              {/* View More / Show Less Pagination Button */}
+              {hasMore && (
+                <div className="mt-12 flex justify-center">
+                  <button
+                    onClick={() => toggleViewCount(category.id, totalCount)}
+                    disabled={loadingCategories[category.id]}
+                    className={`rounded-none border border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white transition-colors duration-300 px-8 h-12 text-xs font-bold uppercase tracking-[0.15em] flex items-center gap-2 cursor-pointer ${
+                      loadingCategories[category.id] ? "pointer-events-none opacity-50" : ""
+                    }`}
+                  >
+                    {loadingCategories[category.id] ? (
+                      "LOADING..."
+                    ) : isShowingAll ? (
+                      <>
+                        Show Less
+                        <ChevronUp className="w-4 h-4" />
+                      </>
+                    ) : (
+                      <>
+                        View More
+                        <ChevronDown className="w-4 h-4" />
+                      </>
+                    )}
+                  </button>
+                </div>
+              )}
+            </section>
+          );
+        })}
 
       {/* Lightbox Overlay */}
-      {lightboxImg && (
-        <div
-          className="fixed inset-0 z-50 bg-background/95 backdrop-blur-md flex flex-col items-center justify-center p-4"
-        >
-          <button
-            onClick={() => setLightboxImg(null)}
-            className="absolute top-6 right-6 p-2.5 rounded-full bg-white border border-zinc-200 text-zinc-500 hover:text-foreground transition-colors shadow-sm cursor-pointer"
-            aria-label="Close Lightbox"
+      {lightboxState && (() => {
+        const { categoryId, index } = lightboxState;
+        const items = galleryData[categoryId] || [];
+        const activeImage = items[index];
+        if (!activeImage) return null;
+
+        return (
+          <div
+            className="fixed inset-0 z-50 bg-black/92 flex items-center justify-center p-4 select-none animate-fade-in"
+            onClick={() => setLightboxState(null)}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
-            <X className="h-6 w-6" />
-          </button>
-          
-          <div className="relative max-w-4xl w-full aspect-[4/3] rounded-none overflow-hidden border border-zinc-200 shadow-2xl bg-white">
-            <Image
-              src={lightboxImg.src}
-              alt={lightboxImg.title}
-              fill
-              className="object-contain p-2"
-              sizes="100vw"
-            />
-          </div>
-          
-          <div className="mt-6 flex flex-col items-center text-center space-y-4">
-            <h3 className="text-2xl font-bold text-foreground">{lightboxImg.title}</h3>
-            <div className="flex flex-wrap justify-center gap-3">
-              <Button
-                onClick={handleCall}
-                className="bg-brand-accent text-white hover:bg-brand-accent-hover transition-all rounded-full px-6 h-11 text-xs font-bold tracking-wider uppercase flex items-center gap-2 active:scale-95 duration-200"
-              >
-                <Phone className="h-4 w-4" />
-                Call Now
-              </Button>
-              <Button
-                onClick={() => handleWhatsApp(lightboxImg.title)}
-                className="bg-emerald-600 text-white hover:bg-emerald-700 transition-all rounded-full px-6 h-11 text-xs font-bold tracking-wider uppercase flex items-center gap-2 active:scale-95 duration-200"
-              >
-                <MessageCircle className="h-4 w-4" />
-                WhatsApp
-              </Button>
-              <Button
-                onClick={() => setLightboxImg(null)}
-                variant="outline"
-                className="border-zinc-200 bg-white text-zinc-500 hover:text-foreground rounded-full px-6 h-11 text-xs font-bold tracking-wider uppercase cursor-pointer"
-              >
-                Close
-              </Button>
+            {/* Close button */}
+            <button
+              onClick={() => setLightboxState(null)}
+              className="absolute top-6 right-6 p-2 text-white hover:text-white/80 transition-colors bg-transparent border-none cursor-pointer z-50"
+              aria-label="Close Lightbox"
+            >
+              <X className="h-6 w-6" />
+            </button>
+
+            {/* Left Arrow (Desktop) */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handlePrev();
+              }}
+              className="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 items-center justify-center w-10 h-10 rounded-full bg-white/15 text-white hover:bg-white/25 transition-colors cursor-pointer border-none z-50"
+              aria-label="Previous Image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* Right Arrow (Desktop) */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleNext();
+              }}
+              className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 items-center justify-center w-10 h-10 rounded-full bg-white/15 text-white hover:bg-white/25 transition-colors cursor-pointer border-none z-50"
+              aria-label="Next Image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Center Image Container */}
+            <div className="relative max-w-full max-h-[90vh] flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+              <img
+                src={activeImage.src}
+                alt={activeImage.title}
+                className="max-w-[100vw] max-h-[90vh] object-contain select-none pointer-events-none"
+              />
+            </div>
+
+            {/* Bottom Metadata Panel */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-50 text-center w-full max-w-md px-4 pointer-events-none">
+              <span className="text-white text-[14px] font-normal opacity-100 font-sans">
+                {activeImage.title}
+              </span>
+              <span className="text-white text-[13px] font-normal opacity-60 font-sans">
+                {index + 1} / {items.length}
+              </span>
             </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
     </div>
   );
 }
