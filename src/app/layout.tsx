@@ -133,7 +133,7 @@ export default function RootLayout({
         />
       </head>
       <body 
-        className="min-h-full flex flex-col bg-background text-foreground font-sans"
+        className={`${poppins.className} min-h-full flex flex-col bg-background text-foreground font-sans`}
         suppressHydrationWarning
       >
         <Navbar />
