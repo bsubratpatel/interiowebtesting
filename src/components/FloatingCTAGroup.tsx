@@ -75,12 +75,7 @@ export default function FloatingCTAGroup() {
         className="group flex flex-col items-center justify-center h-16 w-16 bg-white/90 backdrop-blur-md border border-zinc-200/80 text-foreground rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-accent/50 focus:ring-offset-2 hover:scale-105 active:scale-95"
         aria-label="Call Hotline"
       >
-        <div className="flex flex-col items-center justify-center gap-1">
-          <Phone className="h-5 w-5 text-brand-accent shrink-0 group-hover:rotate-12 transition-transform duration-300" />
-          <span className="text-[10px] font-sans font-semibold tracking-wide text-brand-accent text-center">
-            Call
-          </span>
-        </div>
+        <Phone className="h-5 w-5 text-brand-accent shrink-0 group-hover:rotate-12 transition-transform duration-300" />
       </button>
 
       {/* WhatsApp Button */}
@@ -89,12 +84,7 @@ export default function FloatingCTAGroup() {
         className="group flex flex-col items-center justify-center h-16 w-16 bg-white/90 backdrop-blur-md border border-zinc-200/80 text-foreground rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-600/50 focus:ring-offset-2 hover:scale-105 active:scale-95"
         aria-label="Chat on WhatsApp"
       >
-        <div className="flex flex-col items-center justify-center gap-1">
-          <MessageCircle className="h-5 w-5 text-emerald-600 shrink-0 group-hover:scale-110 transition-transform duration-300" />
-          <span className="text-[10px] font-sans font-semibold tracking-wide text-emerald-600 text-center">
-            WhatsApp
-          </span>
-        </div>
+        <MessageCircle className="h-5 w-5 text-emerald-600 shrink-0 group-hover:scale-110 transition-transform duration-300" />
       </button>
 
       {/* Instagram Button */}
@@ -103,12 +93,7 @@ export default function FloatingCTAGroup() {
         className="group flex flex-col items-center justify-center h-16 w-16 bg-white/90 backdrop-blur-md border border-zinc-200/80 text-foreground rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-600/50 focus:ring-offset-2 hover:scale-105 active:scale-95"
         aria-label="Open Instagram Profile"
       >
-        <div className="flex flex-col items-center justify-center gap-1">
-          <InstagramIcon className="h-5 w-5 text-pink-600 shrink-0 group-hover:rotate-6 transition-transform duration-300" />
-          <span className="text-[10px] font-sans font-semibold tracking-wide text-pink-600 text-center">
-            Instagram
-          </span>
-        </div>
+        <InstagramIcon className="h-5 w-5 text-pink-600 shrink-0 group-hover:rotate-6 transition-transform duration-300" />
       </button>
     </div>
   ) : null;
