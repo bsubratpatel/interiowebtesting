@@ -380,6 +380,7 @@ export default function GallerySection() {
                   <button
                     onClick={() => toggleViewCount(category.id, totalCount)}
                     disabled={loadingCategories[category.id]}
+                    aria-label={isShowingAll ? `Show fewer ${category.tabLabel.toLowerCase()} designs` : `View more ${category.tabLabel.toLowerCase()} designs`}
                     className={`rounded-none border border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white transition-colors duration-300 px-8 h-12 text-xs font-bold uppercase tracking-[0.15em] flex items-center gap-2 cursor-pointer ${
                       loadingCategories[category.id] ? "pointer-events-none opacity-50" : ""
                     }`}

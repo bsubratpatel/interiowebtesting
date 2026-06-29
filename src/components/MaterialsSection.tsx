@@ -172,6 +172,7 @@ export default function MaterialsSection() {
               <div className="mt-12 flex justify-center">
                 <Button
                   onClick={() => setShowAll(!showAll)}
+                  aria-label={showAll ? "Show fewer materials from palette" : "View more materials from palette"}
                   className="bg-brand-secondary text-white hover:bg-brand-secondary/90 transition-all active:scale-[0.98] rounded-none h-12 px-8 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-2 cursor-pointer shadow-sm outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 focus-visible:ring-offset-2 duration-200"
                 >
                   {showAll ? "Show Less" : "View More"}

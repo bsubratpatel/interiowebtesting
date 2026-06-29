@@ -123,6 +123,7 @@ export default function ServicesSection() {
                   href={service.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`Discuss ${service.title.toLowerCase()} project on WhatsApp`}
                   className="bg-brand-accent text-white hover:bg-brand-accent-hover transition-colors rounded-none px-8 h-12 text-xs font-bold tracking-[0.15em] uppercase flex items-center gap-2 cursor-pointer w-fit"
                 >
                   <Phone className="w-4 h-4" />
