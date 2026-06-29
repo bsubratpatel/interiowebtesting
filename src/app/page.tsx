@@ -64,18 +64,18 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex flex-col items-center gap-[10px] w-full max-w-[360px] sm:max-w-[400px]">
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto">
             <Button
               onClick={handleWhatsApp}
-              className="w-full bg-[#25D366] text-white hover:bg-[#20ba5a] transition-all shadow-md font-bold text-[14px] sm:text-[15px] rounded-[8px] h-auto py-[14px] px-6 flex items-center justify-center gap-2 active:scale-95 duration-200"
+              className="bg-[#25D366] text-white hover:bg-[#20ba5a] border border-[#25D366] hover:border-[#20ba5a] transition-all hover:scale-[1.02] shadow-md rounded-none h-[60px] px-10 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-3 w-full sm:w-auto active:scale-95 duration-200"
             >
-              💬 WHATSAPP US
+              <MessageCircle className="h-4 w-4" /> WhatsApp
             </Button>
             <Button
               onClick={handleCall}
-              className="w-full bg-transparent text-white hover:bg-white/10 transition-all font-normal text-[12px] sm:text-[13px] rounded-[8px] h-auto py-[10px] px-6 flex items-center justify-center gap-2 border border-white/25 active:scale-95 duration-200"
+              className="bg-transparent text-[#E8621A] hover:bg-[#E8621A]/10 border-[1.5px] border-[#E8621A] transition-colors rounded-none h-14 px-8 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-3 w-full sm:w-auto"
             >
-              📞 Prefer a call? Tap here
+              <Phone className="h-4 w-4" /> Call Now
             </Button>
           </div>
         </div>
