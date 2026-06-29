@@ -90,8 +90,8 @@ const galleryCategories = [
   },
 ];
 
-export default function GallerySection() {
-  const [galleryData, setGalleryData] = useState<Record<string, { id: string; src: string; title: string }[]>>(BACKUP_GALLERY);
+export default function GallerySection({ initialData }: { initialData?: Record<string, { id: string; src: string; title: string }[]> }) {
+  const [galleryData, setGalleryData] = useState<Record<string, { id: string; src: string; title: string }[]>>(initialData || BACKUP_GALLERY);
   const [visibleCounts, setVisibleCounts] = useState<Record<string, number>>({
     "gallery-kitchens": 6,
     "gallery-tv": 6,
@@ -115,21 +115,6 @@ export default function GallerySection() {
     window.addEventListener("hashchange", handleHashChange);
     handleHashChange(); // check on mount
     return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
-
-  useEffect(() => {
-    async function loadImages() {
-      try {
-        const res = await fetch("/api/gallery");
-        if (res.ok) {
-          const data = await res.json();
-          setGalleryData(prev => ({ ...prev, ...data }));
-        }
-      } catch (err) {
-        console.error("Failed to load gallery images dynamically, using backup:", err);
-      }
-    }
-    loadImages();
   }, []);
 
   const toggleViewCount = (categoryId: string, totalCount: number) => {

@@ -32,25 +32,10 @@ const BACKUP_MATERIALS: Record<string, { id: string; src: string; title: string 
   ],
 };
 
-export default function MaterialsSection() {
-  const [materialsData, setMaterialsData] = useState<Record<string, { id: string; src: string; title: string }[]>>(BACKUP_MATERIALS);
+export default function MaterialsSection({ initialData }: { initialData?: Record<string, { id: string; src: string; title: string }[]> }) {
+  const [materialsData, setMaterialsData] = useState<Record<string, { id: string; src: string; title: string }[]>>(initialData || BACKUP_MATERIALS);
   const [lightboxImg, setLightboxImg] = useState<{ src: string; title: string } | null>(null);
   const [showAll, setShowAll] = useState(false);
-
-  useEffect(() => {
-    async function loadMaterials() {
-      try {
-        const res = await fetch("/api/materials");
-        if (res.ok) {
-          const data = await res.json();
-          setMaterialsData(prev => ({ ...prev, ...data }));
-        }
-      } catch (err) {
-        console.error("Failed to load materials dynamically, using backup:", err);
-      }
-    }
-    loadMaterials();
-  }, []);
 
   const handleCall = () => {
     window.location.href = "tel:+919776991699";

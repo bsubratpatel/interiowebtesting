@@ -1,11 +1,8 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
 import { Phone, MessageCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
 import dynamic from "next/dynamic";
+import { getGalleryData, getMaterialsData } from "@/lib/dataFetcher";
 
 // Dynamically import heavy below-the-fold components to reduce initial JS payload
 const AboutSection = dynamic(() => import("@/components/AboutSection"), { ssr: true });
@@ -17,16 +14,9 @@ const TestimonialsSection = dynamic(() => import("@/components/TestimonialsSecti
 const ContactSection = dynamic(() => import("@/components/ContactSection"), { ssr: true });
 
 export default function Home() {
-  const handleCall = () => {
-    window.location.href = "tel:+919776991699";
-  };
-
-  const handleWhatsApp = () => {
-    window.open(
-      "https://wa.me/919776991699?text=Hi%20Interiocore!%20I'd%20like%20to%20learn%20more%20about%20your%20services.",
-      "_blank"
-    );
-  };
+  // Pre-load data on the server side to eliminate client-side fetch calls on mount
+  const galleryData = getGalleryData();
+  const materialsData = getMaterialsData();
 
   return (
     <div className="bg-background text-foreground overflow-hidden">
@@ -73,18 +63,20 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto">
-            <Button
-              onClick={handleWhatsApp}
-              className="bg-[#25D366] text-white hover:bg-[#20ba5a] border border-[#25D366] hover:border-[#20ba5a] transition-all hover:scale-[1.02] shadow-md rounded-none h-14 px-8 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-3 w-full sm:w-auto active:scale-95 duration-200"
+            <a
+              href="https://wa.me/919776991699?text=Hi%20Interiocore!%20I'd%20like%20to%20learn%20more%20about%20your%20services."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#25D366] text-white hover:bg-[#20ba5a] border border-[#25D366] hover:border-[#20ba5a] transition-all hover:scale-[1.02] shadow-md rounded-none h-14 px-8 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-3 w-full sm:w-auto active:scale-95 duration-200 cursor-pointer"
             >
               <MessageCircle className="h-4 w-4" /> WhatsApp
-            </Button>
-            <Button
-              onClick={handleCall}
-              className="bg-transparent text-[#E8621A] hover:bg-[#E8621A]/10 border-2 border-[#E8621A] transition-colors rounded-none h-14 px-8 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-3 w-full sm:w-auto"
+            </a>
+            <a
+              href="tel:+919776991699"
+              className="bg-transparent text-[#E8621A] hover:bg-[#E8621A]/10 border-2 border-[#E8621A] transition-colors rounded-none h-14 px-8 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-3 w-full sm:w-auto text-center cursor-pointer"
             >
               <Phone className="h-4 w-4" /> Call Now
-            </Button>
+            </a>
           </div>
         </div>
       </section>
@@ -108,13 +100,13 @@ export default function Home() {
       <ServicesSection />
 
       {/* 5. Design Gallery Section */}
-      <GallerySection />
+      <GallerySection initialData={galleryData} />
 
       {/* 6. Process Section */}
       <ProcessSection />
 
       {/* 7. Materials Section */}
-      <MaterialsSection />
+      <MaterialsSection initialData={materialsData} />
 
       {/* 8. Testimonials Section */}
       <TestimonialsSection />
