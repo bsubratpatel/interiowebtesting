@@ -6,8 +6,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-poppins);
-  --font-heading: var(--font-poppins);
+  --font-sans: 'Poppins', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
   
   /* Primary Brand colors */
   --color-brand-accent: #FF7A00;       /* Vibrant Orange */
