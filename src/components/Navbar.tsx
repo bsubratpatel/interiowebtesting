@@ -46,6 +46,52 @@ const navItems = [
   { name: "Contact", path: "#contact" },
 ];
 
+const HamburgerIcon = ({ isOpen }: { isOpen: boolean }) => (
+  <svg
+    width="26"
+    height="26"
+    viewBox="0 0 24 24"
+    className="h-6.5 w-6.5 drop-shadow-md text-zinc-900 group-hover:text-[#E8621A] transition-colors duration-200"
+  >
+    <line
+      x1="4"
+      y1="6"
+      x2="20"
+      y2="6"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      className={`transition-all duration-150 ease-in-out origin-center ${
+        isOpen ? "rotate-45 translate-y-[6px]" : ""
+      }`}
+    />
+    <line
+      x1="4"
+      y1="12"
+      x2="20"
+      y2="12"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      className={`transition-all duration-150 ease-in-out ${
+        isOpen ? "opacity-0" : ""
+      }`}
+    />
+    <line
+      x1="4"
+      y1="18"
+      x2="20"
+      y2="18"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      className={`transition-all duration-150 ease-in-out origin-center ${
+        isOpen ? "-rotate-45 -translate-y-[6px]" : ""
+      }`}
+    />
+  </svg>
+);
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -55,7 +101,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
+      const isScrolled = window.scrollY > 60;
       setScrolled(prev => prev !== isScrolled ? isScrolled : prev);
     };
     handleScroll();
@@ -95,8 +141,8 @@ export default function Navbar() {
     
     const observerOptions = {
       root: null,
-      rootMargin: "-25% 0px -55% 0px", // Trigger when section is in central viewport area
-      threshold: 0.05,
+      rootMargin: "0px",
+      threshold: 0.3,
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
@@ -165,7 +211,12 @@ export default function Navbar() {
   return (
     <>
       <header
-        className="fixed top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-zinc-200/60 shadow-sm"
+        className="fixed top-0 z-40 w-full transition-[background-color,border-color] duration-200 ease"
+        style={{
+          backgroundColor: scrolled ? "#FFFFFF" : "rgba(255, 255, 255, 0.95)",
+          borderBottom: scrolled ? "0.5px solid rgba(0,0,0,0.08)" : "1px solid rgba(228, 228, 231, 0.6)",
+          backdropFilter: scrolled ? "none" : "blur(12px)",
+        }}
       >
         <div className={`max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-12 w-full flex items-center justify-between transition-all duration-300 ${
           scrolled ? "h-24" : "h-28"
@@ -206,10 +257,10 @@ export default function Navbar() {
                         onClick={(e) => handleNavClick(e, item.path)}
                         aria-haspopup="true"
                         aria-expanded={activeDropdown === item.name}
-                        className={`flex items-center gap-1.5 text-xs font-bold tracking-[0.12em] uppercase transition-colors cursor-pointer select-none outline-none py-3.5 focus-visible:ring-2 focus-visible:ring-brand-accent/50 rounded-sm ${
+                        className={`flex items-center gap-1.5 text-xs font-bold tracking-[0.12em] uppercase transition-colors duration-200 ease cursor-pointer select-none outline-none py-3.5 focus-visible:ring-2 focus-visible:ring-brand-accent/50 rounded-sm border-b-2 ${
                           isHighlight
-                            ? "text-brand-accent"
-                            : "text-foreground hover:text-brand-accent"
+                            ? "text-[#E8621A] border-[#E8621A]"
+                            : "text-foreground border-transparent hover:text-[#E8621A]"
                         }`}
                       >
                         {item.name}
@@ -236,7 +287,11 @@ export default function Navbar() {
                                       setActiveDropdown(null);
                                     }
                                   }}
-                                  className="block px-4 py-2.5 text-xs font-bold tracking-[0.1em] uppercase text-foreground hover:text-brand-accent transition-colors hover:bg-zinc-50 outline-none focus-visible:bg-zinc-50 focus-visible:text-brand-accent"
+                                  className={`block px-4 py-2.5 text-xs font-bold tracking-[0.1em] uppercase transition-colors hover:bg-zinc-50 outline-none focus-visible:bg-zinc-50 ${
+                                    sub.path === `#${activeSection}`
+                                      ? "text-[#E8621A]"
+                                      : "text-foreground hover:text-[#E8621A]"
+                                  }`}
                                 >
                                   {sub.name}
                                 </a>
@@ -250,10 +305,10 @@ export default function Navbar() {
                     <a
                       href={item.path}
                       onClick={(e) => handleNavClick(e, item.path)}
-                      className={`block text-xs font-bold tracking-[0.12em] uppercase transition-colors py-3.5 outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 rounded-sm ${
+                      className={`block text-xs font-bold tracking-[0.12em] uppercase transition-colors duration-200 ease py-3.5 outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 rounded-sm border-b-2 ${
                         isHighlight
-                          ? "text-brand-accent"
-                          : "text-foreground hover:text-brand-accent"
+                          ? "text-[#E8621A] border-[#E8621A]"
+                          : "text-foreground border-transparent hover:text-[#E8621A]"
                       }`}
                     >
                       {item.name}
@@ -286,10 +341,10 @@ export default function Navbar() {
             </a>
             <button
                onClick={() => setIsOpen(true)}
-               className="p-3 rounded-xl transition-colors cursor-pointer text-zinc-900 hover:text-brand-accent outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 focus-visible:ring-offset-2"
+               className="p-3 rounded-xl transition-colors cursor-pointer text-zinc-900 hover:text-[#E8621A] outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 focus-visible:ring-offset-2 group"
                aria-label="Open navigation menu"
              >
-               <Menu className="h-6.5 w-6.5 drop-shadow-md" />
+               <HamburgerIcon isOpen={isOpen} />
              </button>
           </div>
         </div>
@@ -315,10 +370,10 @@ export default function Navbar() {
 
                  <button
                    onClick={() => setIsOpen(false)}
-                   className="p-3 rounded-xl text-zinc-900 hover:text-brand-accent transition-colors cursor-pointer"
+                   className="p-3 rounded-xl text-zinc-900 hover:text-[#E8621A] transition-colors cursor-pointer group"
                    aria-label="Close navigation menu"
                  >
-                   <X className="h-6.5 w-6.5" />
+                   <HamburgerIcon isOpen={isOpen} />
                  </button>
               </div>
 
@@ -339,9 +394,13 @@ export default function Navbar() {
                         <>
                           <button
                             onClick={() => toggleSubmenu(item.name)}
-                            className="flex items-center justify-between w-full py-2.5 text-left text-lg font-bold tracking-wide text-zinc-900 uppercase border-b border-zinc-200 cursor-pointer"
+                            className={`flex items-center justify-between w-full py-2.5 text-left text-lg font-bold tracking-wide uppercase transition-[color,border-color] duration-200 ease cursor-pointer ${
+                              isHighlight
+                                ? "text-[#E8621A] border-b-2 border-[#E8621A]"
+                                : "text-zinc-900 border-b border-zinc-200"
+                            }`}
                           >
-                            <span className={isHighlight ? "text-brand-accent font-bold" : ""}>
+                            <span>
                               {item.name}
                             </span>
                             <ChevronDown
@@ -362,7 +421,11 @@ export default function Navbar() {
                                       key={sub.name}
                                       href={sub.path}
                                       onClick={(e) => handleNavClick(e, sub.path)}
-                                      className="block text-base font-semibold tracking-wide py-1.5 text-foreground hover:text-brand-accent transition-colors"
+                                      className={`block text-base font-semibold tracking-wide py-1.5 transition-colors ${
+                                        sub.path === `#${activeSection}`
+                                          ? "text-[#E8621A]"
+                                          : "text-foreground hover:text-[#E8621A]"
+                                      }`}
                                     >
                                       {sub.name}
                                     </a>
@@ -375,10 +438,10 @@ export default function Navbar() {
                         <a
                           href={item.path}
                           onClick={(e) => handleNavClick(e, item.path)}
-                          className={`py-2.5 text-lg font-bold tracking-wide border-b border-zinc-200 uppercase transition-colors ${
+                          className={`py-2.5 text-lg font-bold tracking-wide uppercase transition-[color,border-color] duration-200 ease ${
                             isHighlight
-                              ? "text-brand-accent font-bold"
-                              : "text-zinc-900 hover:text-brand-accent"
+                              ? "text-[#E8621A] border-b-2 border-[#E8621A]"
+                              : "text-zinc-900 border-b border-zinc-200"
                           }`}
                         >
                           {item.name}
