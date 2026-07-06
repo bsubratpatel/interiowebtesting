@@ -76,10 +76,10 @@ export default function AboutSection() {
           </h2>
           <div className="w-16 h-1 bg-brand-accent mx-auto"></div>
           <p className="text-2xl sm:text-3xl font-light text-zinc-700 leading-relaxed max-w-4xl mx-auto">
-            "To define the contemporary standards of Indian home spaces, making world-class architectural precision accessible through advanced manufacturing."
+            Our mission is to design beautiful wooden interiors that make every home more comfortable, functional, and enjoyable to live in. We focus on quality materials, thoughtful design, and careful workmanship to create spaces that families love for years.
           </p>
           <p className="text-base sm:text-lg text-zinc-500 font-light max-w-2xl mx-auto leading-relaxed">
-            We envision a future where every home functions as a sanctuary of design excellence, using only zero-emission materials, modular engineering, and timeless aesthetics.
+            We want every home to feel warm, elegant, and welcoming. Our vision is to help families create interiors that match their lifestyle, reflect their personality, and bring happiness every time they step inside.
           </p>
         </div>
       </section>
