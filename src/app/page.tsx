@@ -87,7 +87,7 @@ export default function Home() {
           <div className="text-center max-w-4xl mx-auto">
             <span className="text-xs font-bold text-brand-accent uppercase tracking-widest block mb-8">Our Philosophy</span>
             <blockquote className="text-3xl sm:text-5xl font-light text-foreground leading-[1.2] tracking-tight">
-              "Luxury is not about excess, but the elimination of detail. We curate spaces with absolute precision."
+              Your home should be your happiest place. At Interiocore Design Studio, we believe a home is more than just a beautiful space—it's where you find peace, positivity, and comfort. Every interior we create is thoughtfully designed with timeless elegance, premium craftsmanship, and attention to every detail, bringing warmth, happiness, and luxury into your everyday life. Because when you step into your home, it should feel like the most beautiful place to be.
             </blockquote>
           </div>
         </div>
