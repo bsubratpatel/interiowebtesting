@@ -58,7 +58,12 @@ const galleryCategories = [
     title: "Luxury Kitchens",
     tabLabel: "Kitchens",
     subtitle: "Precision Culinary Hubs",
-    desc: "German engineered handleless designs, quartz islands, and high-performance layouts built for clean minimalism.",
+    desc: (
+      <>
+        <span className="block font-medium text-foreground mb-1">Elegant. Functional. Timeless.</span>
+        Custom-designed kitchens with premium finishes, seamless storage, and precision craftsmanship for modern living.
+      </>
+    ),
   },
   {
     id: "gallery-tv",
