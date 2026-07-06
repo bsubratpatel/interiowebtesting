@@ -6,8 +6,10 @@ import { getGalleryData, getMaterialsData } from "@/lib/dataFetcher";
 
 // Dynamically import heavy below-the-fold components to reduce initial JS payload
 const AboutSection = dynamic(() => import("@/components/AboutSection"), { ssr: true });
+const WhyChooseUsSection = dynamic(() => import("@/components/WhyChooseUsSection"), { ssr: true });
 const ServicesSection = dynamic(() => import("@/components/ServicesSection"), { ssr: true });
 const GallerySection = dynamic(() => import("@/components/GallerySection"), { ssr: true });
+const CTASection = dynamic(() => import("@/components/CTASection"), { ssr: true });
 const ProcessSection = dynamic(() => import("@/components/ProcessSection"), { ssr: true });
 const MaterialsSection = dynamic(() => import("@/components/MaterialsSection"), { ssr: true });
 const TestimonialsSection = dynamic(() => import("@/components/TestimonialsSection"), { ssr: true });
@@ -81,31 +83,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Philosophy Block (Image-led) */}
-      <section className="bg-background py-24 sm:py-32 relative">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center max-w-4xl mx-auto">
-            <span className="text-xs font-bold text-brand-accent uppercase tracking-widest block mb-8">Our Philosophy</span>
-            <div className="space-y-8">
-              <h3 className="text-3xl sm:text-5xl font-light text-foreground leading-[1.2] tracking-tight">
-                Your home should be your happiest place.
-              </h3>
-              <p className="text-lg sm:text-xl font-light text-zinc-600 leading-[1.8] max-w-[65ch] mx-auto">
-                At Interiocore Design Studio, we create premium wooden interiors that bring comfort, beauty, and functionality together. Every space is thoughtfully designed with quality materials and careful craftsmanship, so your home feels warm, elegant, and welcoming every day.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 2. Why Choose Us Section */}
+      <WhyChooseUsSection />
 
-      {/* 3. About Section */}
-      <AboutSection />
-
-      {/* 4. Services Section */}
+      {/* 3. Services Section */}
       <ServicesSection />
 
-      {/* 5. Design Gallery Section */}
+      {/* 4. Design Gallery Section */}
       <GallerySection initialData={galleryData} />
+
+      {/* 5. CTA Section */}
+      <CTASection />
 
       {/* 6. Process Section */}
       <ProcessSection />
@@ -116,7 +104,10 @@ export default function Home() {
       {/* 8. Testimonials Section */}
       <TestimonialsSection />
 
-      {/* 9. Contact & Map Section */}
+      {/* 9. About Section */}
+      <AboutSection />
+
+      {/* 10. Contact & Map Section */}
       <ContactSection />
     </div>
   );
