@@ -66,7 +66,7 @@ export default function ServicesSection() {
       <section className="pt-24 max-w-[1600px] mx-auto px-6 lg:px-12">
         <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-4 block">02. Expertise</span>
         <h2 className="text-5xl sm:text-7xl font-extrabold uppercase tracking-tighter text-foreground leading-[1]">
-          Our Disciplines
+          Our Services
         </h2>
       </section>
 
