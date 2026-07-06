@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { ArrowRight, Shield, Award, Cpu, Sparkles } from "lucide-react";
+import { ArrowRight, Factory, Gem, PencilRuler, Hammer, Handshake, ShieldCheck } from "lucide-react";
 
 export default function AboutSection() {
   return (
@@ -94,37 +94,53 @@ export default function AboutSection() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-            {/* Standard 1 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {/* Feature 1 */}
             <div className="space-y-4 border border-zinc-200/60 p-8 bg-white shadow-sm">
-              <Cpu className="w-8 h-8 text-brand-accent" />
-              <h3 className="text-xl font-bold uppercase tracking-tight text-foreground">German Precision</h3>
+              <Factory className="w-8 h-8 text-brand-accent" />
+              <h3 className="text-xl font-bold uppercase tracking-tight text-foreground">Precision Manufacturing</h3>
               <p className="text-zinc-500 text-sm font-light leading-relaxed">
-                Utilizing state-of-the-art European CNC machinery for perfect zero-error millimeter cuts on every cabinet panel.
+                40,000 sq. ft. advanced manufacturing facility with precision craftsmanship.
               </p>
             </div>
-            {/* Standard 2 */}
+            {/* Feature 2 */}
             <div className="space-y-4 border border-zinc-200/60 p-8 bg-white shadow-sm">
-              <Shield className="w-8 h-8 text-brand-accent" />
-              <h3 className="text-xl font-bold uppercase tracking-tight text-foreground">10-Year Warranty</h3>
+              <Gem className="w-8 h-8 text-brand-accent" />
+              <h3 className="text-xl font-bold uppercase tracking-tight text-foreground">Premium Materials</h3>
               <p className="text-zinc-500 text-sm font-light leading-relaxed">
-                Complete structural warranty on marine-grade BWR Plywood that ensures long-term water and moisture resistance.
+                We use HDHMR, BWP plywood, premium laminates, acrylic, veneer, and PU finishes for lasting quality.
               </p>
             </div>
-            {/* Standard 3 */}
+            {/* Feature 3 */}
             <div className="space-y-4 border border-zinc-200/60 p-8 bg-white shadow-sm">
-              <Sparkles className="w-8 h-8 text-brand-accent" />
-              <h3 className="text-xl font-bold uppercase tracking-tight text-foreground">Italian Styling</h3>
+              <PencilRuler className="w-8 h-8 text-brand-accent" />
+              <h3 className="text-xl font-bold uppercase tracking-tight text-foreground">Bespoke Designs</h3>
               <p className="text-zinc-500 text-sm font-light leading-relaxed">
-                Minimalist handleless configurations, profile glass doors, and hidden joints that give home spaces a premium look.
+                Every interior is designed to match your lifestyle, needs, and the way you live.
               </p>
             </div>
-            {/* Standard 4 */}
+            {/* Feature 4 */}
             <div className="space-y-4 border border-zinc-200/60 p-8 bg-white shadow-sm">
-              <Award className="w-8 h-8 text-brand-accent" />
-              <h3 className="text-xl font-bold uppercase tracking-tight text-foreground">Factory Delivery</h3>
+              <Hammer className="w-8 h-8 text-brand-accent" />
+              <h3 className="text-xl font-bold uppercase tracking-tight text-foreground">Expert Craftsmanship</h3>
               <p className="text-zinc-500 text-sm font-light leading-relaxed">
-                Guaranteed modular delivery and flawless, dust-free installation in just 45 days with structural quality checks.
+                Our skilled team pays attention to every detail to deliver a perfect finish.
+              </p>
+            </div>
+            {/* Feature 5 */}
+            <div className="space-y-4 border border-zinc-200/60 p-8 bg-white shadow-sm">
+              <Handshake className="w-8 h-8 text-brand-accent" />
+              <h3 className="text-xl font-bold uppercase tracking-tight text-foreground">End-to-End Service</h3>
+              <p className="text-zinc-500 text-sm font-light leading-relaxed">
+                From design and manufacturing to delivery and installation, everything is managed by us.
+              </p>
+            </div>
+            {/* Feature 6 */}
+            <div className="space-y-4 border border-zinc-200/60 p-8 bg-white shadow-sm">
+              <ShieldCheck className="w-8 h-8 text-brand-accent" />
+              <h3 className="text-xl font-bold uppercase tracking-tight text-foreground">Quality Assurance</h3>
+              <p className="text-zinc-500 text-sm font-light leading-relaxed">
+                Every product is carefully checked before delivery to ensure the highest quality.
               </p>
             </div>
           </div>
