@@ -51,7 +51,7 @@ export default function AboutSection() {
 
               <div className="space-y-6 text-zinc-600 font-light text-lg">
                 <p>
-                  Founded in May 2026, Interiocore Design Studio was established with a clear vision: to craft timeless luxury interiors that blend elegant design, exceptional craftsmanship, and uncompromising quality. Built on a passion for creating refined living spaces, the studio has quickly earned recognition for delivering premium wooden interiors tailored to modern lifestyles.
+                  Founded in May 2026, Interiocore Design Studio was created with a simple vision to design beautiful, premium wooden interiors for modern&nbsp;homes. We combine elegant design, quality materials, and skilled craftsmanship to create spaces that are stylish, practical, and built to&nbsp;last.
                 </p>
               </div>
 
