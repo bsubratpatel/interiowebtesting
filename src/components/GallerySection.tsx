@@ -70,14 +70,14 @@ const galleryCategories = [
     title: "TV Units",
     tabLabel: "TV Units",
     subtitle: "Aesthetic Entertainment Walls",
-    desc: "Seamless floating panels featuring wood veneers, charcoal slates, and integrated cable routing.",
+    desc: "Bespoke entertainment units crafted with premium materials, ambient lighting, and smart storage to complement contemporary interiors.",
   },
   {
     id: "gallery-wardrobes",
     title: "Premium Wardrobes",
     tabLabel: "Wardrobes",
     subtitle: "Bespoke Storage Architectures",
-    desc: "Lacquered sliding glass configurations and matte finishes designed for high-efficiency dressing layout.",
+    desc: "Crafted with premium materials, soft-close hardware, and thoughtfully designed interiors for a refined everyday experience.",
   },
   {
     id: "gallery-bedrooms",
@@ -91,7 +91,7 @@ const galleryCategories = [
     title: "Sleek Living Rooms",
     tabLabel: "Living Rooms",
     subtitle: "Social Statement Areas",
-    desc: "Open plan layouts, custom divider units, and contemporary panel details creating visual flow.",
+    desc: "Bespoke living room interiors featuring refined materials, custom furnishings, and sophisticated details that create a warm, inviting atmosphere.",
   },
 ];
 
