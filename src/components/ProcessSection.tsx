@@ -19,7 +19,7 @@ export default function ProcessSection() {
         <div className="mb-24">
           <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-4 block">Method</span>
           <h2 className="text-4xl sm:text-6xl font-extrabold uppercase tracking-tighter text-foreground leading-[1]">
-            Execution <br /> Blueprint
+            Our Process
           </h2>
         </div>
 
