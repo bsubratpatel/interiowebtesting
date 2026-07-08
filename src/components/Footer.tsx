@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
         
          {/* Brand Information */}
-        <div className="space-y-6">
+        <div className="space-y-6 md:-mt-5 lg:-mt-6">
           <a href="#home">
             <Image
               src="/images/logo/logo.svg"
