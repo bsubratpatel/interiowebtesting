@@ -8,9 +8,14 @@ export default function ServicesSection() {
       id: "services-kitchen",
       title: "Modular Kitchens",
       subtitle: "The Heart of the Home",
-      desc: "Premium stainless steel and BWR plywood kitchens combining high-end German aesthetics with supreme moisture resistance and hygiene.",
+      desc: (
+        <>
+          <span className="block font-medium text-foreground mb-2">Elegant. Functional. Timeless.</span>
+          Custom-designed kitchens with premium finishes, seamless storage, and precision craftsmanship for modern living.
+        </>
+      ),
       image: "/images/kitchen renders/kitchen (3).webp",
-      price: "Starting ₹2.5 lakh onwards",
+      price: "Starting ₹1.5 lakh onwards",
       whatsappUrl: "https://wa.me/919776991699?text=Hi%2C%20I%27m%20interested%20in%20a%20Modular%20Kitchen%20design.%20Can%20we%20discuss%3F",
     },
     {
