@@ -114,3 +114,7 @@
     scroll-behavior: smooth;
   }
 }
+
+.content-visibility-auto {
+  content-visibility: auto;
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { X, ChevronDown, ChevronUp } from "lucide-react";
 
@@ -122,7 +122,7 @@ export default function GallerySection({ initialData }: { initialData?: Record<s
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
-  const toggleViewCount = (categoryId: string, totalCount: number) => {
+  const toggleViewCount = useCallback((categoryId: string, totalCount: number) => {
     const isShowingAll = (visibleCounts[categoryId] || 6) >= totalCount;
     if (isShowingAll) {
       setVisibleCounts(prev => ({
@@ -139,12 +139,12 @@ export default function GallerySection({ initialData }: { initialData?: Record<s
         setLoadingCategories(prev => ({ ...prev, [categoryId]: false }));
       }, 800);
     }
-  };
+  }, [visibleCounts]);
 
-  const handleTabClick = (tabId: string) => {
+  const handleTabClick = useCallback((tabId: string) => {
     setActiveTab(tabId);
     window.history.pushState(null, "", `#${tabId}`);
-  };
+  }, []);
 
   const getCategoryName = (id: string) => {
     switch (id) {
@@ -157,7 +157,7 @@ export default function GallerySection({ initialData }: { initialData?: Record<s
     }
   };
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setLightboxState((prev) => {
       if (!prev) return null;
       const { categoryId, index } = prev;
@@ -168,9 +168,9 @@ export default function GallerySection({ initialData }: { initialData?: Record<s
         index: (index + 1) % items.length,
       };
     });
-  };
+  }, [galleryData]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setLightboxState((prev) => {
       if (!prev) return null;
       const { categoryId, index } = prev;
@@ -181,7 +181,7 @@ export default function GallerySection({ initialData }: { initialData?: Record<s
         index: (index - 1 + items.length) % items.length,
       };
     });
-  };
+  }, [galleryData]);
 
   // Keyboard navigation inside lightbox
   useEffect(() => {

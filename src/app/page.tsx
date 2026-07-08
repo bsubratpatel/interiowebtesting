@@ -1,19 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import { Phone, MessageCircle } from "lucide-react";
-import dynamic from "next/dynamic";
 import { getGalleryData, getMaterialsData } from "@/lib/dataFetcher";
 
-// Dynamically import heavy below-the-fold components to reduce initial JS payload
-const AboutSection = dynamic(() => import("@/components/AboutSection"), { ssr: true });
-const WhyChooseUsSection = dynamic(() => import("@/components/WhyChooseUsSection"), { ssr: true });
-const ServicesSection = dynamic(() => import("@/components/ServicesSection"), { ssr: true });
-const GallerySection = dynamic(() => import("@/components/GallerySection"), { ssr: true });
-const CTASection = dynamic(() => import("@/components/CTASection"), { ssr: true });
-const ProcessSection = dynamic(() => import("@/components/ProcessSection"), { ssr: true });
-const MaterialsSection = dynamic(() => import("@/components/MaterialsSection"), { ssr: true });
-const TestimonialsSection = dynamic(() => import("@/components/TestimonialsSection"), { ssr: true });
-const ContactSection = dynamic(() => import("@/components/ContactSection"), { ssr: true });
+import WhyChooseUsSection from "@/components/WhyChooseUsSection";
+import LazyComponents from "@/components/LazyComponents";
 
 export default function Home() {
   // Pre-load data on the server side to eliminate client-side fetch calls on mount
@@ -80,29 +71,8 @@ export default function Home() {
       {/* 2. Why Choose Us Section */}
       <WhyChooseUsSection />
 
-      {/* 3. Services Section */}
-      <ServicesSection />
-
-      {/* 4. Design Gallery Section */}
-      <GallerySection initialData={galleryData} />
-
-      {/* 5. CTA Section */}
-      <CTASection />
-
-      {/* 6. Process Section */}
-      <ProcessSection />
-
-      {/* 7. Materials Section */}
-      <MaterialsSection initialData={materialsData} />
-
-      {/* 8. Testimonials Section */}
-      <TestimonialsSection />
-
-      {/* 9. About Section */}
-      <AboutSection />
-
-      {/* 10. Contact & Map Section */}
-      <ContactSection />
+      {/* Below-the-fold dynamic client-side sections */}
+      <LazyComponents galleryData={galleryData} materialsData={materialsData} />
     </div>
   );
 }
