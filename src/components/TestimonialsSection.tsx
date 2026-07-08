@@ -3,22 +3,22 @@ import React from "react";
 export default function TestimonialsSection() {
   const reviews = [
     {
-      name: "Sanjay Kapoor",
-      location: "Gurugram",
+      name: "Rakesh Agrawal",
+      location: "Jharsuguda",
       project: "Modular Kitchen",
-      text: "The precision edge-banding and laser-cut cabinets are flawless. We chose the SS 304 base cabinet configuration for our wet island, and it is incredibly easy to clean.",
+      text: "The kitchen turned out exactly how we wanted. The quality, finishing, and overall experience were excellent. We are very happy with our new home.",
     },
     {
-      name: "Meera Oberoi",
-      location: "South Delhi",
-      project: "Walk-in Wardrobe",
-      text: "Our walk-in wardrobe is stunning. The rose gold profile glass doors, velvet drawer lining, and built-in sensor lighting create a high-end luxury feel.",
+      name: "Priyanka Mishra",
+      location: "Brajarajnagar",
+      project: "Wardrobe & TV Unit",
+      text: "From design to installation, everything was smooth. Our wardrobe and TV unit look beautiful, and the team was easy to work with.",
     },
     {
-      name: "Dr. Aditya Sharma",
-      location: "Noida",
-      project: "Floating Consoles",
-      text: "We wanted a completely clean, minimalist entertainment wall with zero visible wires. Interiocore's modular console layout resolved our routing details cleanly.",
+      name: "Ankit Verma",
+      location: "Bengaluru",
+      project: "Interior Design Service",
+      text: "We chose Interiocore for interior design only. The designs were clear, practical, and easy for our contractor to execute. Highly recommended.",
     },
   ];
 
