@@ -42,12 +42,6 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white flex flex-col items-center pt-28 pb-10 md:pt-0 md:pb-0">
           <div>
-            <span className="text-[10px] sm:text-xs font-bold tracking-[0.3em] uppercase text-brand-accent mb-4 sm:mb-6 block">
-              PREMIUM WOODEN INTERIORS • JHARSUGUDA
-            </span>
-          </div>
-
-          <div>
             <h1 className="text-4xl sm:text-7xl md:text-8xl lg:text-[7rem] font-extrabold tracking-tighter leading-[0.95] uppercase drop-shadow-2xl mb-6 sm:mb-8">
               Standards of <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">Perfection</span>
