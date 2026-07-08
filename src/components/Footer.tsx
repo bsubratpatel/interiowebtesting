@@ -84,13 +84,8 @@ export default function Footer() {
           <h3 className="text-foreground text-xs font-bold uppercase tracking-widest mb-6">Explore</h3>
           <ul className="space-y-3 text-sm font-light">
             <li>
-              <a href="#about-story" className="hover:text-brand-accent transition-colors">
-                About Our Story
-              </a>
-            </li>
-            <li>
-              <a href="#about-mission" className="hover:text-brand-accent transition-colors">
-                Mission & Vision
+              <a href="#about" className="hover:text-brand-accent transition-colors">
+                About Interiocore
               </a>
             </li>
             <li>

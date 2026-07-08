@@ -10,10 +10,9 @@ const navItems = [
   { name: "Home", path: "#home" },
   {
     name: "About Us",
-    path: "#about-story",
+    path: "#about",
     submenu: [
-      { name: "Our Story", path: "#about-story" },
-      { name: "Mission & Vision", path: "#about-mission" },
+      { name: "About Interiocore", path: "#about" },
       { name: "Why Choose Us", path: "#about-why" },
     ],
   },
@@ -140,7 +139,7 @@ export default function Navbar() {
 
     const sections = [
       "home", 
-      "about-story", "about-mission", "about-why",
+      "about", "about-why",
       "services-kitchen", "services-tv", "services-wardrobe", "services-bedroom", "services-living", "services-full-home",
       "gallery-kitchens", "gallery-tv", "gallery-wardrobes", "gallery-bedrooms", "gallery-living",
       "process", "materials", "testimonials", "contact"
