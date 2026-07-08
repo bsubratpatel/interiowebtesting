@@ -266,7 +266,7 @@ export default function GallerySection({ initialData }: { initialData?: Record<s
 
       {/* Global Section Header */}
       <section className="pt-24 max-w-[1600px] mx-auto px-6 lg:px-12">
-        <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-4 block">03. Showcase</span>
+        <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-4 block">Showcase</span>
         <h2 className="text-5xl sm:text-7xl font-extrabold uppercase tracking-tighter text-foreground leading-[1] mb-8">
           Curated Spaces
         </h2>
@@ -312,7 +312,7 @@ export default function GallerySection({ initialData }: { initialData?: Record<s
               {/* Header block for each category */}
               <div className="mb-12">
                 <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-3 block">
-                  03.{galleryCategories.findIndex(cat => cat.id === category.id) + 1} Gallery Category
+                  Gallery Category
                 </span>
                 <h3 className="text-4xl sm:text-5xl font-extrabold uppercase tracking-tighter text-foreground leading-[1] mb-4">
                   {category.title}

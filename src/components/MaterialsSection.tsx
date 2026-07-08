@@ -105,7 +105,7 @@ export default function MaterialsSection({ initialData }: { initialData?: Record
       <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <div className="mb-20">
-          <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-4 block">05. Element Library</span>
+          <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-4 block">Element Library</span>
           <h2 className="text-5xl sm:text-7xl font-extrabold uppercase tracking-tighter text-foreground leading-[1]">
             Material Palette
           </h2>

@@ -8,7 +8,7 @@ export default function ContactSection() {
         
         {/* Header Block */}
         <div className="mb-24 md:mb-32">
-          <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-4 block">07. Connect</span>
+          <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-4 block">Connect</span>
           <h2 className="text-5xl sm:text-7xl font-extrabold uppercase tracking-tighter text-foreground leading-[1]">
             Start Your <br/> Project
           </h2>

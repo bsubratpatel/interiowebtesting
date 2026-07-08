@@ -28,7 +28,7 @@ export default function TestimonialsSection() {
         
         {/* Header Block */}
         <div className="mb-24">
-          <span className="text-xs font-bold text-[#E8621A] uppercase tracking-[0.2em] mb-4 block">06. Stories</span>
+          <span className="text-xs font-bold text-[#E8621A] uppercase tracking-[0.2em] mb-4 block">Stories</span>
           <h2 className="text-4xl sm:text-6xl font-extrabold uppercase tracking-tighter text-white leading-[1]">
             Client Experiences
           </h2>

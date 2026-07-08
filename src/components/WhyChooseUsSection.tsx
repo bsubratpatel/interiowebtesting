@@ -6,7 +6,7 @@ export default function WhyChooseUsSection() {
     <section id="about-why" className="py-16 sm:py-32 bg-zinc-50/60 border-b border-zinc-200/50">
       <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
         <div className="mb-16 text-center sm:text-left">
-          <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-4 block">03. Standards</span>
+          <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-4 block">Standards</span>
           <h2 className="text-4xl sm:text-6xl font-extrabold uppercase tracking-tighter text-foreground leading-[1.1]">
             Why Choose Interiocore
           </h2>
