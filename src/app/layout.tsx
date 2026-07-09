@@ -6,6 +6,7 @@ import LazySection from "@/components/LazySection";
 import Footer from "@/components/Footer";
 import FloatingCTAGroup from "@/components/FloatingCTAGroup";
 import BackToTopButton from "@/components/BackToTopButton";
+import Script from "next/script";
 
 const poppins = Poppins({
   weight: ["300", "400", "700", "800"],
@@ -133,6 +134,19 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-G2JDNJW92K"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-G2JDNJW92K');
+          `}
+        </Script>
       </head>
       <body 
         className={`${poppins.className} min-h-full flex flex-col bg-background text-foreground font-sans`}
