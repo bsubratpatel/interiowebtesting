@@ -240,29 +240,6 @@ export default function GallerySection({ initialData }: { initialData?: Record<s
 
   return (
     <div className="bg-zinc-50/60">
-      <style>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes pulse {
-          0%, 100% { opacity: 0.5; }
-          50% { opacity: 1; }
-        }
-        @keyframes fadeInReal {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        .animate-fade-in {
-          animation: fadeIn 200ms ease forwards;
-        }
-        .animate-pulse-custom {
-          animation: pulse 1.2s ease-in-out infinite;
-        }
-        .animate-fade-in-150 {
-          animation: fadeInReal 150ms ease forwards;
-        }
-      `}</style>
 
       {/* Global Section Header */}
       <section className="pt-24 max-w-[1600px] mx-auto px-6 lg:px-12">

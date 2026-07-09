@@ -32,19 +32,14 @@ export default function FloatingCTAGroup() {
         const currentScrollY = window.scrollY;
         
         // Auto-hide when scrolling down past 80px, show when scrolling up
-        if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
-          setVisible(false);
-        } else {
-          setVisible(true);
-        }
-        lastScrollY.current = currentScrollY;
+        const isScrollingDown = currentScrollY > lastScrollY.current && currentScrollY > 80;
+        const nextVisible = !isScrollingDown;
+        const nextShowOnMobile = currentScrollY > 260;
 
-        // Show on mobile only after scrolling past the hero (260px)
-        if (currentScrollY > 260) {
-          setShowOnMobile(true);
-        } else {
-          setShowOnMobile(false);
-        }
+        setVisible((prev) => (prev !== nextVisible ? nextVisible : prev));
+        setShowOnMobile((prev) => (prev !== nextShowOnMobile ? nextShowOnMobile : prev));
+        
+        lastScrollY.current = currentScrollY;
       });
     };
 
@@ -68,12 +63,14 @@ export default function FloatingCTAGroup() {
     window.open("https://www.instagram.com/interiocore/", "_blank");
   };
 
-  return visible ? (
+  return (
     <div
-      className={`fixed left-6 bottom-[calc(32px+env(safe-area-inset-bottom))] z-40 flex flex-col gap-4 transition-all duration-300 ${
-        showOnMobile
-          ? "opacity-100 translate-x-0 pointer-events-auto"
-          : "opacity-0 -translate-x-12 pointer-events-none md:opacity-100 md:translate-x-0 md:pointer-events-auto"
+      className={`fixed left-6 bottom-[calc(32px+env(safe-area-inset-bottom))] z-40 flex flex-col gap-4 transition-[opacity,transform] duration-300 ${
+        visible
+          ? showOnMobile
+            ? "opacity-100 translate-x-0 pointer-events-auto"
+            : "opacity-0 -translate-x-12 pointer-events-none md:opacity-100 md:translate-x-0 md:pointer-events-auto"
+          : "opacity-0 -translate-x-12 pointer-events-none"
       }`}
     >
       {/* Call Button */}
@@ -103,5 +100,5 @@ export default function FloatingCTAGroup() {
         <InstagramIcon className="h-5 w-5 text-pink-600 shrink-0 group-hover:rotate-6 transition-transform duration-300" />
       </button>
     </div>
-  ) : null;
+  );
 }

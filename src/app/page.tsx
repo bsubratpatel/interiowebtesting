@@ -3,8 +3,15 @@ import Image from "next/image";
 import { Phone, MessageCircle } from "lucide-react";
 import { getGalleryData, getMaterialsData } from "@/lib/dataFetcher";
 
+import LazySection from "@/components/LazySection";
 import WhyChooseUsSection from "@/components/WhyChooseUsSection";
-import LazyComponents from "@/components/LazyComponents";
+import ServicesSection from "@/components/ServicesSection";
+import CTASection from "@/components/CTASection";
+import ProcessSection from "@/components/ProcessSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import AboutSection from "@/components/AboutSection";
+import ContactSection from "@/components/ContactSection";
+import { LazyGallery, LazyMaterials } from "@/components/LazyClientComponents";
 
 export default function Home() {
   // Pre-load data on the server side to eliminate client-side fetch calls on mount
@@ -68,11 +75,46 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Why Choose Us Section */}
-      <WhyChooseUsSection />
+      {/* 2. Why Choose Us Section (Below fold) */}
+      <LazySection height="450px">
+        <WhyChooseUsSection />
+      </LazySection>
 
-      {/* Below-the-fold dynamic client-side sections */}
-      <LazyComponents galleryData={galleryData} materialsData={materialsData} />
+      {/* 3. Our Services */}
+      <LazySection height="600px">
+        <ServicesSection />
+      </LazySection>
+
+      {/* 4. Curated Spaces (Gallery) */}
+      <LazyGallery initialData={galleryData} />
+
+      {/* 5. New CTA Section */}
+      <LazySection height="300px">
+        <CTASection />
+      </LazySection>
+
+      {/* 6. Our Process */}
+      <LazySection height="600px">
+        <ProcessSection />
+      </LazySection>
+
+      {/* 7. Material Palette */}
+      <LazyMaterials initialData={materialsData} />
+
+      {/* 8. Client Experiences */}
+      <LazySection height="400px">
+        <TestimonialsSection />
+      </LazySection>
+
+      {/* 9. About Interiocore */}
+      <LazySection height="700px">
+        <AboutSection />
+      </LazySection>
+
+      {/* 10. Start Your Project (Contact Form) */}
+      <LazySection height="600px">
+        <ContactSection />
+      </LazySection>
     </div>
   );
 }
