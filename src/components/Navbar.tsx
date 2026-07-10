@@ -91,6 +91,21 @@ const HamburgerIcon = ({ isOpen }: { isOpen: boolean }) => (
   </svg>
 );
 
+const scrollToId = (id: string) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  } else {
+    // Wait a tick for lazy sections/tabs to load and render
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  }
+};
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -172,6 +187,56 @@ export default function Navbar() {
     };
   }, []);
 
+  // Global click interceptor for smooth scrolling on all hash links (e.g., Footer, CTAs)
+  useEffect(() => {
+    const handleGlobalClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest("a");
+      if (!anchor) return;
+
+      const href = anchor.getAttribute("href");
+      if (href && href.startsWith("#") && href !== "#") {
+        e.preventDefault();
+        const targetId = href.replace("#", "");
+        
+        // Remove overflow style on body to ensure scrolling works (e.g., mobile drawer open)
+        document.body.style.overflow = "";
+        
+        // Push hash state to URL
+        window.history.pushState(null, "", href);
+        // Dispatch hashchange event so that LazySection/GallerySection sync immediately
+        window.dispatchEvent(new Event("hashchange"));
+        
+        scrollToId(targetId);
+      }
+    };
+
+    document.addEventListener("click", handleGlobalClick, { capture: true });
+    return () => {
+      document.removeEventListener("click", handleGlobalClick, { capture: true });
+    };
+  }, []);
+
+  // Handle initial page load with a hash in the URL after hydration
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash) {
+      // Small timeout to allow Next.js hydration and lazy components to initial-render
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        } else {
+          // If it was a lazy component that needed to mount, wait a little longer
+          setTimeout(() => {
+            const el = document.getElementById(hash);
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+          }, 250);
+        }
+      }, 600);
+    }
+  }, []);
+
   const toggleSubmenu = (name: string) => {
     setExpandedMenus((prev) => ({
       ...prev,
@@ -192,15 +257,20 @@ export default function Navbar() {
     }
     
     targetId = targetId.replace("#", "");
-    const element = document.getElementById(targetId);
     
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      
-      if (tab) {
-        window.dispatchEvent(new CustomEvent("changeGalleryTab", { detail: tab }));
-      }
+    // Explicitly unlock overflow on body to allow scrolling on mobile drawer click
+    document.body.style.overflow = "";
+    
+    // Update hash in URL
+    window.history.pushState(null, "", path);
+    window.dispatchEvent(new Event("hashchange"));
+    
+    scrollToId(targetId);
+    
+    if (tab) {
+      window.dispatchEvent(new CustomEvent("changeGalleryTab", { detail: tab }));
     }
+    
     setIsOpen(false);
     setActiveDropdown(null);
   };

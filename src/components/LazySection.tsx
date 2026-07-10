@@ -6,9 +6,10 @@ interface LazySectionProps {
   children: React.ReactNode;
   height?: string;
   className?: string;
+  ids?: string[];
 }
 
-export default function LazySection({ children, height = "400px", className = "" }: LazySectionProps) {
+export default function LazySection({ children, height = "400px", className = "", ids }: LazySectionProps) {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -35,8 +36,22 @@ export default function LazySection({ children, height = "400px", className = ""
       observer.observe(ref.current);
     }
 
-    return () => observer.disconnect();
-  }, []);
+    // Immediately render children if URL hash matches any target ID within this section
+    const checkHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash && ids?.includes(hash)) {
+        setIsIntersecting(true);
+      }
+    };
+
+    checkHash();
+    window.addEventListener("hashchange", checkHash);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("hashchange", checkHash);
+    };
+  }, [ids]);
 
   return (
     <div

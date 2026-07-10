@@ -115,10 +115,24 @@ export default function GallerySection({ initialData }: { initialData?: Record<s
       const hash = window.location.hash.replace("#", "");
       if (hash && galleryCategories.some(cat => cat.id === hash)) {
         setActiveTab(hash);
+        
+        // Wait a short tick for React to render the newly mounted section
+        setTimeout(() => {
+          const el = document.getElementById(hash);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 100);
       }
     };
     window.addEventListener("hashchange", handleHashChange);
-    handleHashChange(); // check on mount
+    
+    // On mount, sync tab state without scrolling (handled by Navbar's page-load scroll)
+    const initialHash = window.location.hash.replace("#", "");
+    if (initialHash && galleryCategories.some(cat => cat.id === initialHash)) {
+      setActiveTab(initialHash);
+    }
+    
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 

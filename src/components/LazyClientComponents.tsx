@@ -10,7 +10,7 @@ const MaterialsSection = dynamic(() => import("@/components/MaterialsSection"), 
 
 export function LazyGallery({ initialData }: { initialData: any }) {
   return (
-    <LazySection height="700px">
+    <LazySection height="700px" ids={["gallery-kitchens", "gallery-tv", "gallery-wardrobes", "gallery-bedrooms", "gallery-living"]}>
       <GallerySection initialData={initialData} />
     </LazySection>
   );
@@ -18,7 +18,7 @@ export function LazyGallery({ initialData }: { initialData: any }) {
 
 export function LazyMaterials({ initialData }: { initialData: any }) {
   return (
-    <LazySection height="700px">
+    <LazySection height="700px" ids={["materials"]}>
       <MaterialsSection initialData={initialData} />
     </LazySection>
   );

@@ -76,43 +76,43 @@ export default function Home() {
       </section>
 
       {/* 2. Why Choose Us Section (Below fold) */}
-      <LazySection height="450px">
+      <LazySection height="450px" ids={["about-why"]}>
         <WhyChooseUsSection />
       </LazySection>
-
+ 
       {/* 3. Our Services */}
-      <LazySection height="600px">
+      <LazySection height="600px" ids={["services-kitchen", "services-tv", "services-wardrobe", "services-bedroom", "services-living", "services-full-home"]}>
         <ServicesSection />
       </LazySection>
-
+ 
       {/* 4. Curated Spaces (Gallery) */}
       <LazyGallery initialData={galleryData} />
-
+ 
       {/* 5. New CTA Section */}
       <LazySection height="300px">
         <CTASection />
       </LazySection>
-
+ 
       {/* 6. Our Process */}
-      <LazySection height="600px">
+      <LazySection height="600px" ids={["process"]}>
         <ProcessSection />
       </LazySection>
-
+ 
       {/* 7. Material Palette */}
       <LazyMaterials initialData={materialsData} />
-
+ 
       {/* 8. Client Experiences */}
-      <LazySection height="400px">
+      <LazySection height="400px" ids={["testimonials"]}>
         <TestimonialsSection />
       </LazySection>
-
+ 
       {/* 9. About Interiocore */}
-      <LazySection height="700px">
+      <LazySection height="700px" ids={["about"]}>
         <AboutSection />
       </LazySection>
-
+ 
       {/* 10. Start Your Project (Contact Form) */}
-      <LazySection height="600px">
+      <LazySection height="600px" ids={["contact"]}>
         <ContactSection />
       </LazySection>
     </div>
