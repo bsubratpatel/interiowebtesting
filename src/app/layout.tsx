@@ -17,8 +17,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Interiocore | Premium Modular Kitchens & Luxury Interiors",
-  description: "Experience luxurious, minimal, and elegant interior designs by Interiocore. Custom modular kitchens, luxury wardrobes, TV units, and bespoke vanity designs.",
+  title: "Best Interior Designer in Jharsuguda, Odisha | Interiocore",
+  description: "Interiocore is Jharsuguda's trusted interior design studio for modular kitchens, wardrobes, and full home interiors. 45+ homes designed. Free consultation — call or WhatsApp today.",
   metadataBase: new URL("https://interiocore.com"),
   icons: {
     icon: "/favicon.png",
@@ -29,19 +29,19 @@ export const metadata: Metadata = {
     canonical: "https://interiocore.com",
   },
   keywords: [
-    "Luxury Interior Design",
-    "Premium Modular Kitchens",
-    "Bespoke Wardrobes",
-    "TV Units",
-    "Bespoke Vanities",
-    "Modern Living Room Designs",
-    "Interior Studio Jharsuguda",
-    "Odisha Luxury Design",
-    "High-end Home Renovations"
+    "Best Interior Designer in Jharsuguda",
+    "Interior Design Company Jharsuguda",
+    "Modular Kitchen Design Jharsuguda",
+    "Wardrobe Design Jharsuguda",
+    "TV Unit Design Jharsuguda",
+    "Living Room Interior Design Jharsuguda",
+    "Bedroom Interior Design Jharsuguda",
+    "Full Home Interior Designer Jharsuguda",
+    "Odisha Luxury Interior Design"
   ],
   openGraph: {
-    title: "Interiocore | Premium Modular Kitchens & Luxury Interiors",
-    description: "Experience luxurious, minimal, and elegant interior designs by Interiocore. Custom modular kitchens, luxury wardrobes, TV units, and bespoke vanity designs.",
+    title: "Best Interior Designer in Jharsuguda, Odisha | Interiocore",
+    description: "Interiocore is Jharsuguda's trusted interior design studio for modular kitchens, wardrobes, and full home interiors. 45+ homes designed. Free consultation — call or WhatsApp today.",
     url: "https://interiocore.com",
     siteName: "Interiocore",
     locale: "en_US",
@@ -51,14 +51,14 @@ export const metadata: Metadata = {
         url: "/images/living%20room/living_room%20(1).webp",
         width: 1200,
         height: 630,
-        alt: "Interiocore Luxury Living Room Interior Design Layout",
+        alt: "Best Interior Designer in Jharsuguda Odisha - Interiocore",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Interiocore | Premium Modular Kitchens & Luxury Interiors",
-    description: "Experience luxurious, minimal, and elegant interior designs by Interiocore. Custom modular kitchens, luxury wardrobes, TV units, and bespoke vanity designs.",
+    title: "Best Interior Designer in Jharsuguda, Odisha | Interiocore",
+    description: "Interiocore is Jharsuguda's trusted interior design studio for modular kitchens, wardrobes, and full home interiors. 45+ homes designed. Free consultation — call or WhatsApp today.",
     images: ["/images/living%20room/living_room%20(1).webp"],
   },
   robots: {
@@ -88,7 +88,7 @@ export default function RootLayout({
         "@id": "https://interiocore.com/#website",
         "name": "Interiocore",
         "url": "https://interiocore.com",
-        "description": "Premium modular kitchens, luxury wardrobes, TV units, and complete interior design studio in Jharsuguda, Odisha."
+        "description": "Best interior designer in Jharsuguda, Odisha. Premium modular kitchens, luxury wardrobes, TV units, and complete home interiors."
       },
       {
         "@type": "Organization",
@@ -108,6 +108,11 @@ export default function RootLayout({
         "url": "https://interiocore.com",
         "telephone": "+919776991699",
         "priceRange": "₹₹₹",
+        "areaServed": [
+          "Jharsuguda",
+          "Brajarajnagar",
+          "Sambalpur"
+        ],
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Studio Lounge",
@@ -129,12 +134,57 @@ export default function RootLayout({
             "Wednesday",
             "Thursday",
             "Friday",
-            "Saturday",
-            "Sunday"
+            "Saturday"
           ],
-          "opens": "00:00",
-          "closes": "23:59"
+          "opens": "10:00",
+          "closes": "19:00"
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://interiocore.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Who is the best interior designer in Jharsuguda?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Interiocore is widely recognized as a top-rated interior design studio in Jharsuguda, Odisha. We specialize in luxury modular kitchens, bespoke wardrobes, living room designs, and full home turnkey interiors with over 45+ completed projects."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does a modular kitchen cost in Jharsuguda?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Modular kitchen prices in Jharsuguda at Interiocore start from ₹1.5 Lakh onwards depending on layout, material selection (laminates, acrylic, veneer), hardware options, and space dimensions. We offer free design consultations and transparent pricing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you provide interior design services outside Jharsuguda?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, in addition to Jharsuguda town, Interiocore serves surrounding regions across Odisha including Brajarajnagar, Sambalpur, and neighboring cities."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does a full home interior project take?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A typical full home interior project takes between 30 to 45 days from 3D design approval to factory fabrication and final site installation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you offer a free consultation?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! Interiocore offers 100% free initial design consultations via phone, WhatsApp (+91 97769 91699), or in-person at our studio lounge in Jharsuguda."
+            }
+          }
+        ]
       }
     ]
   };

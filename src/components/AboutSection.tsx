@@ -49,7 +49,7 @@ export default function AboutSection() {
 
             <div className="space-y-6 text-zinc-600 font-light text-lg">
               <p>
-                Your home should be your happiest place. At Interiocore Design Studio, we create premium wooden interiors that bring comfort, beauty, and functionality together.
+                Interiocore is Jharsuguda&apos;s premium interior design studio, creating wooden interiors that bring comfort, beauty, and functionality to homes across Jharsuguda and Odisha.
               </p>
               <p>
                 Founded with a simple vision to design premium spaces, we combine elegant aesthetics, quality materials, and skilled craftsmanship to build interiors that are stylish, practical, and built to last.

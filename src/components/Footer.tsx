@@ -140,6 +140,9 @@ export default function Footer() {
               </a>
             </li>
           </ul>
+          <p className="mt-4 text-xs font-light text-zinc-400 leading-relaxed">
+            Interiocore — Interior Designer in Jharsuguda, Odisha, serving Jharsuguda, Brajarajnagar &amp; Sambalpur.
+          </p>
         </div>
       </div>
 

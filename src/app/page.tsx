@@ -8,6 +8,7 @@ import WhyChooseUsSection from "@/components/WhyChooseUsSection";
 import ServicesSection from "@/components/ServicesSection";
 import CTASection from "@/components/CTASection";
 import ProcessSection from "@/components/ProcessSection";
+import FAQSection from "@/components/FAQSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
@@ -40,10 +41,15 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white flex flex-col items-center pt-28 pb-10 md:pt-0 md:pb-0">
           <div>
-            <h1 className="text-4xl sm:text-7xl md:text-8xl lg:text-[7rem] font-extrabold tracking-tighter leading-[0.95] uppercase drop-shadow-2xl mb-6 sm:mb-8">
-              Standards of <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">Perfection</span>
+            <span className="text-[11px] sm:text-xs font-bold text-[#E8621A] bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full border border-[#E8621A]/40 uppercase tracking-[0.2em] mb-5 inline-block drop-shadow-md">
+              Jharsuguda&apos;s #1 Rated Interior Design Studio
+            </span>
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter leading-[1] uppercase drop-shadow-2xl mb-3 sm:mb-4">
+              Best Interior Design Company <br className="hidden sm:inline" /> in Jharsuguda
             </h1>
+            <div className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tighter leading-[1] uppercase drop-shadow-xl mb-6 sm:mb-8 text-white/90">
+              Standards of <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">Perfection</span>
+            </div>
           </div>
 
           <div>
@@ -105,8 +111,13 @@ export default function Home() {
       <LazySection height="400px" ids={["testimonials"]}>
         <TestimonialsSection />
       </LazySection>
+
+      {/* 9. Frequently Asked Questions (Local SEO) */}
+      <LazySection height="500px" ids={["faq"]}>
+        <FAQSection />
+      </LazySection>
  
-      {/* 9. About Interiocore */}
+      {/* 10. About Interiocore */}
       <LazySection height="700px" ids={["about"]}>
         <AboutSection />
       </LazySection>
