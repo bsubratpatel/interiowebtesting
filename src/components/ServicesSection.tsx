@@ -6,7 +6,7 @@ export default function ServicesSection() {
   const servicesData = [
     {
       id: "services-kitchen",
-      title: "Modular Kitchen Design in Jharsuguda",
+      title: "Modular Kitchen Design",
       subtitle: "The Heart of the Home",
       desc: (
         <>
@@ -20,7 +20,7 @@ export default function ServicesSection() {
     },
     {
       id: "services-tv",
-      title: "TV Unit Design in Jharsuguda",
+      title: "TV Unit Design",
       subtitle: "Seamless Entertainment Consoles",
       desc: "Bespoke entertainment units crafted with premium materials, ambient lighting, and smart storage to complement contemporary interiors.",
       image: "/images/tv unit/tv unit (1).webp",
@@ -29,7 +29,7 @@ export default function ServicesSection() {
     },
     {
       id: "services-wardrobe",
-      title: "Wardrobe Design in Jharsuguda",
+      title: "Wardrobe Design",
       subtitle: "Tailored Walk-In Closets",
       desc: "Crafted with premium materials, soft-close hardware, and thoughtfully designed interiors for a refined everyday experience.",
       image: "/images/wardrobe/wardrobe (1).webp",
@@ -38,7 +38,7 @@ export default function ServicesSection() {
     },
     {
       id: "services-bedroom",
-      title: "Bedroom Interior Design in Jharsuguda",
+      title: "Bedroom Interior Design",
       subtitle: "Sanctuaries of Rest",
       desc: "Minimalist headboard walls, custom nightstands, and cohesive dressing layouts engineered for absolute comfort and privacy.",
       image: "/images/wardrobe/wardrobe (3).webp",
@@ -47,7 +47,7 @@ export default function ServicesSection() {
     },
     {
       id: "services-living",
-      title: "Living Room Interior Design in Jharsuguda",
+      title: "Living Room Interior Design",
       subtitle: "Architectural Statement Spaces",
       desc: "Bespoke living room interiors featuring refined materials, custom furnishings, and sophisticated details that create a warm, inviting atmosphere.",
       image: "/images/living room/living_room (1).webp",
@@ -56,7 +56,7 @@ export default function ServicesSection() {
     },
     {
       id: "services-full-home",
-      title: "Full Home Interior Designer in Jharsuguda",
+      title: "Full Home Interior Design",
       subtitle: "Turnkey Luxury Execution",
       desc: "Coordinated design themes from ceiling designs to flooring selections, managed under strict factory standards for a unified home layout.",
       image: "/images/kitchen renders/kitchen (10).webp",
@@ -71,7 +71,7 @@ export default function ServicesSection() {
       <section className="pt-24 max-w-[1600px] mx-auto px-6 lg:px-12">
         <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-4 block">Expertise</span>
         <h2 className="text-5xl sm:text-7xl font-extrabold uppercase tracking-tighter text-foreground leading-[1]">
-          Our Services
+          Our Services in Jharsuguda
         </h2>
       </section>
 
