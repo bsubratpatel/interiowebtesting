@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Phone, Mail, MapPin, MessageSquare } from "lucide-react";
 
 export default function Footer() {
@@ -142,10 +143,19 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-[1600px] mx-auto pt-8 border-t border-zinc-200/80 text-center md:text-left text-xs text-zinc-400">
+      <div className="max-w-[1600px] mx-auto pt-8 border-t border-zinc-200/80 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-zinc-400 text-center md:text-left">
         <p>© {new Date().getFullYear()} Interiocore. All rights reserved. Made for luxury spaces.</p>
+        <div className="flex items-center gap-6">
+          <Link href="/privacy-policy" className="hover:text-brand-accent transition-colors">
+            Privacy Policy
+          </Link>
+          <Link href="/terms-and-conditions" className="hover:text-brand-accent transition-colors">
+            Terms & Conditions
+          </Link>
+        </div>
       </div>
 
     </footer>
   );
 }
+
