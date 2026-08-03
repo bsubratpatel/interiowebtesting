@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   description: "Experience luxurious, minimal, and elegant interior designs by Interiocore. Custom modular kitchens, luxury wardrobes, TV units, and bespoke vanity designs.",
   metadataBase: new URL("https://interiocore.com"),
   alternates: {
-    canonical: "/",
+    canonical: "https://interiocore.com",
   },
   keywords: [
     "Luxury Interior Design",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/living room/living_room (1).webp",
+        url: "/images/living%20room/living_room%20(1).webp",
         width: 1200,
         height: 630,
         alt: "Interiocore Luxury Living Room Interior Design Layout",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Interiocore | Premium Modular Kitchens & Luxury Interiors",
     description: "Experience luxurious, minimal, and elegant interior designs by Interiocore. Custom modular kitchens, luxury wardrobes, TV units, and bespoke vanity designs.",
-    images: ["/images/living room/living_room (1).webp"],
+    images: ["/images/living%20room/living_room%20(1).webp"],
   },
   robots: {
     index: true,
@@ -79,19 +79,30 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebSite",
+        "@id": "https://interiocore.com/#website",
+        "name": "Interiocore",
+        "url": "https://interiocore.com",
+        "description": "Premium modular kitchens, luxury wardrobes, TV units, and complete interior design studio in Jharsuguda, Odisha."
+      },
+      {
         "@type": "Organization",
         "@id": "https://interiocore.com/#organization",
         "name": "Interiocore",
         "url": "https://interiocore.com",
-        "logo": "https://interiocore.com/images/logo/logo.svg"
+        "logo": "https://interiocore.com/images/logo/logo.svg",
+        "sameAs": [
+          "https://www.instagram.com/interiocore/"
+        ]
       },
       {
-        "@type": "LocalBusiness",
+        "@type": "InteriorDesigner",
         "@id": "https://interiocore.com/#localbusiness",
         "name": "Interiocore",
-        "image": "https://interiocore.com/images/living_room/living_room (1).webp",
+        "image": "https://interiocore.com/images/living%20room/living_room%20(1).webp",
         "url": "https://interiocore.com",
         "telephone": "+919776991699",
+        "priceRange": "₹₹₹",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Studio Lounge",
@@ -163,4 +174,5 @@ export default function RootLayout({
     </html>
   );
 }
+
 
