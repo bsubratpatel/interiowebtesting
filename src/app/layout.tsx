@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   title: "Interiocore | Premium Modular Kitchens & Luxury Interiors",
   description: "Experience luxurious, minimal, and elegant interior designs by Interiocore. Custom modular kitchens, luxury wardrobes, TV units, and bespoke vanity designs.",
   metadataBase: new URL("https://interiocore.com"),
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   alternates: {
     canonical: "https://interiocore.com",
   },
