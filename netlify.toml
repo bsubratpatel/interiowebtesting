@@ -25,3 +25,12 @@
     X-Content-Type-Options = "nosniff"
     Cross-Origin-Opener-Policy = "same-origin"
 
+[[headers]]
+  for = "/icon*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

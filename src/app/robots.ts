@@ -5,8 +5,10 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: ["/api/", "/icon*"],
     },
     sitemap: "https://interiocore.com/sitemap.xml",
   };
 }
+
 
