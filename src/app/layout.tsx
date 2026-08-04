@@ -18,7 +18,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Best Interior Designer in Jharsuguda, Odisha | Interiocore",
-  description: "Interiocore is Jharsuguda's trusted interior design studio for modular kitchens, wardrobes, and full home interiors. 45+ homes designed. Free consultation — call or WhatsApp today.",
+  description: "Jharsuguda's trusted interior designer — modular kitchens, wardrobes & full home interiors. 45+ homes designed. Free consultation today.",
   metadataBase: new URL("https://interiocore.com"),
   icons: {
     icon: "/favicon.png",
