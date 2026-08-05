@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <div className="bg-background text-foreground overflow-hidden">
       {/* 1. Hero Section (Full-bleed Visual Heavy) */}
-      <section id="home" className="relative w-full min-h-[100dvh] md:h-[100dvh] flex items-center justify-center overflow-hidden py-12 md:py-0">
+      <section id="home" className="relative w-full min-h-[100dvh] flex items-center justify-center overflow-hidden py-12 md:py-16">
         {/* Background Image with Parallax feel */}
         <div className="absolute inset-0 w-full h-full">
           <Image
@@ -39,13 +39,10 @@ export default function Home() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white flex flex-col items-center pt-28 pb-10 md:pt-0 md:pb-0">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white flex flex-col items-center pt-36 pb-12 md:pt-40 md:pb-16">
           <div>
-            <span className="hidden sm:inline-block text-[11px] sm:text-xs font-bold text-[#E8621A] bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full border border-[#E8621A]/40 uppercase tracking-[0.2em] mb-5 drop-shadow-md">
-              Jharsuguda&apos;s #1 Rated Interior Design Studio
-            </span>
             <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter leading-[1] uppercase drop-shadow-2xl mb-6 sm:mb-8">
-              Best Interior Design Company <br className="hidden sm:inline" /> in Jharsuguda
+              Best Interior Designer <br className="hidden sm:inline" /> in Jharsuguda, India
             </h1>
           </div>
 

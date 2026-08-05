@@ -17,7 +17,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Best Interior Designer in Jharsuguda, Odisha | Interiocore",
+  title: "Best Interior Designer in Jharsuguda, India | Interiocore",
   description: "Jharsuguda's trusted interior designer — modular kitchens, wardrobes & full home interiors. 45+ homes designed. Free consultation today.",
   metadataBase: new URL("https://interiocore.com"),
   icons: {
@@ -31,6 +31,7 @@ export const metadata: Metadata = {
     canonical: "https://interiocore.com",
   },
   keywords: [
+    "Best Interior Designer in Jharsuguda, India",
     "Best Interior Designer in Jharsuguda",
     "Interior Design Company Jharsuguda",
     "Modular Kitchen Design Jharsuguda",
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
     "Odisha Luxury Interior Design"
   ],
   openGraph: {
-    title: "Best Interior Designer in Jharsuguda, Odisha | Interiocore",
+    title: "Best Interior Designer in Jharsuguda, India | Interiocore",
     description: "Interiocore is Jharsuguda's trusted interior design studio for modular kitchens, wardrobes, and full home interiors. 45+ homes designed. Free consultation — call or WhatsApp today.",
     url: "https://interiocore.com",
     siteName: "Interiocore",
@@ -53,13 +54,13 @@ export const metadata: Metadata = {
         url: "/images/living%20room/living_room%20(1).webp",
         width: 1200,
         height: 630,
-        alt: "Best Interior Designer in Jharsuguda Odisha - Interiocore",
+        alt: "Best Interior Designer in Jharsuguda India - Interiocore",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Interior Designer in Jharsuguda, Odisha | Interiocore",
+    title: "Best Interior Designer in Jharsuguda, India | Interiocore",
     description: "Interiocore is Jharsuguda's trusted interior design studio for modular kitchens, wardrobes, and full home interiors. 45+ homes designed. Free consultation — call or WhatsApp today.",
     images: ["/images/living%20room/living_room%20(1).webp"],
   },
@@ -90,7 +91,7 @@ export default function RootLayout({
         "@id": "https://interiocore.com/#website",
         "name": "Interiocore",
         "url": "https://interiocore.com",
-        "description": "Best interior designer in Jharsuguda, Odisha. Premium modular kitchens, luxury wardrobes, TV units, and complete home interiors."
+        "description": "Best interior designer in Jharsuguda, India. Premium modular kitchens, luxury wardrobes, TV units, and complete home interiors."
       },
       {
         "@type": "Organization",
