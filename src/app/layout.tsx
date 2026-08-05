@@ -21,9 +21,11 @@ export const metadata: Metadata = {
   description: "Jharsuguda's trusted interior designer — modular kitchens, wardrobes & full home interiors. 45+ homes designed. Free consultation today.",
   metadataBase: new URL("https://interiocore.com"),
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/favicon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
   alternates: {
     canonical: "https://interiocore.com",
