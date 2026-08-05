@@ -107,9 +107,9 @@ export default function Home() {
       </LazySection>
 
       {/* 9. Frequently Asked Questions (Local SEO) */}
-      <LazySection height="500px" ids={["faq"]}>
+      <div className="content-visibility-auto">
         <FAQSection />
-      </LazySection>
+      </div>
  
       {/* 10. About Interiocore */}
       <LazySection height="700px" ids={["about"]}>

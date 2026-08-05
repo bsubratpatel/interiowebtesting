@@ -1,25 +1,24 @@
 "use client";
 
 import React from "react";
+import GallerySection from "@/components/GallerySection";
 import dynamic from "next/dynamic";
 import LazySection from "@/components/LazySection";
 
-// Dynamically import only the interactive client components with ssr: false
-const GallerySection = dynamic(() => import("@/components/GallerySection"), { ssr: false });
-const MaterialsSection = dynamic(() => import("@/components/MaterialsSection"), { ssr: false });
+import MaterialsSection from "@/components/MaterialsSection";
 
 export function LazyGallery({ initialData }: { initialData: any }) {
   return (
-    <LazySection height="700px" ids={["gallery-kitchens", "gallery-tv", "gallery-wardrobes", "gallery-bedrooms", "gallery-living"]}>
+    <div className="content-visibility-auto min-h-[700px]">
       <GallerySection initialData={initialData} />
-    </LazySection>
+    </div>
   );
 }
 
 export function LazyMaterials({ initialData }: { initialData: any }) {
   return (
-    <LazySection height="700px" ids={["materials"]}>
+    <div className="content-visibility-auto min-h-[700px]">
       <MaterialsSection initialData={initialData} />
-    </LazySection>
+    </div>
   );
 }
