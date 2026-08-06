@@ -7,42 +7,34 @@ import { Menu, X, ChevronDown, Phone, MessageCircle } from "lucide-react";
 
 
 const navItems = [
-  { name: "Home", path: "#home" },
+  { name: "Home", path: "/" },
   {
     name: "About Us",
-    path: "#about",
+    path: "/about-us",
     submenu: [
-      { name: "About Interiocore", path: "#about" },
-      { name: "Why Choose Us", path: "#about-why" },
+      { name: "About Interiocore", path: "/about-us" },
+      { name: "Why Choose Us", path: "/about-us#why-choose-us" },
     ],
   },
   {
     name: "Services",
-    path: "#services-kitchen",
+    path: "/modular-kitchen-design-jharsuguda",
     submenu: [
-      { name: "Modular Kitchen", path: "#services-kitchen" },
-      { name: "TV Unit Design", path: "#services-tv" },
-      { name: "Wardrobe Design", path: "#services-wardrobe" },
-      { name: "Bedroom Interiors", path: "#services-bedroom" },
-      { name: "Living Room", path: "#services-living" },
-      { name: "Full Home Interiors", path: "#services-full-home" },
+      { name: "Modular Kitchen", path: "/modular-kitchen-design-jharsuguda" },
+      { name: "TV Unit Design", path: "/tv-unit-design-jharsuguda" },
+      { name: "Wardrobe Design", path: "/wardrobe-design-jharsuguda" },
+      { name: "Bedroom Interiors", path: "/bedroom-interior-design-jharsuguda" },
+      { name: "Living Room", path: "/living-room-interior-design-jharsuguda" },
+      { name: "Full Home Interiors", path: "/full-home-interior-jharsuguda" },
     ],
   },
   {
     name: "Design Gallery",
-    path: "#gallery-kitchens",
-    submenu: [
-      { name: "Kitchens", path: "#gallery-kitchens" },
-      { name: "TV Units", path: "#gallery-tv" },
-      { name: "Wardrobes", path: "#gallery-wardrobes" },
-      { name: "Bedrooms", path: "#gallery-bedrooms" },
-      { name: "Living Rooms", path: "#gallery-living" },
-    ],
+    path: "/design-gallery",
   },
-  { name: "Our Process", path: "#process" },
-  { name: "Materials", path: "#materials" },
-  { name: "Testimonials", path: "#testimonials" },
-  { name: "Contact", path: "#contact" },
+  { name: "Materials", path: "/materials-finishes" },
+  { name: "FAQ", path: "/faq" },
+  { name: "Contact", path: "/contact" },
 ];
 
 const HamburgerIcon = ({ isOpen }: { isOpen: boolean }) => (

@@ -1,33 +1,31 @@
 import React from "react";
 import Image from "next/image";
-import { Phone, MessageCircle } from "lucide-react";
+import Link from "next/link";
+import { Phone, MessageCircle, ArrowRight } from "lucide-react";
 import { getGalleryData, getMaterialsData } from "@/lib/dataFetcher";
 
 import LazySection from "@/components/LazySection";
 import WhyChooseUsSection from "@/components/WhyChooseUsSection";
-import ServicesSection from "@/components/ServicesSection";
+import ServicesPreview from "@/components/ServicesPreview";
 import CTASection from "@/components/CTASection";
 import ProcessSection from "@/components/ProcessSection";
-import FAQSection from "@/components/FAQSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import AboutSection from "@/components/AboutSection";
-import ContactSection from "@/components/ContactSection";
 import { LazyGallery, LazyMaterials } from "@/components/LazyClientComponents";
 
 export default function Home() {
-  // Pre-load data on the server side to eliminate client-side fetch calls on mount
+  // Pre-load data on the server side
   const galleryData = getGalleryData();
   const materialsData = getMaterialsData();
 
   return (
     <div className="bg-background text-foreground overflow-hidden">
-      {/* 1. Hero Section (Full-bleed Visual Heavy) */}
+      {/* 1. Hero Section */}
       <section id="home" className="relative w-full min-h-[100dvh] flex items-center justify-center overflow-hidden py-12 md:py-16">
-        {/* Background Image with Parallax feel */}
+        {/* Background Image */}
         <div className="absolute inset-0 w-full h-full">
           <Image
             src="/images/kitchen renders/kitchen (1).webp"
-            alt="Interiocore Luxury Kitchen Design"
+            alt="Interiocore Luxury Kitchen Design in Jharsuguda"
             fill
             className="object-cover scale-105"
             sizes="100vw"
@@ -38,7 +36,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/50" />
         </div>
 
-        {/* Content */}
+        {/* Hero Content */}
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white flex flex-col items-center pt-36 pb-12 md:pt-40 md:pb-16">
           <div>
             <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter leading-[1] uppercase drop-shadow-2xl mb-6 sm:mb-8">
@@ -75,51 +73,107 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Why Choose Us Section (Below fold) */}
+      {/* 2. Why Choose Us Section */}
       <LazySection height="450px" ids={["about-why"]}>
         <WhyChooseUsSection />
       </LazySection>
- 
-      {/* 3. Our Services */}
-      <LazySection height="600px" ids={["services-kitchen", "services-tv", "services-wardrobe", "services-bedroom", "services-living", "services-full-home"]}>
-        <ServicesSection />
-      </LazySection>
- 
-      {/* 4. Curated Spaces (Gallery) */}
-      <LazyGallery initialData={galleryData} />
- 
-      {/* 5. New CTA Section */}
+
+      {/* 3. Our Services Preview */}
+      <ServicesPreview />
+
+      {/* 4. Curated Spaces (Gallery Preview) */}
+      <section className="relative">
+        <LazyGallery initialData={galleryData} />
+        <div className="py-8 bg-zinc-50 border-b border-zinc-200 text-center">
+          <Link
+            href="/design-gallery"
+            className="inline-flex items-center gap-2 bg-brand-secondary text-white hover:bg-brand-accent transition-colors px-8 py-3.5 text-xs font-bold uppercase tracking-wider"
+          >
+            Explore Full Design Gallery Portfolio
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
+
+      {/* 5. CTA Section */}
       <LazySection height="300px">
         <CTASection />
       </LazySection>
- 
+
       {/* 6. Our Process */}
       <LazySection height="600px" ids={["process"]}>
         <ProcessSection />
       </LazySection>
- 
-      {/* 7. Material Palette */}
-      <LazyMaterials initialData={materialsData} />
- 
-      {/* 8. Client Experiences */}
+
+      {/* 7. Material Palette Preview */}
+      <section className="relative">
+        <LazyMaterials initialData={materialsData} />
+        <div className="py-8 bg-zinc-50 border-b border-zinc-200 text-center">
+          <Link
+            href="/materials-finishes"
+            className="inline-flex items-center gap-2 bg-brand-secondary text-white hover:bg-brand-accent transition-colors px-8 py-3.5 text-xs font-bold uppercase tracking-wider"
+          >
+            Discover All Materials & Finishes
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
+
+      {/* 8. Testimonials */}
       <LazySection height="400px" ids={["testimonials"]}>
         <TestimonialsSection />
       </LazySection>
 
-      {/* 9. Frequently Asked Questions (Local SEO) */}
-      <div className="content-visibility-auto">
-        <FAQSection />
-      </div>
- 
-      {/* 10. About Interiocore */}
-      <LazySection height="700px" ids={["about"]}>
-        <AboutSection />
-      </LazySection>
- 
-      {/* 10. Start Your Project (Contact Form) */}
-      <LazySection height="600px" ids={["contact"]}>
-        <ContactSection />
-      </LazySection>
+      {/* 9. FAQs Preview Banner */}
+      <section className="py-16 bg-zinc-900 text-white text-center">
+        <div className="max-w-3xl mx-auto px-6 space-y-4">
+          <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight">
+            Have Questions About Prices & Timelines?
+          </h2>
+          <p className="text-zinc-400 text-sm font-light leading-relaxed">
+            Read our answers regarding modular kitchen costs, warranty terms, and 30-45 day project timelines in Jharsuguda.
+          </p>
+          <div className="pt-2">
+            <Link
+              href="/faq"
+              className="inline-flex items-center gap-2 bg-brand-accent text-white hover:bg-brand-accent-hover transition-colors px-8 h-12 text-xs font-bold uppercase tracking-widest"
+            >
+              View Frequently Asked Questions
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 10. Start Your Project CTA */}
+      <section className="py-20 bg-zinc-50 border-t border-zinc-200 text-center">
+        <div className="max-w-3xl mx-auto px-6 space-y-6">
+          <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] block">
+            Jharsuguda Interior Design Studio
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-foreground">
+            Ready to Build Your Dream Interior?
+          </h2>
+          <p className="text-zinc-600 text-base font-light leading-relaxed">
+            Get a 100% free consultation, site measurement, and transparent 3D estimate today.
+          </p>
+          <div className="pt-4 flex justify-center gap-4 flex-wrap">
+            <Link
+              href="/contact"
+              className="bg-brand-accent text-white hover:bg-brand-accent-hover transition-colors px-10 h-14 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-2"
+            >
+              <Phone className="w-4 h-4" />
+              Book Free Consultation
+            </Link>
+            <Link
+              href="/about-us"
+              className="bg-white text-zinc-900 border border-zinc-900 hover:bg-zinc-100 transition-colors px-8 h-14 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-2"
+            >
+              About Interiocore
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

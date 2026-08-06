@@ -48,34 +48,34 @@ export default function Footer() {
           <h3 className="text-foreground text-xs font-bold uppercase tracking-widest mb-6">Our Services</h3>
           <ul className="space-y-3 text-sm font-light">
             <li>
-              <a href="#services-kitchen" className="hover:text-brand-accent transition-colors">
+              <Link href="/modular-kitchen-design-jharsuguda" className="hover:text-brand-accent transition-colors">
                 Modular Kitchen Designs
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#services-wardrobe" className="hover:text-brand-accent transition-colors">
+              <Link href="/wardrobe-design-jharsuguda" className="hover:text-brand-accent transition-colors">
                 Luxury Wardrobe Designs
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#services-tv" className="hover:text-brand-accent transition-colors">
+              <Link href="/tv-unit-design-jharsuguda" className="hover:text-brand-accent transition-colors">
                 Premium TV Units
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#services-bedroom" className="hover:text-brand-accent transition-colors">
+              <Link href="/bedroom-interior-design-jharsuguda" className="hover:text-brand-accent transition-colors">
                 Bedroom Interiors
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#services-living" className="hover:text-brand-accent transition-colors">
+              <Link href="/living-room-interior-design-jharsuguda" className="hover:text-brand-accent transition-colors">
                 Living Room Interiors
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#services-full-home" className="hover:text-brand-accent transition-colors">
+              <Link href="/full-home-interior-jharsuguda" className="hover:text-brand-accent transition-colors">
                 Full Home Interiors
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -85,34 +85,34 @@ export default function Footer() {
           <h3 className="text-foreground text-xs font-bold uppercase tracking-widest mb-6">Explore</h3>
           <ul className="space-y-3 text-sm font-light">
             <li>
-              <a href="#about" className="hover:text-brand-accent transition-colors">
+              <Link href="/about-us" className="hover:text-brand-accent transition-colors">
                 About Interiocore
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#about-why" className="hover:text-brand-accent transition-colors">
+              <Link href="/about-us#why-choose-us" className="hover:text-brand-accent transition-colors">
                 Why Choose Us
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#process" className="hover:text-brand-accent transition-colors">
-                Our Design Process
-              </a>
-            </li>
-            <li>
-              <a href="#materials" className="hover:text-brand-accent transition-colors">
+              <Link href="/materials-finishes" className="hover:text-brand-accent transition-colors">
                 Materials & Finishes
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#gallery-kitchens" className="hover:text-brand-accent transition-colors">
+              <Link href="/design-gallery" className="hover:text-brand-accent transition-colors">
                 Visual Gallery
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#testimonials" className="hover:text-brand-accent transition-colors">
-                Testimonials
-              </a>
+              <Link href="/faq" className="hover:text-brand-accent transition-colors">
+                FAQs
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className="hover:text-brand-accent transition-colors">
+                Contact Us
+              </Link>
             </li>
           </ul>
         </div>
