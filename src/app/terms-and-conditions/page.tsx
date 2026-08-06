@@ -145,7 +145,7 @@ export default function TermsAndConditionsPage() {
             <div className="bg-zinc-50 border border-zinc-200 p-6 rounded-none space-y-3 font-normal text-sm">
               <div className="flex items-center gap-3">
                 <MapPin className="w-4 h-4 text-brand-accent" />
-                <span>Interiocore Studio Lounge, Jharsuguda, Odisha, 768201, India</span>
+                <span>Interiocore Studio, Jharsuguda, Odisha, 768201, India</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-brand-accent" />

@@ -118,7 +118,7 @@ export default function RootLayout({
         ],
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Studio Lounge",
+          "streetAddress": "",
           "addressLocality": "Jharsuguda",
           "addressRegion": "Odisha",
           "postalCode": "768201",
@@ -184,7 +184,7 @@ export default function RootLayout({
             "name": "Do you offer a free consultation?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes! Interiocore offers 100% free initial design consultations via phone, WhatsApp (+91 97769 91699), or in-person at our studio lounge in Jharsuguda."
+              "text": "Yes! Interiocore offers 100% free initial design consultations via phone, WhatsApp (+91 97769 91699), or in-person at our studio in Jharsuguda."
             }
           }
         ]

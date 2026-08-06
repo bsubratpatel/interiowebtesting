@@ -27,7 +27,7 @@ const faqData = [
   {
     question: "Do you offer a free consultation?",
     answer:
-      "Yes! Interiocore offers 100% free initial design consultations via phone, WhatsApp (+91 97769 91699), or in-person at our studio lounge in Jharsuguda.",
+      "Yes! Interiocore offers 100% free initial design consultations via phone, WhatsApp (+91 97769 91699), or in-person at our studio in Jharsuguda.",
   },
 ];
 
