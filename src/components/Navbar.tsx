@@ -3,8 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, ChevronDown, Phone, MessageCircle } from "lucide-react";
-
+import { ChevronDown, Phone } from "lucide-react";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -83,26 +82,10 @@ const HamburgerIcon = ({ isOpen }: { isOpen: boolean }) => (
   </svg>
 );
 
-const scrollToId = (id: string) => {
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-  } else {
-    // Wait a tick for lazy sections/tabs to load and render
-    setTimeout(() => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100);
-  }
-};
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [expandedMenus, setExpandedMenus] = useState<Record<string, boolean>>({});
-  const [activeSection, setActiveSection] = useState("home");
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   useEffect(() => {
@@ -134,7 +117,6 @@ export default function Navbar() {
     };
   }, [isOpen]);
 
-  // Scrollspy with Intersection Observer
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -143,90 +125,9 @@ export default function Navbar() {
       }
     };
     window.addEventListener("keydown", handleKeyDown);
-
-    const sections = [
-      "home", 
-      "about", "about-why",
-      "services-kitchen", "services-tv", "services-wardrobe", "services-bedroom", "services-living", "services-full-home",
-      "gallery-kitchens", "gallery-tv", "gallery-wardrobes", "gallery-bedrooms", "gallery-living",
-      "process", "materials", "testimonials", "contact"
-    ];
-    
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.3,
-    };
-
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    sections.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
     return () => {
-      observer.disconnect();
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
-
-  // Global click interceptor for smooth scrolling on all hash links (e.g., Footer, CTAs)
-  useEffect(() => {
-    const handleGlobalClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const anchor = target.closest("a");
-      if (!anchor) return;
-
-      const href = anchor.getAttribute("href");
-      if (href && href.startsWith("#") && href !== "#") {
-        e.preventDefault();
-        const targetId = href.replace("#", "");
-        
-        // Remove overflow style on body to ensure scrolling works (e.g., mobile drawer open)
-        document.body.style.overflow = "";
-        
-        // Push hash state to URL
-        window.history.pushState(null, "", href);
-        // Dispatch hashchange event so that LazySection/GallerySection sync immediately
-        window.dispatchEvent(new Event("hashchange"));
-        
-        scrollToId(targetId);
-      }
-    };
-
-    document.addEventListener("click", handleGlobalClick, { capture: true });
-    return () => {
-      document.removeEventListener("click", handleGlobalClick, { capture: true });
-    };
-  }, []);
-
-  // Handle initial page load with a hash in the URL after hydration
-  useEffect(() => {
-    const hash = window.location.hash.replace("#", "");
-    if (hash) {
-      // Small timeout to allow Next.js hydration and lazy components to initial-render
-      setTimeout(() => {
-        const element = document.getElementById(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        } else {
-          // If it was a lazy component that needed to mount, wait a little longer
-          setTimeout(() => {
-            const el = document.getElementById(hash);
-            if (el) el.scrollIntoView({ behavior: "smooth" });
-          }, 250);
-        }
-      }, 600);
-    }
   }, []);
 
   const toggleSubmenu = (name: string) => {
@@ -236,33 +137,8 @@ export default function Navbar() {
     }));
   };
 
-  const handleNavClick = (e: React.MouseEvent<HTMLElement>, path: string) => {
-    e.preventDefault();
-    
-    let targetId = path;
-    let tab: string | null = null;
-    
-    if (path.includes("?tab=")) {
-      const parts = path.split("?tab=");
-      targetId = parts[0];
-      tab = parts[1];
-    }
-    
-    targetId = targetId.replace("#", "");
-    
-    // Explicitly unlock overflow on body to allow scrolling on mobile drawer click
+  const closeMobileMenu = () => {
     document.body.style.overflow = "";
-    
-    // Update hash in URL
-    window.history.pushState(null, "", path);
-    window.dispatchEvent(new Event("hashchange"));
-    
-    scrollToId(targetId);
-    
-    if (tab) {
-      window.dispatchEvent(new CustomEvent("changeGalleryTab", { detail: tab }));
-    }
-    
     setIsOpen(false);
     setActiveDropdown(null);
   };
@@ -281,7 +157,7 @@ export default function Navbar() {
           scrolled ? "h-24" : "h-28"
         }`}>
           {/* Logo */}
-          <Link href="#home" onClick={(e) => handleNavClick(e, "#home")} className="flex items-center gap-2 relative z-50">
+          <Link href="/" onClick={closeMobileMenu} className="flex items-center gap-2 relative z-50">
             <Image
               src="/images/logo/logo.svg"
               unoptimized
@@ -298,11 +174,6 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <nav className="hidden xl:flex items-center gap-8">
             {navItems.map((item) => {
-              const cleanedPath = item.path.split("-")[0].replace("#", "");
-              const isHighlight = cleanedPath === "home" 
-                ? activeSection === "home" 
-                : activeSection.startsWith(cleanedPath);
-
               return (
                 <div 
                   key={item.name} 
@@ -312,19 +183,13 @@ export default function Navbar() {
                 >
                   {item.submenu ? (
                     <>
-                      <button
-                        onClick={(e) => handleNavClick(e, item.path)}
-                        aria-haspopup="true"
-                        aria-expanded={activeDropdown === item.name}
-                        className={`flex items-center gap-1.5 text-xs font-bold tracking-[0.12em] uppercase transition-colors duration-200 ease cursor-pointer select-none outline-none py-3.5 focus-visible:ring-2 focus-visible:ring-brand-accent/50 rounded-sm border-b-2 ${
-                          isHighlight
-                            ? "text-[#C4511A] border-[#C4511A]"
-                            : "text-foreground border-transparent hover:text-[#C4511A]"
-                        }`}
+                      <Link
+                        href={item.path}
+                        className="flex items-center gap-1.5 text-xs font-bold tracking-[0.12em] uppercase transition-colors duration-200 ease cursor-pointer select-none outline-none py-3.5 focus-visible:ring-2 focus-visible:ring-brand-accent/50 rounded-sm border-b-2 text-foreground border-transparent hover:text-[#C4511A]"
                       >
                         {item.name}
                         <ChevronDown className="h-3.5 w-3.5 opacity-60 transition-transform duration-200 group-hover:rotate-180" />
-                      </button>
+                      </Link>
 
                       {/* Dropdown Menu */}
                       {activeDropdown === item.name && (
@@ -337,23 +202,19 @@ export default function Navbar() {
                           >
                             {item.submenu.map((sub) => (
                               <li key={sub.name}>
-                                <a
+                                <Link
                                   href={sub.path}
-                                  onClick={(e) => handleNavClick(e, sub.path)}
+                                  onClick={() => setActiveDropdown(null)}
                                   onBlur={(e) => {
                                     const nextFocused = e.relatedTarget as HTMLElement;
                                     if (!nextFocused || !nextFocused.closest(".group")) {
                                       setActiveDropdown(null);
                                     }
                                   }}
-                                  className={`block px-4 py-2.5 text-xs font-bold tracking-[0.1em] uppercase transition-colors hover:bg-zinc-50 outline-none focus-visible:bg-zinc-50 ${
-                                    sub.path === `#${activeSection}`
-                                      ? "text-[#C4511A]"
-                                      : "text-foreground hover:text-[#C4511A]"
-                                  }`}
+                                  className="block px-4 py-2.5 text-xs font-bold tracking-[0.1em] uppercase transition-colors hover:bg-zinc-50 text-foreground hover:text-[#C4511A] outline-none focus-visible:bg-zinc-50"
                                 >
                                   {sub.name}
-                                </a>
+                                </Link>
                               </li>
                             ))}
                           </ul>
@@ -361,17 +222,12 @@ export default function Navbar() {
                       )}
                     </>
                   ) : (
-                    <a
+                    <Link
                       href={item.path}
-                      onClick={(e) => handleNavClick(e, item.path)}
-                      className={`block text-xs font-bold tracking-[0.12em] uppercase transition-colors duration-200 ease py-3.5 outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 rounded-sm border-b-2 ${
-                        isHighlight
-                          ? "text-[#C4511A] border-[#C4511A]"
-                          : "text-foreground border-transparent hover:text-[#C4511A]"
-                      }`}
+                      className="block text-xs font-bold tracking-[0.12em] uppercase transition-colors duration-200 ease py-3.5 outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 rounded-sm border-b-2 text-foreground border-transparent hover:text-[#C4511A]"
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   )}
                 </div>
               );
@@ -415,7 +271,7 @@ export default function Navbar() {
              >
               {/* Drawer Header */}
               <div className="flex items-center justify-between px-4 sm:px-6 h-24 border-b border-zinc-200 shrink-0 bg-white">
-                <Link href="#home" onClick={(e) => handleNavClick(e, "#home")} className="flex items-center">
+                <Link href="/" onClick={closeMobileMenu} className="flex items-center">
                   <Image
                     src="/images/logo/logo.svg"
                     unoptimized
@@ -428,7 +284,7 @@ export default function Navbar() {
                 </Link>
 
                  <button
-                   onClick={() => setIsOpen(false)}
+                   onClick={closeMobileMenu}
                    className="p-3 rounded-xl text-zinc-900 hover:text-[#E8621A] transition-colors cursor-pointer group"
                    aria-label="Close navigation menu"
                  >
@@ -442,75 +298,61 @@ export default function Navbar() {
                   const hasSubmenu = !!item.submenu;
                   const isExpanded = !!expandedMenus[item.name];
                   
-                  const cleanedPath = item.path.split("-")[0].replace("#", "");
-                  const isHighlight = cleanedPath === "home" 
-                    ? activeSection === "home" 
-                    : activeSection.startsWith(cleanedPath);
-                  
                   return (
                     <div key={item.name} className="flex flex-col">
                       {hasSubmenu ? (
                         <>
-                          <button
-                            onClick={() => toggleSubmenu(item.name)}
-                            className={`flex items-center justify-between w-full py-2.5 text-left text-lg font-bold tracking-wide uppercase transition-[color,border-color] duration-200 ease cursor-pointer ${
-                              isHighlight
-                                ? "text-[#C4511A] border-b-2 border-[#C4511A]"
-                                : "text-zinc-900 border-b border-zinc-200"
-                            }`}
-                          >
-                            <span>
+                          <div className="flex items-center justify-between w-full py-2.5 border-b border-zinc-200">
+                            <Link
+                              href={item.path}
+                              onClick={closeMobileMenu}
+                              className="text-lg font-bold tracking-wide uppercase text-zinc-900 hover:text-[#C4511A] transition-colors"
+                            >
                               {item.name}
-                            </span>
-                            <ChevronDown
-                              className={`h-5 w-5 text-zinc-500 transition-transform duration-300 ${
-                                isExpanded ? "rotate-180 text-brand-accent" : ""
-                              }`}
-                            />
-                          </button>
+                            </Link>
+                            <button
+                              onClick={() => toggleSubmenu(item.name)}
+                              className="p-2 text-zinc-500 hover:text-brand-accent transition-colors"
+                              aria-label={`Toggle ${item.name} submenu`}
+                            >
+                              <ChevronDown
+                                className={`h-5 w-5 transition-transform duration-300 ${
+                                  isExpanded ? "rotate-180 text-brand-accent" : ""
+                                }`}
+                              />
+                            </button>
+                          </div>
                           
-                          
-                            {isExpanded && (
-                              <div
-                                className="overflow-hidden bg-zinc-50 rounded-xl px-4 mt-2 border-l-2 border-brand-accent/30"
-                              >
-                                <div className="py-3 flex flex-col space-y-3">
-                                  {item.submenu.map((sub) => (
-                                    <a
-                                      key={sub.name}
-                                      href={sub.path}
-                                      onClick={(e) => handleNavClick(e, sub.path)}
-                                      className={`block text-base font-semibold tracking-wide py-1.5 transition-colors ${
-                                        sub.path === `#${activeSection}`
-                                          ? "text-[#C4511A]"
-                                          : "text-foreground hover:text-[#C4511A]"
-                                      }`}
-                                    >
-                                      {sub.name}
-                                    </a>
-                                  ))}
-                                </div>
+                          {isExpanded && (
+                            <div className="overflow-hidden bg-zinc-50 rounded-xl px-4 mt-2 border-l-2 border-brand-accent/30">
+                              <div className="py-3 flex flex-col space-y-3">
+                                {item.submenu.map((sub) => (
+                                  <Link
+                                    key={sub.name}
+                                    href={sub.path}
+                                    onClick={closeMobileMenu}
+                                    className="block text-base font-semibold tracking-wide py-1.5 text-foreground hover:text-[#C4511A] transition-colors"
+                                  >
+                                    {sub.name}
+                                  </Link>
+                                ))}
                               </div>
-                            )}
+                            </div>
+                          )}
                         </>
                       ) : (
-                        <a
+                        <Link
                           href={item.path}
-                          onClick={(e) => handleNavClick(e, item.path)}
-                          className={`py-2.5 text-lg font-bold tracking-wide uppercase transition-[color,border-color] duration-200 ease ${
-                            isHighlight
-                              ? "text-[#C4511A] border-b-2 border-[#C4511A]"
-                              : "text-zinc-900 border-b border-zinc-200"
-                          }`}
+                          onClick={closeMobileMenu}
+                          className="py-2.5 text-lg font-bold tracking-wide uppercase text-zinc-900 border-b border-zinc-200 hover:text-[#C4511A] transition-colors"
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       )}
                     </div>
                   );
                 })}
               </div>
-
             </div>
           )}
       </header>
