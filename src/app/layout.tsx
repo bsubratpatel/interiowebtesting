@@ -9,11 +9,12 @@ import BackToTopButton from "@/components/BackToTopButton";
 import Script from "next/script";
 
 const poppins = Poppins({
-  weight: ["300", "400", "700", "800"],
+  weight: ["400", "700"],
   subsets: ["latin"],
   variable: "--font-poppins",
   display: "swap",
   preload: true,
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
@@ -196,7 +197,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${poppins.variable} h-full antialiased`}
+      className={`${poppins.className} ${poppins.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
