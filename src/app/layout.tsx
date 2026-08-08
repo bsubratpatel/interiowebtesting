@@ -23,9 +23,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/apple-touch-icon.png", type: "image/png" },
     ],
     apple: "/apple-touch-icon.png",
+    shortcut: "/apple-touch-icon.png",
   },
   alternates: {
     canonical: "https://interiocore.com",
