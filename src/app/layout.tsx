@@ -21,13 +21,18 @@ export const metadata: Metadata = {
   title: "Best Interior Designer in Jharsuguda, India | Interiocore",
   description: "Jharsuguda's trusted interior designer — modular kitchens, wardrobes & full home interiors. 45+ homes designed. Free consultation today.",
   metadataBase: new URL("https://interiocore.com"),
+  manifest: "/site.webmanifest",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/apple-touch-icon.png", type: "image/png" },
+      { url: "/favicon.ico?v=2", sizes: "any" },
+      { url: "/favicon-16x16.png?v=2", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png?v=2", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-48x48.png?v=2", sizes: "48x48", type: "image/png" },
+      { url: "/android-chrome-192x192.png?v=2", sizes: "192x192", type: "image/png" },
+      { url: "/android-chrome-512x512.png?v=2", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.svg?v=2", type: "image/svg+xml" },
     ],
-    apple: "/apple-touch-icon.png",
-    shortcut: "/apple-touch-icon.png",
+    shortcut: "/favicon.ico?v=2",
   },
   alternates: {
     canonical: "https://interiocore.com",
