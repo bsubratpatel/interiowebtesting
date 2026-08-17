@@ -24,15 +24,11 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
   icons: {
     icon: [
-      { url: "/favicon.ico?v=2", sizes: "any" },
-      { url: "/favicon-16x16.png?v=2", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png?v=2", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-48x48.png?v=2", sizes: "48x48", type: "image/png" },
-      { url: "/android-chrome-192x192.png?v=2", sizes: "192x192", type: "image/png" },
-      { url: "/android-chrome-512x512.png?v=2", sizes: "512x512", type: "image/png" },
-      { url: "/favicon.svg?v=2", type: "image/svg+xml" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
     ],
-    shortcut: "/favicon.ico?v=2",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
   },
   alternates: {
     canonical: "https://interiocore.com",

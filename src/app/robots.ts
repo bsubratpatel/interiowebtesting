@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: ["/", "/favicon.ico", "/favicon-*.png", "/android-chrome-*.png", "/site.webmanifest", "/interiocore_icon.webp"],
+        allow: ["/", "/favicon.svg", "/favicon.ico", "/site.webmanifest"],
         disallow: ["/api/"],
       },
       {
