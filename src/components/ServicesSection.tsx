@@ -6,13 +6,23 @@ export default function ServicesSection() {
   const servicesData = [
     {
       id: "services-kitchen",
-      title: "Modular Kitchen Design",
-      subtitle: "The Heart of the Home",
+      title: "Modular Kitchen Design in Jharsuguda",
+      subtitle: "The Heart of Your Home",
       desc: (
-        <>
-          <span className="block font-medium text-foreground mb-2">Elegant. Functional. Timeless.</span>
-          Custom-designed kitchens with premium finishes, seamless storage, and precision craftsmanship for modern living.
-        </>
+        <div className="space-y-3">
+          <p>
+            Beautiful, practical and made for everyday living. We design modular kitchens in Jharsuguda with smart storage, practical layouts and finishes that suit your home and lifestyle.
+          </p>
+          <p>
+            From L-shaped and U-shaped kitchens to straight and parallel layouts, we plan every kitchen around your space, cooking habits and storage needs. We also focus on durable materials, easy-to-use storage, quality hardware and clean, modern finishes.
+          </p>
+          <p>
+            Whether you have a small kitchen or a spacious home, InterioCore creates modular kitchen designs that make cooking, organising and everyday living easier.
+          </p>
+          <p className="font-medium text-foreground">
+            Planning a modular kitchen in Jharsuguda? Let's design it around you.
+          </p>
+        </div>
       ),
       image: "/images/kitchen renders/kitchen (3).webp",
       price: "Starting ₹1.5 lakh onwards",

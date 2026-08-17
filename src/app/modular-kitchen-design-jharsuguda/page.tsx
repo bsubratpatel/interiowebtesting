@@ -78,7 +78,7 @@ export default function ModularKitchenPage() {
           <div className="lg:col-span-5 space-y-6">
             <div>
               <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] block mb-2">
-                The Heart of the Home
+                The Heart of Your Home
               </span>
               <h1 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-foreground leading-[1.1]">
                 Modular Kitchen Design in Jharsuguda
@@ -87,13 +87,16 @@ export default function ModularKitchenPage() {
 
             <div className="text-zinc-600 text-lg font-light leading-relaxed space-y-4">
               <p>
-                <span className="font-medium text-foreground">Elegant. Functional. Timeless.</span> Custom-designed kitchens with premium finishes, seamless storage, and precision craftsmanship for modern living.
+                Beautiful, practical and made for everyday living. We design modular kitchens in Jharsuguda with smart storage, practical layouts and finishes that suit your home and lifestyle.
               </p>
-
-              {/* TODO: Human Review Needed */}
-              <p className="bg-amber-50/50 p-4 border-l-2 border-amber-400 text-sm text-zinc-700">
-                {/* TODO: Human Review Needed */}
-                Our modular kitchens are engineered specifically for Indian culinary workflows, incorporating boiling-water-resistant (BWR) marine plywood and anti-termite core panels. Every drawer system features German soft-close mechanisms and corner carousels to maximize kitchen storage efficiency in Jharsuguda households.
+              <p>
+                From L-shaped and U-shaped kitchens to straight and parallel layouts, we plan every kitchen around your space, cooking habits and storage needs. We also focus on durable materials, easy-to-use storage, quality hardware and clean, modern finishes.
+              </p>
+              <p>
+                Whether you have a small kitchen or a spacious home, InterioCore creates modular kitchen designs that make cooking, organising and everyday living easier.
+              </p>
+              <p className="font-medium text-foreground">
+                Planning a modular kitchen in Jharsuguda? Let's design it around you.
               </p>
             </div>
 

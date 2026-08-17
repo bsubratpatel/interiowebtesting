@@ -7,8 +7,8 @@ export default function ServicesPreview() {
   const services = [
     {
       title: "Modular Kitchen Design",
-      subtitle: "The Heart of the Home",
-      desc: "Custom-designed modular kitchens with factory precision, waterproof marine ply, and soft-close German hardware.",
+      subtitle: "The Heart of Your Home",
+      desc: "Beautiful, practical and made for everyday living. We design modular kitchens in Jharsuguda with smart storage, practical layouts and finishes that suit your home and lifestyle.",
       image: "/images/kitchen renders/kitchen (3).webp",
       price: "Starting ₹1.5 lakh onwards",
       url: "/modular-kitchen-design-jharsuguda",
