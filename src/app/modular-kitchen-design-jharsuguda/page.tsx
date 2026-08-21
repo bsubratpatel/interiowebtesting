@@ -87,11 +87,10 @@ export default function ModularKitchenPage() {
       />
 
       {/* Main Content */}
-      <main className="max-w-[1600px] mx-auto px-6 lg:px-12 py-12 sm:py-20">
-        {/* Hero Section */}
+      <main className="max-w-[1600px] mx-auto px-6 lg:px-12 py-12 sm:py-16">
+        {/* 1. Hero Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-          {/* Hero Visual */}
-          <div className="lg:col-span-7 relative h-[45dvh] sm:h-[65dvh] w-full overflow-hidden bg-zinc-100 border border-zinc-200">
+          <div className="lg:col-span-7 relative h-[45dvh] sm:h-[60dvh] w-full overflow-hidden bg-zinc-100 border border-zinc-200">
             <Image
               src="/images/modular-kitchen-design-jharsuguda.jpg"
               alt="Modular kitchen design layout in Jharsuguda featuring modern cabinetry and stone countertops"
@@ -103,7 +102,6 @@ export default function ModularKitchenPage() {
             />
           </div>
 
-          {/* Opening Content */}
           <div className="lg:col-span-5 space-y-6">
             <div>
               <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] block mb-2">
@@ -114,22 +112,16 @@ export default function ModularKitchenPage() {
               </h1>
             </div>
 
-            <div className="text-zinc-600 text-lg font-light leading-relaxed space-y-4">
+            <div className="text-zinc-600 text-base sm:text-lg font-light leading-relaxed space-y-4">
               <p>
-                InterioCore provides comprehensive modular kitchen design and planning services in Jharsuguda tailored to your home layout, daily cooking habits, and storage requirements. Whether you are building a new home or renovating an existing kitchen, we focus on practical spatial organization, durable materials, and refined finishes.
-              </p>
-              <p>
-                Our team guides you through every stage, including straight, L-shaped, U-shaped, parallel, and island layouts. We prioritize efficient work triangles, easy-access cabinetry, high-grade moisture-resistant plywood, and soft-close hardware designed for heavy daily use.
-              </p>
-              <p>
-                From initial 3D design to final on-site installation, InterioCore delivers custom modular kitchen solutions across Jharsuguda that combine beauty, functional storage, and long-lasting durability.
+                InterioCore provides end-to-end modular kitchen design and installation in Jharsuguda. We plan functional, beautiful kitchens engineered around your space, cooking habits, and storage needs.
               </p>
               <p className="font-medium text-foreground">
-                Planning a modular kitchen in Jharsuguda? Let us design a space tailored to your lifestyle.
+                Planning a modular kitchen in Jharsuguda? Let us design a space tailored to your home.
               </p>
             </div>
 
-            <div className="text-black/60 text-sm font-semibold pt-2">
+            <div className="text-black/60 text-sm font-semibold pt-1">
               Starting ₹1.5 lakh onwards
             </div>
 
@@ -153,65 +145,65 @@ export default function ModularKitchenPage() {
           </div>
         </div>
 
-        {/* H2: Modular Kitchen Designs in Jharsuguda */}
-        <section className="mt-20 sm:mt-28 pt-16 border-t border-zinc-200">
-          <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-foreground mb-6">
+        {/* 2. Modular Kitchen Designs in Jharsuguda */}
+        <section className="mt-16 sm:mt-24 pt-12 border-t border-zinc-200">
+          <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-foreground mb-4">
             Modular Kitchen Designs in Jharsuguda
           </h2>
-          <p className="text-zinc-600 font-light text-base leading-relaxed mb-8 max-w-4xl">
-            Selecting the right layout is crucial for efficient workflow and smart space utilization. We plan custom kitchen layouts based on your room dimensions, plumbing outlets, and cooking preferences.
+          <p className="text-zinc-600 font-light text-base leading-relaxed mb-8 max-w-3xl">
+            We design custom kitchen layouts tailored to your room dimensions and daily cooking routines:
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="p-6 bg-zinc-50 border border-zinc-200 space-y-3">
-              <h3 className="text-lg font-bold text-foreground uppercase tracking-wide">
+            <div className="p-6 bg-zinc-50 border border-zinc-200 space-y-2">
+              <h3 className="text-base font-bold text-foreground uppercase tracking-wide">
                 L-Shaped Modular Kitchen
               </h3>
-              <p className="text-sm text-zinc-600 font-light leading-relaxed">
-                Ideal for small to medium-sized homes and open-plan spaces. The L-shaped layout utilizes two adjacent walls, establishing a natural work triangle between sink, stove, and refrigerator while keeping the center area open.
+              <p className="text-xs text-zinc-600 font-light leading-relaxed">
+                Best for small to medium rooms. Uses two adjoining walls to form an efficient work triangle while leaving open floor space.
               </p>
             </div>
 
-            <div className="p-6 bg-zinc-50 border border-zinc-200 space-y-3">
-              <h3 className="text-lg font-bold text-foreground uppercase tracking-wide">
+            <div className="p-6 bg-zinc-50 border border-zinc-200 space-y-2">
+              <h3 className="text-base font-bold text-foreground uppercase tracking-wide">
                 U-Shaped Modular Kitchen
               </h3>
-              <p className="text-sm text-zinc-600 font-light leading-relaxed">
-                Best suited for larger kitchen spaces and dedicated rooms. The U-shaped layout surrounds the cook on three sides with countertops and wall cabinets, offering maximum storage capacity and ample counter space.
+              <p className="text-xs text-zinc-600 font-light leading-relaxed">
+                Suited for larger kitchen spaces. Offers maximum storage and counter area across three surrounding walls.
               </p>
             </div>
 
-            <div className="p-6 bg-zinc-50 border border-zinc-200 space-y-3">
-              <h3 className="text-lg font-bold text-foreground uppercase tracking-wide">
+            <div className="p-6 bg-zinc-50 border border-zinc-200 space-y-2">
+              <h3 className="text-base font-bold text-foreground uppercase tracking-wide">
                 Parallel Modular Kitchen
               </h3>
-              <p className="text-sm text-zinc-600 font-light leading-relaxed">
-                Perfect for long, narrow spaces or galley layouts. Parallel kitchens feature two parallel countertops that separate prep, cooking, and washing zones for high ergonomic efficiency.
+              <p className="text-xs text-zinc-600 font-light leading-relaxed">
+                Ideal for narrow or galley spaces. Features two parallel counters separating prep and cooking zones.
               </p>
             </div>
 
-            <div className="p-6 bg-zinc-50 border border-zinc-200 space-y-3">
-              <h3 className="text-lg font-bold text-foreground uppercase tracking-wide">
+            <div className="p-6 bg-zinc-50 border border-zinc-200 space-y-2">
+              <h3 className="text-base font-bold text-foreground uppercase tracking-wide">
                 Straight Modular Kitchen
               </h3>
-              <p className="text-sm text-zinc-600 font-light leading-relaxed">
-                A compact single-wall design well-suited for studio apartments or small rooms. All cabinets, sink, and cooking appliances line up along a single wall to maximize floor space.
+              <p className="text-xs text-zinc-600 font-light leading-relaxed">
+                A compact single-wall layout perfect for studio apartments or small homes with limited wall space.
               </p>
             </div>
 
-            <div className="p-6 bg-zinc-50 border border-zinc-200 space-y-3 md:col-span-2 lg:col-span-1">
-              <h3 className="text-lg font-bold text-foreground uppercase tracking-wide">
+            <div className="p-6 bg-zinc-50 border border-zinc-200 space-y-2 md:col-span-2 lg:col-span-1">
+              <h3 className="text-base font-bold text-foreground uppercase tracking-wide">
                 Island Modular Kitchen
               </h3>
-              <p className="text-sm text-zinc-600 font-light leading-relaxed">
-                Designed for spacious, open-concept homes. Combines an L-shaped or straight kitchen layout with an independent central island counter that serves as an extra prep zone, breakfast counter, or gathering spot.
+              <p className="text-xs text-zinc-600 font-light leading-relaxed">
+                Designed for spacious open homes. Combines wall cabinetry with a freestanding central counter for prep or dining.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Second Visual Showcase */}
-        <section className="mt-16 relative h-[35dvh] sm:h-[50dvh] w-full overflow-hidden bg-zinc-100 border border-zinc-200">
+        {/* Visual Showcase */}
+        <section className="mt-12 relative h-[30dvh] sm:h-[45dvh] w-full overflow-hidden bg-zinc-100 border border-zinc-200">
           <Image
             src="/images/modern-modular-kitchen-jharsuguda.jpg"
             alt="Modern modular kitchen with custom storage and soft-close hardware in Jharsuguda"
@@ -222,23 +214,26 @@ export default function ModularKitchenPage() {
           />
         </section>
 
-        {/* H2: Modular Kitchen Cost in Jharsuguda */}
-        <section className="mt-16 pt-16 border-t border-zinc-200">
+        {/* 3. Modular Kitchen Cost in Jharsuguda */}
+        <section className="mt-16 pt-12 border-t border-zinc-200">
           <div className="max-w-4xl space-y-6">
-            <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-foreground">
-              Modular Kitchen Cost in Jharsuguda
-            </h2>
-            <p className="text-zinc-600 font-light text-base leading-relaxed">
-              The overall cost of a modular kitchen in Jharsuguda depends on several practical factors and material preferences. Packages start from ₹1.5 lakh onwards, with final estimates determined by the following elements:
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div>
+              <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-foreground mb-3">
+                Modular Kitchen Cost in Jharsuguda
+              </h2>
+              <p className="text-zinc-600 font-light text-base leading-relaxed">
+                Packages start from ₹1.5 lakh onwards. Final pricing depends on key design specifications:
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="p-5 bg-zinc-50 border border-zinc-200 space-y-1">
                 <div className="flex items-center gap-2 font-semibold text-foreground text-sm">
                   <CheckCircle2 className="w-4 h-4 text-brand-accent shrink-0" />
                   Kitchen Size & Layout
                 </div>
                 <p className="text-xs text-zinc-500 font-light pl-6">
-                  Total running feet of upper and lower cabinetry required.
+                  Total running feet of base and overhead cabinetry.
                 </p>
               </div>
 
@@ -248,7 +243,7 @@ export default function ModularKitchenPage() {
                   Core Materials
                 </div>
                 <p className="text-xs text-zinc-500 font-light pl-6">
-                  Choice of Boiling Water Resistant (BWR) marine plywood versus commercial grade boards. Learn more on our <Link href="/materials-finishes" className="underline hover:text-brand-accent">materials and finishes</Link> page.
+                  Waterproof BWR marine plywood versus standard board options. Explore our <Link href="/materials-finishes" className="underline hover:text-brand-accent">materials guide</Link>.
                 </p>
               </div>
 
@@ -258,107 +253,79 @@ export default function ModularKitchenPage() {
                   Shutter Finishes
                 </div>
                 <p className="text-xs text-zinc-500 font-light pl-6">
-                  High-gloss acrylic, PU polish, matte laminate, or glass-front shutters.
+                  Acrylic, PU polish, matte laminate, or glass shutters.
                 </p>
               </div>
 
               <div className="p-5 bg-zinc-50 border border-zinc-200 space-y-1">
                 <div className="flex items-center gap-2 font-semibold text-foreground text-sm">
                   <CheckCircle2 className="w-4 h-4 text-brand-accent shrink-0" />
-                  Hardware & Fittings
+                  Hardware & Accessories
                 </div>
                 <p className="text-xs text-zinc-500 font-light pl-6">
-                  Soft-close hinges, tandem drawer channels, and branded motion hardware.
-                </p>
-              </div>
-
-              <div className="p-5 bg-zinc-50 border border-zinc-200 space-y-1">
-                <div className="flex items-center gap-2 font-semibold text-foreground text-sm">
-                  <CheckCircle2 className="w-4 h-4 text-brand-accent shrink-0" />
-                  Countertop Stone
-                </div>
-                <p className="text-xs text-zinc-500 font-light pl-6">
-                  Stain-resistant quartz, natural granite, or composite stone tops.
-                </p>
-              </div>
-
-              <div className="p-5 bg-zinc-50 border border-zinc-200 space-y-1">
-                <div className="flex items-center gap-2 font-semibold text-foreground text-sm">
-                  <CheckCircle2 className="w-4 h-4 text-brand-accent shrink-0" />
-                  Storage Accessories & Appliances
-                </div>
-                <p className="text-xs text-zinc-500 font-light pl-6">
-                  Pull-out pantry units, corner carousels, cutlery trays, built-in chimneys, and hobs.
+                  Soft-close hinges, tandem drawers, pantry pull-outs, and countertop stone.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* H2: Why Choose InterioCore for Modular Kitchens in Jharsuguda? */}
-        <section className="mt-16 pt-16 border-t border-zinc-200">
+        {/* 4. Why Choose InterioCore for Modular Kitchens in Jharsuguda? */}
+        <section className="mt-16 pt-12 border-t border-zinc-200">
           <div className="max-w-4xl space-y-6">
             <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-foreground">
               Why Choose InterioCore for Modular Kitchens in Jharsuguda?
             </h2>
-            <p className="text-zinc-600 font-light text-base leading-relaxed">
-              InterioCore provides clear planning, professional design consultation, and precision execution for homeowners in Jharsuguda. We focus on genuine service delivery:
-            </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="p-6 bg-zinc-50 border border-zinc-200 space-y-2">
-                <h3 className="font-bold text-foreground uppercase tracking-wider text-sm">Space Planning</h3>
-                <p className="text-xs text-zinc-500 font-light">Custom layout planning engineered for room dimensions and smooth cooking workflows.</p>
+                <h3 className="font-bold text-foreground uppercase tracking-wider text-sm">Tailored Space Planning</h3>
+                <p className="text-xs text-zinc-500 font-light leading-relaxed">
+                  Every cabinet layout is calculated to match your room dimensions and kitchen ergonomics.
+                </p>
               </div>
 
               <div className="p-6 bg-zinc-50 border border-zinc-200 space-y-2">
-                <h3 className="font-bold text-foreground uppercase tracking-wider text-sm">Design Consultation</h3>
-                <p className="text-xs text-zinc-500 font-light">Detailed design guidance to match your functional needs, style choices, and budget.</p>
+                <h3 className="font-bold text-foreground uppercase tracking-wider text-sm">Durable Water-Resistant Build</h3>
+                <p className="text-xs text-zinc-500 font-light leading-relaxed">
+                  We use Boiling Water Resistant (BWR) marine ply and moisture-proof edge banding for longevity.
+                </p>
               </div>
 
               <div className="p-6 bg-zinc-50 border border-zinc-200 space-y-2">
-                <h3 className="font-bold text-foreground uppercase tracking-wider text-sm">3D Visualization</h3>
-                <p className="text-xs text-zinc-500 font-light">Realistic 3D designs to view layout, color tones, and finishes before manufacturing starts.</p>
+                <h3 className="font-bold text-foreground uppercase tracking-wider text-sm">Transparent Pricing</h3>
+                <p className="text-xs text-zinc-500 font-light leading-relaxed">
+                  Detailed cost estimates with itemized material and hardware specs before execution begins.
+                </p>
               </div>
 
               <div className="p-6 bg-zinc-50 border border-zinc-200 space-y-2">
-                <h3 className="font-bold text-foreground uppercase tracking-wider text-sm">Material Selection</h3>
-                <p className="text-xs text-zinc-500 font-light">Moisture-resistant marine plywood, robust edge banding, and durable hardware options.</p>
-              </div>
-
-              <div className="p-6 bg-zinc-50 border border-zinc-200 space-y-2">
-                <h3 className="font-bold text-foreground uppercase tracking-wider text-sm">Storage Planning</h3>
-                <p className="text-xs text-zinc-500 font-light">Smart organizers, cutlery drawers, bottle pull-outs, and tall pantry storage units.</p>
-              </div>
-
-              <div className="p-6 bg-zinc-50 border border-zinc-200 space-y-2">
-                <h3 className="font-bold text-foreground uppercase tracking-wider text-sm">Installation</h3>
-                <p className="text-xs text-zinc-500 font-light">Precise on-site assembly and alignment by experienced installation technicians.</p>
+                <h3 className="font-bold text-foreground uppercase tracking-wider text-sm">End-to-End Project Care</h3>
+                <p className="text-xs text-zinc-500 font-light leading-relaxed">
+                  From site measurements to clean installation, our local team manages the entire process.
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* H2: Our Modular Kitchen Design Process */}
-        <section className="mt-16 pt-16 border-t border-zinc-200">
+        {/* 5. Our Modular Kitchen Design Process */}
+        <section className="mt-16 pt-12 border-t border-zinc-200">
           <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-foreground mb-6">
             Our Modular Kitchen Design Process
           </h2>
-          <p className="text-zinc-600 font-light text-base leading-relaxed mb-8 max-w-4xl">
-            We follow a streamlined, step-by-step design and execution process to ensure your kitchen is completed on time and to exact specifications:
-          </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { step: "01", title: "Consultation", desc: "Understanding your lifestyle, requirements, and budget expectations." },
-              { step: "02", title: "Measurements", desc: "Precise site measurements of walls, windows, doors, and plumbing lines." },
-              { step: "03", title: "Layout Planning", desc: "Designing functional work zones and cabinet configurations." },
-              { step: "04", title: "Material Selection", desc: "Choosing plywood, shutter finishes, hardware, stone, and accessories." },
-              { step: "05", title: "3D Design", desc: "Creating 3D renders to visualize color tones, lighting, and finishes." },
-              { step: "06", title: "Finalization", desc: "Confirming drawings, production details, and execution schedules." },
-              { step: "07", title: "Installation", desc: "Professional fitting, cabinet mounting, countertop placement, and handover." },
+              { step: "01", title: "Consultation", desc: "Understanding your lifestyle and budget." },
+              { step: "02", title: "Measurements", desc: "Site survey of room dimensions and plumbing." },
+              { step: "03", title: "Layout Planning", desc: "Zoning work areas and cabinet positions." },
+              { step: "04", title: "Material Selection", desc: "Choosing plywood, shutters, and hardware." },
+              { step: "05", title: "3D Design", desc: "Creating renders to preview colors and finish." },
+              { step: "06", title: "Finalization", desc: "Confirming drawings and timelines." },
+              { step: "07", title: "Installation", desc: "On-site assembly and handover." },
             ].map((item) => (
-              <div key={item.step} className="p-5 bg-zinc-50 border border-zinc-200 space-y-2">
+              <div key={item.step} className="p-4 bg-zinc-50 border border-zinc-200 space-y-1.5">
                 <span className="text-xs font-bold text-brand-accent tracking-widest uppercase">
                   Step {item.step}
                 </span>
@@ -375,14 +342,11 @@ export default function ModularKitchenPage() {
           </div>
         </section>
 
-        {/* H2: Explore Interior Design Services in Jharsuguda (Strengthened Internal Links) */}
-        <section className="mt-16 pt-16 border-t border-zinc-200">
+        {/* 6. Explore Interior Design Services in Jharsuguda */}
+        <section className="mt-16 pt-12 border-t border-zinc-200">
           <h2 className="text-xl sm:text-3xl font-bold uppercase tracking-tight text-foreground mb-6">
             Explore Interior Design Services in Jharsuguda
           </h2>
-          <p className="text-zinc-600 font-light text-base leading-relaxed mb-8 max-w-4xl">
-            In addition to modular kitchen design, InterioCore offers complete interior design solutions for every room in your home:
-          </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <Link
@@ -394,11 +358,11 @@ export default function ModularKitchenPage() {
                   Wardrobe Design
                 </h3>
                 <p className="text-xs text-zinc-500 font-light mt-2 leading-relaxed">
-                  Explore custom wardrobe design solutions in Jharsuguda including sliding, hinged, and walk-in closets.
+                  Sliding, hinged, and walk-in closet solutions in Jharsuguda.
                 </p>
               </div>
               <div className="flex items-center gap-2 text-xs font-bold text-brand-accent uppercase tracking-wider">
-                <span>View Wardrobe Designs</span>
+                <span>View Wardrobes</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>
@@ -409,14 +373,14 @@ export default function ModularKitchenPage() {
             >
               <div>
                 <h3 className="font-bold uppercase tracking-wider text-sm text-foreground group-hover:text-brand-accent">
-                  Living Room Interior Design
+                  Living Room Interior
                 </h3>
                 <p className="text-xs text-zinc-500 font-light mt-2 leading-relaxed">
-                  Discover living room interior design ideas in Jharsuguda featuring TV units, wall panelling, and seating layouts.
+                  TV units, wall panelling, and seating layouts in Jharsuguda.
                 </p>
               </div>
               <div className="flex items-center gap-2 text-xs font-bold text-brand-accent uppercase tracking-wider">
-                <span>View Living Room Interiors</span>
+                <span>View Living Rooms</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>
@@ -430,11 +394,11 @@ export default function ModularKitchenPage() {
                   Bedroom Interior
                 </h3>
                 <p className="text-xs text-zinc-500 font-light mt-2 leading-relaxed">
-                  View luxury bedroom interior design options in Jharsuguda with headboard walls, dressers, and false ceilings.
+                  Headboard walls, dressers, and false ceilings in Jharsuguda.
                 </p>
               </div>
               <div className="flex items-center gap-2 text-xs font-bold text-brand-accent uppercase tracking-wider">
-                <span>View Bedroom Interiors</span>
+                <span>View Bedrooms</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>
@@ -448,7 +412,7 @@ export default function ModularKitchenPage() {
                   Full Home Interior
                 </h3>
                 <p className="text-xs text-zinc-500 font-light mt-2 leading-relaxed">
-                  Learn about complete full home interior services in Jharsuguda for apartments, villas, and independent houses.
+                  Complete turn-key interior design for apartments and villas.
                 </p>
               </div>
               <div className="flex items-center gap-2 text-xs font-bold text-brand-accent uppercase tracking-wider">
@@ -466,7 +430,7 @@ export default function ModularKitchenPage() {
                   Materials & Finishes
                 </h3>
                 <p className="text-xs text-zinc-500 font-light mt-2 leading-relaxed">
-                  Browse our premium interior materials and finishes including marine ply, laminates, acrylics, and stone options.
+                  Marine ply, laminates, acrylics, and stone surface finishes.
                 </p>
               </div>
               <div className="flex items-center gap-2 text-xs font-bold text-brand-accent uppercase tracking-wider">
@@ -484,7 +448,7 @@ export default function ModularKitchenPage() {
                   Contact Our Studio
                 </h3>
                 <p className="text-xs text-zinc-500 font-light mt-2 leading-relaxed">
-                  Get in touch with our design team or book a free consultation at our Jharsuguda studio.
+                  Book a consultation or call our Jharsuguda design team.
                 </p>
               </div>
               <div className="flex items-center gap-2 text-xs font-bold text-brand-accent uppercase tracking-wider">
@@ -495,8 +459,8 @@ export default function ModularKitchenPage() {
           </div>
         </section>
 
-        {/* Book Free Consultation CTA Block */}
-        <section className="mt-20 py-16 px-8 bg-zinc-900 text-white text-center flex flex-col items-center space-y-6">
+        {/* 7. Final CTA */}
+        <section className="mt-16 py-16 px-8 bg-zinc-900 text-white text-center flex flex-col items-center space-y-6">
           <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight">
             Ready to Plan Your Dream Modular Kitchen?
           </h2>
