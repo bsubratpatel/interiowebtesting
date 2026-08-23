@@ -20,55 +20,75 @@ export default function Home() {
   return (
     <div className="bg-background text-foreground overflow-hidden">
       {/* 1. Hero Section */}
-      <section id="home" className="relative w-full min-h-[100dvh] flex items-center justify-center overflow-hidden py-12 md:py-16">
-        {/* Background Image */}
-        <div className="absolute inset-0 w-full h-full">
-          <Image
-            src="/images/kitchen renders/kitchen (1).webp"
-            alt="Interiocore Luxury Kitchen Design in Jharsuguda"
-            fill
-            className="object-cover scale-105"
-            sizes="100vw"
-            priority
-            fetchPriority="high"
-            decoding="async"
-          />
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
+      <section id="home" className="relative w-full bg-background pt-32 pb-16 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24 border-b border-zinc-200/60">
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-12 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            {/* Left Column: Headline, Copy & CTAs */}
+            <div className="lg:col-span-7 flex flex-col justify-center space-y-6 sm:space-y-8">
+              {/* Location line */}
+              <div>
+                <span className="text-xs sm:text-sm font-bold text-brand-accent uppercase tracking-[0.18em] block">
+                  JHARSUGUDA | SAMBALPUR | ROURKELA | SUNDARGARH | BARGARH
+                </span>
+              </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white flex flex-col items-center pt-36 pb-12 md:pt-40 md:pb-16">
-          <div>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter leading-[1] uppercase drop-shadow-2xl mb-6 sm:mb-8">
-              Best Interior Designer <br className="hidden sm:inline" /> in Jharsuguda, India
-            </h1>
-          </div>
+              {/* Main Headline */}
+              <div>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-foreground leading-[1.08]">
+                  YOUR KITCHEN SHOULD LOOK PREMIUM.
+                </h1>
+              </div>
 
-          <div>
-            <p className="text-sm sm:text-base md:text-lg font-light tracking-wide max-w-2xl mx-auto text-white/90 leading-relaxed mb-6 sm:mb-8">
-              Premium modular kitchens, wardrobes, TV units, and complete home interiors thoughtfully designed to make your home beautiful, functional, and built to last.
-            </p>
-          </div>
+              {/* Body Text */}
+              <div>
+                <p className="text-base sm:text-lg text-zinc-600 font-light leading-relaxed max-w-xl">
+                  Modular kitchens designed for your home, with smart storage, practical layouts and premium finishes.
+                </p>
+              </div>
 
-          <div className="text-[11px] sm:text-xs font-bold tracking-wider text-white/80 text-center uppercase mb-8 sm:mb-10">
-            45+ Happy Families • Premium Materials • End-to-End Service
-          </div>
+              {/* Outcome Line */}
+              <div className="border-l-2 border-brand-accent pl-4 py-1.5 bg-brand-accent/5 max-w-xl">
+                <p className="text-sm sm:text-base font-semibold text-foreground tracking-wide">
+                  More space. Better storage. Easier cooking.
+                </p>
+              </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto justify-center">
-            <a
-              href="https://wa.me/919776991699?text=Hi%20Interiocore!%20I'd%20like%20to%20learn%20more%20about%20your%20services."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#25D366] text-white hover:bg-[#20ba5a] border border-[#25D366] hover:border-[#20ba5a] transition-all hover:scale-[1.02] shadow-xl rounded-none h-14 px-10 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-3 w-full sm:w-auto active:scale-95 duration-200 cursor-pointer"
-            >
-              <MessageCircle className="h-4 w-4" /> WhatsApp
-            </a>
-            <a
-              href="tel:+919776991699"
-              className="bg-transparent text-[#E8621A] hover:bg-[#E8621A]/10 border border-[#E8621A]/80 transition-colors rounded-none h-14 px-8 text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-3 w-full sm:w-auto text-center cursor-pointer"
-            >
-              <Phone className="h-4 w-4" /> Call Now
-            </a>
+              {/* Primary & Secondary CTAs */}
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                <Link
+                  href="/contact"
+                  className="bg-brand-accent hover:bg-brand-accent-hover text-white transition-all hover:scale-[1.02] shadow-md rounded-none h-14 sm:h-16 px-8 sm:px-10 text-xs sm:text-sm font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-3 active:scale-95 duration-200 cursor-pointer"
+                >
+                  GET A FREE DESIGN CONSULTATION
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <a
+                  href="https://wa.me/919776991699?text=Hi%20Interiocore!%20I'd%20like%20to%20get%20a%20free%20kitchen%20design%20consultation."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-transparent border border-zinc-300 hover:border-brand-accent text-foreground hover:text-brand-accent transition-colors rounded-none h-14 sm:h-16 px-6 text-xs sm:text-sm font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                  WhatsApp Us
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: Premium Kitchen Visual */}
+            <div className="lg:col-span-5 relative w-full">
+              <div className="relative w-full h-[380px] sm:h-[480px] lg:h-[560px] overflow-hidden border border-zinc-200/80 shadow-lg bg-zinc-100 group">
+                <Image
+                  src="/images/kitchen renders/kitchen (1).webp"
+                  alt="Premium Modular Kitchen Design by Interiocore"
+                  fill
+                  priority
+                  fetchPriority="high"
+                  decoding="async"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>

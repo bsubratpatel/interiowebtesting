@@ -238,10 +238,10 @@ export default function Navbar() {
           <div className="hidden xl:flex items-center gap-6">
             <a
               href="tel:+919776991699"
-              className="transition-all rounded-none px-6 text-[10px] font-bold tracking-[0.2em] uppercase h-11 flex items-center justify-center gap-2 cursor-pointer shadow-sm duration-200 bg-brand-accent text-white hover:bg-brand-accent-hover active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 focus-visible:ring-offset-2"
+              className="transition-all rounded-none px-6 text-[11px] font-bold tracking-[0.12em] uppercase h-11 flex items-center justify-center gap-2 cursor-pointer shadow-sm duration-200 bg-brand-accent text-white hover:bg-brand-accent-hover active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 focus-visible:ring-offset-2"
             >
               <Phone className="h-3.5 w-3.5" />
-              Inquire Now
+              +91 9776991699
             </a>
           </div>
 
