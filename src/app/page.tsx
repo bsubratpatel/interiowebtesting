@@ -35,14 +35,14 @@ export default function Home() {
               {/* Main Headline */}
               <div>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-foreground leading-[1.08]">
-                  YOUR KITCHEN SHOULD LOOK PREMIUM.
+                  Modular Kitchen in Jharsuguda Designed for Your Home
                 </h1>
               </div>
 
               {/* Body Text */}
               <div>
                 <p className="text-base sm:text-lg text-zinc-600 font-light leading-relaxed max-w-xl">
-                  Modular kitchens designed for your home, with smart storage, practical layouts and premium finishes.
+                  Looking for a modular kitchen in Jharsuguda? We design stylish, functional kitchens with smart storage, practical layouts and premium finishes—tailored to your home and lifestyle.
                 </p>
               </div>
 
