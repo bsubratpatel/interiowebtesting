@@ -42,7 +42,7 @@ export default function Home() {
               {/* Body Text */}
               <div>
                 <p className="text-base sm:text-lg text-zinc-600 font-light leading-relaxed max-w-xl">
-                  Looking for a modular kitchen in Jharsuguda? We design stylish, functional kitchens with smart storage, practical layouts and premium finishes—tailored to your home and lifestyle.
+                  Looking for a modular kitchen in Jharsuguda? We design beautiful and practical kitchens with smart storage, useful layouts, and premium finishes that make everyday cooking easier.
                 </p>
               </div>
 
