@@ -93,15 +93,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Why Choose Us Section */}
-      <LazySection height="450px" ids={["about-why"]}>
-        <WhyChooseUsSection />
-      </LazySection>
-
-      {/* 3. Our Services Preview */}
-      <ServicesPreview />
-
-      {/* 4. Curated Spaces (Gallery Preview) */}
+      {/* 2. Curated Spaces (Gallery Preview) */}
       <section className="relative">
         <LazyGallery initialData={galleryData} />
         <div className="py-8 bg-zinc-50 border-b border-zinc-200 text-center">
@@ -114,6 +106,14 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      {/* 3. Why Choose Us Section */}
+      <LazySection height="450px" ids={["about-why"]}>
+        <WhyChooseUsSection />
+      </LazySection>
+
+      {/* 4. Our Services Preview */}
+      <ServicesPreview />
 
       {/* 5. CTA Section */}
       <LazySection height="300px">
