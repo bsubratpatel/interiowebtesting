@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export default function AboutSection() {
@@ -37,9 +38,9 @@ export default function AboutSection() {
           {/* Text Column */}
           <div className="space-y-8">
             <div>
-              <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-4 block">About Interiocore</span>
-              <h2 className="text-4xl sm:text-6xl font-extrabold uppercase tracking-tighter text-foreground leading-[1.1]">
-                Where Comfort<br />Meets Luxury
+              <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-4 block">About Us</span>
+              <h2 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-foreground leading-[1.15]">
+                About InterioCore — We Design Homes You Love to Live In.
               </h2>
             </div>
             
@@ -47,25 +48,22 @@ export default function AboutSection() {
               <div className="w-12 h-1 bg-brand-accent"></div>
             </div>
 
-            <div className="space-y-6 text-zinc-600 font-light text-lg">
+            <div className="space-y-5 text-zinc-600 font-light text-base sm:text-lg leading-relaxed">
               <p>
-                Interiocore is Jharsuguda&apos;s premium interior design studio, creating wooden interiors that bring comfort, beauty, and functionality to homes across Jharsuguda and Odisha.
+                InterioCore is an interior design studio based in Jharsuguda, helping homeowners create beautiful, comfortable, and practical spaces. From modular kitchens and wardrobes to TV units and complete home interiors, we design every space around how you live.
               </p>
               <p>
-                Founded with a simple vision to design premium spaces, we combine elegant aesthetics, quality materials, and skilled craftsmanship to build interiors that are stylish, practical, and built to last.
-              </p>
-              <p>
-                Our mission is to help families create warm, welcoming environments that perfectly match their lifestyle, ensuring every room feels timeless and inviting.
+                We focus on smart layouts, quality materials, useful storage, and designs that look good for years. Our goal is simple: to make your home more beautiful, more organized, and more comfortable to live in.
               </p>
             </div>
 
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               className="hover:bg-brand-secondary hover:text-white transition-all rounded-none px-6 py-3.5 text-brand-secondary font-bold tracking-[0.1em] uppercase flex items-center gap-3 active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50 focus-visible:ring-offset-2 w-fit border border-brand-secondary/20 bg-transparent hover:border-transparent cursor-pointer"
             >
               Start Your Project
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
