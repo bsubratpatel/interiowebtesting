@@ -40,7 +40,7 @@ export default function AboutSection() {
             <div>
               <span className="text-xs font-bold text-brand-accent uppercase tracking-[0.2em] mb-4 block">About Us</span>
               <h2 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-foreground leading-[1.15]">
-                About InterioCore — We Design Homes You Love to Live In.
+                We Design Homes You Love to Live In.
               </h2>
             </div>
             
